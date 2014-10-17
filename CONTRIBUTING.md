@@ -1,3 +1,3 @@
 # Contribution Guidelines
 
-Please submit all issues and pull requests to the [seekcity/seekcity](https://github.com/seek-city/seek-city) repository!
+Please submit all issues and pull requests to the [laravel/framework](http://github.com/laravel/framework) repository!
