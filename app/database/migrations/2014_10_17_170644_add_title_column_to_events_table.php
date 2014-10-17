@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEventsTable extends Migration {
+class AddTitleColumnToEventsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,9 @@ class CreateEventsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('events', function(Blueprint $table)
+		Schema::table('events', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
-			$table->softDeletes();
+			$table->string('title');
 		});
 	}
 
@@ -28,7 +26,10 @@ class CreateEventsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('events');
+		Schema::table('events', function(Blueprint $table)
+		{
+			$table->dropColumn('title');
+		});
 	}
 
 }

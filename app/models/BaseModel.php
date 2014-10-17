@@ -1,9 +1,13 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 /*
  * Class from which other models can inherit functionality from.
  */
 class BaseModel extends Eloquent {
+    use SoftDeletingTrait;
 
     /*
      * Convert any model-aware date/times to local timezone.
