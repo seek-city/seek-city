@@ -16,4 +16,12 @@ class Activity extends BaseModel
     protected $fillable = ['title', 'body', 'activity_date', 'image_path', 'price'];
 
     protected $table = 'activities';
+    
+    /**
+     * Find activities related to user.
+     */
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }
