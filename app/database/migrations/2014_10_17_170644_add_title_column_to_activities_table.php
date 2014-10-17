@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddPriceColumnToEventsTable extends Migration {
+class AddTitleColumnToActivitiesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddPriceColumnToEventsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->decimal('price', 2);
+			$table->string('title');
 		});
 	}
 
@@ -26,9 +26,9 @@ class AddPriceColumnToEventsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->dropColumn('price');
+			$table->dropColumn('title');
 		});
 	}
 
