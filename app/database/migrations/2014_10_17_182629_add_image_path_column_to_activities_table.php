@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddTitleColumnToEventsTable extends Migration {
+class AddImagePathColumnToActivitiesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddTitleColumnToEventsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->string('title');
+			$table->string('image_path')->nullable();
 		});
 	}
 
@@ -26,9 +26,9 @@ class AddTitleColumnToEventsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->dropColumn('title');
+			$table->dropColumn('image_path');
 		});
 	}
 

@@ -2,13 +2,13 @@
  @include('partials.navbar')
  @stop
  
-@section('topscript')<title>Create an event</title> @stop
+@section('topscript')<title>Create an activity</title> @stop
 
 @section('content')
 <div class='col-md-8'>
-    <h2>Create a New Event</h2>
+    <h2>Create a New Activity</h2>
     <hr>
-    {{ Form::open(['action' => 'EventsController@store', 'method' => 'POST', 'files' => true]) }}
+    {{ Form::open(['action' => 'ActivitiesController@store', 'method' => 'POST', 'files' => true]) }}
     <div class='form-group'>
         {{ Form::label('title', 'Title:') }}
         {{ Form::text('title', Input::old('title'), ['class' => 'form-control', 'id' => 'title']) }}
