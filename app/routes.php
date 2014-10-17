@@ -23,3 +23,5 @@ Route::get('/', function()
 |--------------------------------------------------------------------------
 */
 Route::resource('activities', 'ActivitiesController');
+
+Route::resource('users', 'UsersController');
