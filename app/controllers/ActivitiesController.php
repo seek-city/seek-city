@@ -101,7 +101,7 @@ class ActivitiesController extends \BaseController {
 	}
 
 
-public function saveActivity(Activity $activity);
+public function saveActivity(Activity $activity)
 	{
 		$validator = Validator::make(Input::all(), Activity::$rules);
 
