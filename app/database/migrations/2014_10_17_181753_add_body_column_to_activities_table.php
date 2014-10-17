@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddEventDateColumnToEventsTable extends Migration {
+class AddBodyColumnToActivitiesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddEventDateColumnToEventsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->dateTime('event_date');
+			$table->string('body');
 		});
 	}
 
@@ -26,9 +26,9 @@ class AddEventDateColumnToEventsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('events', function(Blueprint $table)
+		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->dropColumn('event_date');
+			$table->dropColumn('body');
 		});
 	}
 

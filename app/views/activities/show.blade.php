@@ -4,25 +4,25 @@
 @section('topscript')
 <div class="col-md-6"> 
 
-    <article> <!-- Event-->
-        <h1>{{{ $event->title }}}</h1>
+    <article> <!-- Activity -->
+        <h1>{{{ $activity->title }}}</h1>
 
-        <p class="lead">by {{{ $event->user->email }}}, on {{ $event->updated_at->format(Post::DATE_FORMAT) }}</p>
+        <p class="lead">by {{{ $activity->user->email }}}, on {{ $activity->updated_at->format(Post::DATE_FORMAT) }}</p>
 
         @if (Auth::check())
         <!-- TO EDIT AN EVENT -->
 
         <!-- TO DELETE AN EVENT -->
-        {{ Form::open(['method' => 'DELETE', 'action' => ['EventsController@destroy', $event->id], 'id' => 'delete-form']) }}
-        <a class='btn btn-default' href={{ action('EventsController@edit', $event->id) }}>Edit</a>
+        {{ Form::open(['method' => 'DELETE', 'action' => ['ActivitiesController@destroy', $activity->id], 'id' => 'delete-form']) }}
+        <a class='btn btn-default' href={{ action('ActivitiesController@edit', $activity->id) }}>Edit</a>
         {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
         {{ Form::close() }}
         @endif
         <hr>
 
-        <img class="img-responsive" src="{{ $event->img }}" alt="">
+        <img class="img-responsive" src="{{ $activity->img }}" alt="">
         <hr>
-        <p class="lead">{{{ $event->body }}}</p>
+        <p class="lead">{{{ $activity->body }}}</p>
     </article>
         </div>
     </div>
