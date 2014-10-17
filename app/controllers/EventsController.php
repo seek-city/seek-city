@@ -29,6 +29,7 @@ class EventsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function store(){
 		$event = new Event();
 	if (input::hasFile('image')) {
@@ -40,6 +41,7 @@ class EventsController extends \BaseController {
 			}
 			return $this->saveEvent($event);
 	}
+
 	/**
 	 * Display the specified event.
 	 *
@@ -69,8 +71,6 @@ class EventsController extends \BaseController {
 			}
 	}
 
-
-
 	/**
 	 * Update the specified event in storage.
 	 *
@@ -84,7 +84,6 @@ class EventsController extends \BaseController {
 		return $this->saveEvent($event);
 	}
 
-
 	/**
 	 * Remove the specified event from storage.
 	 *
@@ -92,7 +91,7 @@ class EventsController extends \BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
-{
+	{
 		$event = Event::find($id);
 		if (!$event){
 			App::abort(404);
@@ -103,9 +102,6 @@ class EventsController extends \BaseController {
 		return Redirect::action('EventController@index');
 
 	}
-
-}
-
 
 
 public function saveEvent(Event $event);
@@ -141,3 +137,4 @@ public function saveEvent(Event $event);
 			return Redirect::action('EventsController@show');
 		}
 	}
+}
