@@ -15,3 +15,11 @@ Route::get('/', function()
 {
 	return View::make('sample');
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Resource Controller Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('events', 'EventsController');
