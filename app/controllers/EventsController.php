@@ -29,18 +29,17 @@ class EventsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), Event::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Event::create($data);
-
-		return Redirect::route('events.index');
+	public function store(){
+		$event = new Event();
+	if (input::hasFile('image')) {
+				$file= Input::file('image');
+				$destination_path = public_path() . '/img-upload/';
+				$filename = uniqid('img') . '_' . $file->getClientOriginalName();
+				$uploadSuccess = $file->move($destination_path, $filename);
+				$event->image = '/img-upload/' . $filename;
+			}
+			return $this->saveEvent($event);
 	}
 
 	/**
@@ -64,9 +63,12 @@ class EventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$event = Event::find($id);
+		$event = Event::findOrFail($id);
 
 		return View::make('events.edit', compact('event'));
+		{
+		
+			}
 	}
 
 	/**
@@ -78,17 +80,8 @@ class EventsController extends \BaseController {
 	public function update($id)
 	{
 		$event = Event::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Event::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$event->update($data);
-
-		return Redirect::route('events.index');
+	
+		return $this->saveEvent($event);
 	}
 
 	/**
@@ -99,9 +92,49 @@ class EventsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Event::destroy($id);
+		$event = Event::find($id);
+		if (!$event){
+			App::abort(404);
+		}
+		$event->delete(); 
+		log::info('Event deleted successfully');
+		Session::flash('successMessage' , 'Event deleted sucessfully');
+		return Redirect::action('EventController@index');
 
-		return Redirect::route('events.index');
 	}
 
+
+public function saveEvent(Event $event);
+	{
+		$validator= Validator::make(Input::all(), Event::$rules);
+
+		if ($validator->fails()){
+			Session::flash('errorMessage', 'Your event needs title and body');
+			Log::error('Event validator failed', Input::all());
+			return Redirect::back()->withInput();
+
+		} else {
+			$event = new Event;
+			$event->title = Input::get('title');
+			$event->body = Input::get('body');
+			$event->user_id = Auth::id();
+
+			if (input::hasFile('image')) {
+				$file= Input::file('image');
+				$destination_path = public_path() . '/img/';
+				$filenmae = str_random(6) . '_' . $file->getClientOriginalName();
+				$uploadSuccess = $file->move($destination_path, $filename);
+				$event->image = '/img/' . $filename;
+			}
+
+			$event->save();
+
+			Log::info('Event was sucessfully saved');
+
+			$message = 'Event created sucessfully';
+			Session::flash('sucessMessage', $message);
+
+			return Redirect::action('EventsController@show');
+		}
+	}
 }
