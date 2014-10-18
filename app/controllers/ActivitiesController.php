@@ -116,20 +116,12 @@ public function saveActivity(Activity $activity)
 			$activity->body = Input::get('body');
 			// $activity->user_id = Auth::id();
 
-			if (input::hasFile('image')) {
-				$file= Input::file('image');
-				$destination_path = public_path() . '/img/';
-				$filename = str_random(6) . '_' . $file->getClientOriginalName();
-				$uploadSuccess = $file->move($destination_path, $filename);
-				$activity->image = '/img/' . $filename;
-			}
-
 			$activity->save();
 			$id= $activity->id;
-			Log::info('Activity was sucessfully saved');
+			Log::info('Activity was sucessfully saved', Input::all());
 
 			$message = 'Activity created sucessfully';
-			Session::flash('sucessMessage', $message);
+			Session::flash('successMessage', $message);
 
 			return Redirect::action('ActivitiesController@show', $id);
 		}
