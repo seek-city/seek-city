@@ -32,7 +32,7 @@ class ActivitiesController extends \BaseController {
 
 	public function store(){
 		$activity = new Activity();
-	if (input::hasFile('image')) {
+	if (Input::hasFile('image')) {
 				$file= Input::file('image');
 				$destination_path = public_path() . '/img-upload/';
 				$filename = uniqid('img') . '_' . $file->getClientOriginalName();
@@ -114,7 +114,7 @@ public function saveActivity(Activity $activity)
 			$activity = new Activity;
 			$activity->title = Input::get('title');
 			$activity->body = Input::get('body');
-			$activity->user_id = Auth::id();
+			// $activity->user_id = Auth::id();
 
 			if (input::hasFile('image')) {
 				$file= Input::file('image');
@@ -125,13 +125,13 @@ public function saveActivity(Activity $activity)
 			}
 
 			$activity->save();
-
+			$id= $activity->id;
 			Log::info('Activity was sucessfully saved');
 
 			$message = 'Activity created sucessfully';
 			Session::flash('sucessMessage', $message);
 
-			return Redirect::action('ActivitiesController@show');
+			return Redirect::action('ActivitiesController@show', $id);
 		}
 	}
 }
