@@ -28,7 +28,7 @@
 
     </div>
 
-    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-1.11.1.min"></script>
     <script src="/js/bootstrap.min.js"></script>
     @yield('bottomscript')
     <!-- Google Analytics: todo change UA-XXXXX-X to be your site's ID. -->
