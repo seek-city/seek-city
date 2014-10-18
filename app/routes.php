@@ -22,8 +22,5 @@ Route::get('/', function()
 |--------------------------------------------------------------------------
 */
 Route::resource('activities', 'ActivitiesController');
-<<<<<<< HEAD
 
 Route::resource('users', 'UsersController');
-=======
->>>>>>> b6f2ca91da8095ab8fa04691eaf6f5ef2a013e4b
