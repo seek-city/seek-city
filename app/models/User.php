@@ -9,6 +9,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 
     use UserTrait, RemindableTrait;
 
+    // Add your validation rules here
+    public static $rules = [
+        'username' => 'required|max:50',
+        'password' => 'required',
+        'email' => 'required',
+    ];
+
     /**
      * The database table used by the model.
      *
@@ -23,6 +30,9 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
      */
     protected $hidden = array('password', 'remember_token');
 
+    protected $fillable = array('username', 'password', 'email', 'first_name', 'last_name', 'image_path');
+
+    
     /**
      * MUTATOR FOR PASSWORD ATTRIBUTES
      */

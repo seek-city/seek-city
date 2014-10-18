@@ -1,1 +1,14 @@
-/vagrant/sites/seekcity.dev/app/views/users/create.blade.php
+@extends('layouts.master')
+
+@section('content')
+    {{ Form::open(['action' => 'UsersController@store', 'method' => 'POST', 'files' => true]) }}
+
+        @include('users.form')
+
+    <div class='form-group'>
+        {{ Form::reset('Reset', ['class' => 'btn btn-default']) }}
+        {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
+    </div>
+    
+    {{ Form::close() }}
+@stop
