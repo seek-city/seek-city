@@ -7,7 +7,7 @@
     <article> <!-- Activity -->
         <h1>{{{ $activity->title }}}</h1>
 
-        <p class="lead">by {{{ $activity->user->email }}}, on {{ $activity->updated_at->format(Post::DATE_FORMAT) }}</p>
+        <p class="lead">by on {{ $activity->updated_at->format(Activity::DATE_FORMAT) }}</p>
 
         @if (Auth::check())
         <!-- TO EDIT AN EVENT -->
