@@ -2,6 +2,8 @@
 
 class Activity extends BaseModel
 {
+    const DATE_FORMAT = 'l, jS \\of F Y g:i A';
+
     // Add your validation rules here
     public static $rules = [
         'title' => 'required|max:255',
