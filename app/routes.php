@@ -21,4 +21,4 @@ Route::get('/', function()
 | Resource Controller Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('events', 'EventsController');
+Route::resource('activities', 'ActivitiesController');
