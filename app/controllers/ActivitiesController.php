@@ -119,7 +119,7 @@ public function saveActivity(Activity $activity)
 			if (input::hasFile('image')) {
 				$file= Input::file('image');
 				$destination_path = public_path() . '/img/';
-				$filenmae = str_random(6) . '_' . $file->getClientOriginalName();
+				$filename = str_random(6) . '_' . $file->getClientOriginalName();
 				$uploadSuccess = $file->move($destination_path, $filename);
 				$activity->image = '/img/' . $filename;
 			}
