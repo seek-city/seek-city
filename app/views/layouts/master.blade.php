@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>TODO TITLE</title>
+    <title>Seek City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,7 +28,7 @@
 
     </div>
 
-    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-1.11.1.min"></script>
     <script src="/js/bootstrap.min.js"></script>
     @yield('bottomscript')
     <!-- Google Analytics: todo change UA-XXXXX-X to be your site's ID. -->
