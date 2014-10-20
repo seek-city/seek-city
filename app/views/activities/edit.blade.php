@@ -1,7 +1,7 @@
 @extends('layouts.master')
  @include('partials.navbar')
  @stop
- 
+
 @section('topscript')<title>Edit Your Activity</title> @stop
 
 @section('content')
