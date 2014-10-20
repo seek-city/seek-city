@@ -16,9 +16,20 @@ Route::get('/', function()
 	return View::make('sample');
 });
 
+// DISPLAY LOGIN FORM
+Route::get('/login', 'HomeController@showLogin');
+
+// LOG USER IN
+Route::post('/login', 'HomeController@doLogin');
+
+// LOG USER OUT
+Route::get('/logout', 'HomeController@doLogout');
+
 /*
 |--------------------------------------------------------------------------
 | Resource Controller Routes
 |--------------------------------------------------------------------------
 */
 Route::resource('activities', 'ActivitiesController');
+
+Route::resource('users', 'UsersController');

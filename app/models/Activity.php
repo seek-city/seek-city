@@ -17,3 +17,4 @@ class Activity extends BaseModel
 
     protected $table = 'activities';
 }
+
