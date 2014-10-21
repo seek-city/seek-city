@@ -1,11 +1,11 @@
-	 <div class='form-group'>
+	<div class='form-group'>
         {{ Form::label('venue_name', 'Name:') }}
         {{ Form::text('venue_name', Input::old('venue_name'), ['class' => 'form-control', 'id' => 'venue_name']) }}
         {{ $errors->first('venue_name', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
         {{ Form::label('address', 'Address:') }}
-        {{ Form::address1('address', ['class' => 'form-control', 'id' => 'address']) }}
+        {{ Form::text('address', Input::old('address'),['class' => 'form-control', 'id' => 'address']) }}
         {{ $errors->first('address', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
@@ -34,32 +34,33 @@
         {{ $errors->first('website', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('parking', 'Parking:') }}
-        {{ Form::checkbox('parking', Input::old('parking'), ['class' => 'form-control','id' => 'parking']) }}
+        {{ Form::label('parking', 'Parking:') }} 
+        {{ Form::radio('parking', 'Yes') }} {{ Form::label('parking', 'Yes') }}
+        {{ Form::radio('parking', 'No') }} {{ Form::label('parking', 'No') }}
         {{ $errors->first('parking', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
-        {{ Form::label('opening_hour', 'Opening_hour:') }}
-        {{ Form::select('opening_hour', Input::old('opening_hour'), ['class' => 'form-control','id' => 'opening_hour']) }}
+        {{ Form::label('opening_hour', 'Open:') }}
+        {{ Form::text('opening_hour', '', ['class' => 'form-control', 'data-timepicker' => 'timepicker']) }}
         {{ $errors->first('opening_hour', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('closing_hour', 'Closing_hour:') }}
-        {{ Form::select('closing_hour', Input::old('closing hour'), ['class' => 'form-control','id' => 'closing_hour']) }}
+        {{ Form::label('closing_hour', 'Close:') }}
+        {{ Form::text('closing_hour', '', ['class' => 'form-control', 'data-timepicker' => 'timepicker']) }}
         {{ $errors->first('closing_hour', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
-        {{ Form::label('facebook_url', 'Facebok_url:') }}
+        {{ Form::label('facebook_url', 'Facebook:') }}
         {{ Form::text('facebook_url', Input::old('facebook_url'), ['class' => 'form-control','id' => 'facebook_url']) }}
         {{ $errors->first('facebook_url', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('google_places_url', 'Google_places_url:') }}
+        {{ Form::label('google_places_url', 'Google+:') }}
         {{ Form::text('google_places_url', Input::old('google_places_url'), ['class' => 'form-control','id' => 'google_places_url']) }}
         {{ $errors->first('google_places_url', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
-        {{ Form::label('twitter_handle', 'Twitter_handle:') }}
+        {{ Form::label('twitter_handle', 'Twitter:') }}
         {{ Form::text('twitter_handle', Input::old('twitter_handle'), ['class' => 'form-control','id' => 'twitter_handle']) }}
         {{ $errors->first('twitter_handle', '<br><div class="alert alert-info">:message</div>') }}
     </div>
@@ -67,6 +68,3 @@
         {{ Form::label('image_path', 'Image:') }}
         {{ Form::file('image_path', ['id' => 'image_path']) }}
     </div>
-     
-   
-   

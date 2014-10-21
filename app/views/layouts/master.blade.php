@@ -4,8 +4,8 @@
     <title>Seek City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="css/main.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/css/main.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="css/whhg.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]> <script src="../../assets/js/html5shiv.js"></script> <script src="../../assets/js/respond.min.js"></script> <![endif]-->
@@ -124,17 +124,17 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!--Google maps API linl-->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs&sensor=false"></script>
     <!--Your map settings script-->
-    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="/js/map.js"></script>
     <!--jQuery-->
-        <script type="text/javascript" src="js/jQueryv2.0.3.js"></script>
-    <script type="text/javascript" src="js/pxgradient-1.0.2.jquery.js"></script>
+        <script type="text/javascript" src="/js/jQueryv2.0.3.js"></script>
+    <script type="text/javascript" src="/js/pxgradient-1.0.2.jquery.js"></script>
     <!--Script for worked left smile categoryes menu-->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -170,7 +170,7 @@
     </script>
     <!--/Script for worked left smile categoryes menu-->
     <!--Script for worked profile page-->
-    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/owl.carousel.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
                         "use strict";
