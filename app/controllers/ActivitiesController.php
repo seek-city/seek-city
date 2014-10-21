@@ -63,7 +63,7 @@ class ActivitiesController extends \BaseController {
      */
     public function edit($id)
     {
-        $activity = Activity::findOrFail($id);
+        $activity = Activity::find($id);
 
         return View::make('activities.edit', compact('activity'));
     }
@@ -97,7 +97,7 @@ class ActivitiesController extends \BaseController {
         }
 
         $activity->delete(); 
-        log::info('Activity deleted successfully');
+        Log::info('Activity deleted successfully.');
         $message = "So long, $activity->title!";
         
         if (Request::ajax()) {
@@ -110,8 +110,6 @@ class ActivitiesController extends \BaseController {
             Session::flash('successMessage', $message);
             return Redirect::action('ActivitiesController@index');
         }
-        
-
     }
 
 
@@ -132,7 +130,7 @@ public function saveActivity(Activity $activity)
             // $activity->user_id = Auth::id();
 
             $activity->save();
-            $id= $activity->id;
+            $id = $activity->id;
             Log::info('Activity was sucessfully saved', Input::all());
 
             $message = 'Activity created sucessfully';

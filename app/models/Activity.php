@@ -13,7 +13,13 @@ class Activity extends BaseModel
     ];
 
     // Don't forget to fill this array
-    protected $fillable = ['title', 'body', 'activity_date', 'image_path', 'price'];
+    protected $fillable = [
+        'title',
+        'body',
+        'activity_date',
+        'image_path',
+        'price'
+    ];
 
     protected $table = 'activities';
 }
