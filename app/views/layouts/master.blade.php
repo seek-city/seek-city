@@ -4,9 +4,10 @@
     <title>Seek City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="css/main.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/css/main.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="css/whhg.css">
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]> <script src="../../assets/js/html5shiv.js"></script> <script src="../../assets/js/respond.min.js"></script> <![endif]-->
 
@@ -16,6 +17,38 @@
   </head>
   <body>
     <body onload="initialize()">
+    <!---navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/activities">Seek City</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class='active'>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/">About Seek City</a>
+                    </li>
+                    <li>
+                        <a href="/">User Profile</a>
+                    </li>
+                    <li>
+                        <a href="/signup">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--nav bar end-->
+    
     <!--autorization modal-->
       <a href="#" class="btn btn-danger btn-sm btm-zindex none" id="Show_cont">Show content</a>
     <div class="modal fade" id="autorization">
@@ -37,7 +70,6 @@
                             <label>
                                 <input type="checkbox" />
                                 Check me out
-
                             </label>
                         </div>
                     </form>
@@ -53,96 +85,27 @@
     </div>
     <!-- /.modal -->
     <!--map-->
-
     <div id="map_canvas" class="map"></div>
     <!--/map-->
 
     @include('partials.navbar')
 
-  <div class="row site">
+        <!-- <div class="row site">
         <div class="col-md-1 general_menu inner">
             <a href="#" class="avatar">
-                <img src="#" alt="..."/></a>
-        </div>
-
-      @include('partials.session-messages')
-      <!--Profile-->
-        <span class="close_span" id="open_span"><a href="#" class="close-profile-link clooses" id="link_open">+</a></span>
-        <div class="col-md-12 profile profile_closed" id="profile">
-            <!--User info-->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="user">
-                        <img src="#" alt="..."/>
-                        <div>
-                            <h2>Jane Doe</h2>
-                            <ul>
-                                <li>Visited <a href="#">59 places</a></li>
-                                <li>Reviewed<a href="#">59 places</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <a href="#" class="btn btn-dark btn-sm"><i class="icon-emailalt"></i><span>1</span></a><a href="#" class="btn btn-danger btn-sm">Sign out</a>
-                    </div>
-                </div>
-            </div>
-            <!--/User info-->
-            <div class="row">
-                <!--latest tweet-->
-                <div class="col-md-5 tweets">
-                    <h2>Latest tweet</h2>
-                    <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <i></i></span>
-                    <div class="tweet_link"><a href="#">@ruthspina</a>22.12.2013   23:33</div>
-                </div>
-                <!--/latest tweet-->
-            </div>
-            <!--my events-->
-            <div class="row">
-                <div class="col-md-12 my_news">
-                    <div class="title_news">
-                        <h2>My Events</h2>
-                    </div>
-                    <!--news-->
-                    <div class="row news_container">
-                        <div class="col-md-8 news">
-                            <span class="data">12.11.2013</span> You were at a meetup "<a href="4.html">Wine Down Thursday</a>"
-                             <div id="map2" class="map_in_news"></div>
-                        </div>
-                        <div class="col-md-4 news_user_info">
-                            <img src="#" alt="..."/><a href="#">Mattew An</a>Write a review:
-                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s<i></i></span>
-                        </div>
-                    </div>
-                    <!--/events-->
-                    <!--events-->
-                    <div class="row news_container">
-                        <div class="col-md-8 news">
-                            <span class="data">12.09.2013</span> You were at a Gala with <a href="#">Jane Doe</a>" at <a href="4.html">Black Ties and Champagne</a>"
-                             <div id="map3" class="map_in_news"></div>
-                        </div>
-                        <div class="col-md-4 news_user_info">
-                            <img src="#" alt="..."/><a href="#">Mattew An</a>Write a review:
-                            <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s<i></i></span>
-                        </div>
-                    </div>
-                    <!--/events-->
-                </div>
-            </div>
-            <!--/my events-->
-        </div>
-        <!--/Profile-->
+                <img src="" alt=""/>#</a>
+        </div> -->
+      
 
       @yield('content')
       <!--Content-->
             <!--header-->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12 header">
                     <div class="logo">
                         <a href="start.html">
                             <img src="#" alt="..."/></a>
                     </div>
-
                 </div>
             </div>
             <!--/header-->
@@ -153,8 +116,7 @@
                 </div>
             </div>
               <!--/Map open (for adaptive)-->
-            
-            <!--/Content-->
+            <!--/Content--> 
 
       @include('partials.footer')
 
@@ -163,17 +125,17 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script src="/js/bootstrap.js"></script>
     <!--Google maps API linl-->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs&sensor=false"></script>
     <!--Your map settings script-->
-    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="/js/map.js"></script>
     <!--jQuery-->
-        <script type="text/javascript" src="js/jQueryv2.0.3.js"></script>
-    <script type="text/javascript" src="js/pxgradient-1.0.2.jquery.js"></script>
+        <script type="text/javascript" src="/js/jQueryv2.0.3.js"></script>
+    <script type="text/javascript" src="/js/pxgradient-1.0.2.jquery.js"></script>
     <!--Script for worked left smile categoryes menu-->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -209,7 +171,7 @@
     </script>
     <!--/Script for worked left smile categoryes menu-->
     <!--Script for worked profile page-->
-    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/owl.carousel.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
                         "use strict";
@@ -264,6 +226,35 @@
             });
         });
     </script>
+    <script>
+    // Preloader 
+//-------------------------------------------------------------------------------
+
+$(window).load(function(){
+
+    $('#status').fadeOut(); 
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+
+    $('.event-info-bg-left').addClass('animated fadeInLeftBig delay1');
+    $('.event-info-bg-right').addClass('animated fadeInRightBig delay1');
+    $('.event-info').addClass('animated fadeIn delay2');
+
+    $('img.img-fade').hide();
+
+    function anim() {
+
+        var fadeSpeed   = 1500; // = 1.5 sec
+        var displayTime = 6000; // = 8 sec
+
+        $("#header-bg-fade img.img-fade").first().appendTo('#header-bg-fade').fadeOut(fadeSpeed);
+        $("#header-bg-fade img").first().fadeIn(fadeSpeed);
+        setTimeout(anim, displayTime);
+    }
+
+    anim();
+});
+</script>
 
 </body>
 </html>

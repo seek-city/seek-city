@@ -1,0 +1,1 @@
+/vagrant/sites/seekcity.dev/app/views/moods/show.blade.php

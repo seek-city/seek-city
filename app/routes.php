@@ -33,3 +33,17 @@ Route::get('/logout', 'HomeController@doLogout');
 Route::resource('activities', 'ActivitiesController');
 
 Route::resource('users', 'UsersController');
+
+Route::resource('venues', 'VenuesController');
+
+Route::resource('categories', 'CategoriesController');
+
+Route::resource('moods', 'MoodsController');
+
+
+
+
+
+
+
+
