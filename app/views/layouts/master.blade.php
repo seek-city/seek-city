@@ -7,6 +7,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/main.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="css/whhg.css">
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]> <script src="../../assets/js/html5shiv.js"></script> <script src="../../assets/js/respond.min.js"></script> <![endif]-->
 
@@ -225,6 +226,35 @@
             });
         });
     </script>
+    <script>
+    // Preloader 
+//-------------------------------------------------------------------------------
+
+$(window).load(function(){
+
+    $('#status').fadeOut(); 
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+
+    $('.event-info-bg-left').addClass('animated fadeInLeftBig delay1');
+    $('.event-info-bg-right').addClass('animated fadeInRightBig delay1');
+    $('.event-info').addClass('animated fadeIn delay2');
+
+    $('img.img-fade').hide();
+
+    function anim() {
+
+        var fadeSpeed   = 1500; // = 1.5 sec
+        var displayTime = 6000; // = 8 sec
+
+        $("#header-bg-fade img.img-fade").first().appendTo('#header-bg-fade').fadeOut(fadeSpeed);
+        $("#header-bg-fade img").first().fadeIn(fadeSpeed);
+        setTimeout(anim, displayTime);
+    }
+
+    anim();
+});
+</script>
 
 </body>
 </html>
