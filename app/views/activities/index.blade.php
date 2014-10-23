@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+Activities
+@stop
+
 @section('content')
 <!-- side profile menubar -->
 <div class="row site">
