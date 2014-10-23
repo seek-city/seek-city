@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('sample');
-});
+Route::get('/', 'HomeController@index');
 
 // DISPLAY LOGIN FORM
 Route::get('/login', 'HomeController@showLogin');
