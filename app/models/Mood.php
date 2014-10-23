@@ -1,13 +1,14 @@
 <?php
 
-class Mood extends \Eloquent {
+class Mood extends BaseModel {
 
-	// Add your validation rules here
-	public static $rules = [
-		// 'title' => 'required'
-	];
+    protected $table = 'moods';
+    // Add your validation rules here
+    public static $rules = [
+        'name' => 'required|max:50'
+    ];
 
-	// Don't forget to fill this array
-	protected $fillable = [];
+    // Don't forget to fill this array
+    protected $fillable = ['name'];
 
 }
