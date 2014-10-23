@@ -39,4 +39,5 @@ $('#delete-form').submit(function(event) {
 </script>
 @stop
 @include('partials.footer')
+<script src="{{ asset('/js/maps.js'); }}"></script>
 @stop
