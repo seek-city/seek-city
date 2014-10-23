@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-4 col-md-offset-4 well">
         {{ Form::open(array('action' => 'HomeController@doLogin')) }}
             <div class="form-group">
                 {{ Form::label('username', 'Username:') }}
