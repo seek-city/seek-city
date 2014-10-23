@@ -127,7 +127,7 @@ class UsersController extends \BaseController {
             $message = 'User account created successfully. Welcome to Seek City.';
             Session::flash('successMessage', $message);
             
-            return Redirect::action('UsersController@index');
+            return Redirect::action('HomeController@index');
         }
     }
 
