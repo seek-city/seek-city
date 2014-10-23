@@ -13,9 +13,7 @@
     <script src="{{ asset('/js/fastclick.js'); }}"></script>
     <script src="{{ asset('/js/btns.js'); }}"></script>
     <script src="{{ asset('/js/main.js'); }}"></script>
-    <style>
-        body{ background-color: #70A8B1; }
-    </style>
+    @yield('top-script')
 </head>
 <body>
     @include('partials.navbar')

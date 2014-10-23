@@ -78,7 +78,7 @@ Activities
         </div>
         <!--/Profile-->
         <!-- list of events -->
-    <div class="row color">
+    <div class="row">
                         <div class="col-md-4  color">
                     <!--title-->
                     <div class="search_title">
