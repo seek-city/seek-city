@@ -8,8 +8,8 @@ class Activity extends BaseModel
     public static $rules = [
         'title' => 'required|max:255',
         'body' => 'required',
-        // 'activity_date' => 'required',
-        // 'price' => 'required'
+        'activity_date' => 'required',
+        'price' => 'required'
     ];
 
     // Don't forget to fill this array
@@ -20,7 +20,17 @@ class Activity extends BaseModel
         'image_path',
         'price'
     ];
+    
+    public function getDates()
+    {
+        return array(
+            'created_at',
+            'updated_at',
+            'activity_date'
+        );
+    }
 
     protected $table = 'activities';
+
 }
 
