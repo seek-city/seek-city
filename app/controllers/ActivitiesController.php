@@ -9,7 +9,15 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        $activities = Activity::all();
+        $query = DB::table('activities')->select('*');
+        
+            if(Input::has('search')) {
+            $search = Input::get('search');
+            $query->where('title', 'like', "%$search%");
+            $query->orWhere('body', 'like', "%$search%");
+        }
+
+        $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }

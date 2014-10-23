@@ -11,7 +11,7 @@ class ActivitiesTableSeeder extends Seeder {
         
         $user = User::first();
 
-        foreach(range(1, 10) as $index)
+        foreach(range(1, 30) as $index)
         {
             $activityDate = $faker->dateTimeThisYear();
             $updatedAt = $faker->dateTimeThisYear($activityDate);
