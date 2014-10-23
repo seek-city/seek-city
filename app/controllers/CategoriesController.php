@@ -2,95 +2,88 @@
 
 class CategoriesController extends \BaseController {
 
-	/**
-	 * Display a listing of categories
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$categories = Category::all();
-
-		return View::make('categories.index', compact('categories'));
-	}
-
-	/**
-	 * Show the form for creating a new category
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('categories.create');
-	}
-
-	/**
-	 * Store a newly created category in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Display a listing of categories
+     *
+     * @return Response
+     */
+    public function index()
     {
-        return $this->savecategorie($category);
+        $categories = Category::all();
+
+        return View::make('categories.index', compact('categories'));
     }
 
-		Category::create($data);
+    /**
+     * Show the form for creating a new category
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('categories.create');
+    }
 
-		return Redirect::route('categories.index');
-	}
-    
-                
-               
-	     
+    /**
+     * Store a newly created category in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $category = new Category();
 
-	/**
-	 * Display the specified category.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$categories = Category::findOrFail($id);
+        return $this->saveCategory($category);
+    }
 
-		return View::make('categories.show', compact('category'));
-	}
-
-	/**
-	 * Show the form for editing the specified category.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$categories = Category::find($id);
-
-		return View::make('categories.edit', compact('category'));
-	}
-
-	/**
-	 * Update the specified category in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	  {
+    /**
+     * Display the specified category.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
         $categories = Category::findOrFail($id);
+
+        return View::make('categories.show', compact('category'));
+    }
+
+    /**
+     * Show the form for editing the specified category.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $category = Category::find($id);
+
+        return View::make('categories.edit', compact('category'));
+    }
+
+    /**
+     * Update the specified category in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+      {
+        $category = Category::findOrFail($id);
     
         return $this->saveCategory($category);
     }
-	/**
-	 * Remove the specified category from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-{
+    /**
+     * Remove the specified category from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
         try {
-            $categories = Category::findOrFail($id);
+            $category = Category::findOrFail($id);
         }
         catch (ModelNotFoundException $e) {
             App::abort(404);
@@ -112,25 +105,24 @@ class CategoriesController extends \BaseController {
         }
     }
 
-public function saveCategorie(Categorie $categorie)
+    public function saveCategory(Category $category)
     {
-        $validator = Validator::make(Input::all(), Categorie::$rules);
+        $validator = Validator::make(Input::all(), Category::$rules);
 
         if ($validator->fails()){
-            Session::flash('errorMessage', 'Your category needs a name');
-            Log::error('Categories validator failed', Input::all());
+            Session::flash('errorMessage', 'Your category needs a name.');
+            Log::error('Category validator failed', Input::all());
             return Redirect::back()->withInput();
 
         } else {
-            
+
             $category->name = Input::get('name');
-            
 
             $category->save();
             $id = $category->id;
-            Log::info('categorie was sucessfully saved', Input::all());
+            Log::info('Category was sucessfully saved,', Input::all());
 
-            $message = 'Categorie created sucessfully';
+            $message = 'Category created sucessfully.';
             Session::flash('successMessage', $message);
 
             return Redirect::action('CategoriesController@show', $id);
