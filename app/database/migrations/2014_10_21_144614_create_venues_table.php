@@ -30,6 +30,7 @@ class CreateVenuesTable extends Migration {
             $table->string('twitter_handle')->nullable();
             $table->string('image_url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
