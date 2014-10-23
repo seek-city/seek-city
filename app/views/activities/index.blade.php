@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+Activities
+@stop
+
 @section('content')
 <!-- side profile menubar -->
 <div class="row site">
@@ -112,7 +117,131 @@
                   </div>
             </div>
     <hr>
-
+    <!--map-->
+    <div id="map_canvas" class="map"></div>
+    <!--/map-->
 </div>
 @stop
 
+@section('bottom-script')
+    <!--Script for worked left smile categoryes menu-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+                        "use strict";
+            $(".inner ul li a").each(function (i) {
+                $(".inner ul li a:eq(" + i + ")").click(function () {
+                    var tab_id = i + 1;
+                    $(".inner ul li a").removeClass("active");
+                    $("#tabs .active").removeClass("active");
+                    $(this).addClass("active");
+                    $("#tabs div").stop(false, false).hide();
+                    $("#tab" + tab_id).stop(false, false).show();
+                    return false;
+                })
+            })
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                        "use strict";
+            $("#tabs_point li a").each(function (i) {
+                $("#tabs_point li a:eq(" + i + ")").click(function () {
+                    var tab_id = i + 1;
+                    $("#tabs_point li a").removeClass("active");
+                    $(".tabs_block_point .active").removeClass("active");
+                    $(this).addClass("active");
+                    $(".tabs_block_point div").stop(false, false).hide();
+                    $("#point_tab" + tab_id).stop(false, false).show();
+                    return false;
+                })
+            })
+        })
+    </script>
+    <!--/Script for worked left smile categoryes menu-->
+    <!--Script for worked profile page-->
+    <script type="text/javascript" src="/js/owl.carousel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                        "use strict";
+            $('#link_open').on('click', function () {
+                if ($('#link_open').hasClass("clooses")) {
+                    $("#open_span").removeClass("close_span").addClass("open_span");
+                    $("#profile").removeClass("profile_closed");
+                    $("#link_open").removeClass("clooses");
+                    $("#cont").addClass("none");
+                }
+                else {
+                    $("#open_span").addClass("close_span").removeClass("open_span");
+                    $("#profile").addClass("profile_closed");
+                    $("#link_open").addClass("clooses");
+                    $("#cont").removeClass("none");
+                }
+            })
+              $('#map_open').on('click', function () {
+                            "use strict";
+            $("#cont").addClass("none");
+            $("#Show_cont").removeClass("none");
+
+        })
+        $('#Show_cont').on('click', function () {
+                        "use strict";
+            $("#cont").removeClass("none");
+        })
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+                        "use strict";
+            $("#owl-demo, #myguest").owlCarousel({
+                items: 6,
+                itemsDesktop: [1000, 5],
+                itemsDesktopSmall: [900, 6],
+                itemsTablet: [600, 2],
+                itemsMobile: false
+            });
+
+        });
+    </script>
+    <!--/Script for worked profile page-->
+    <!--Script for gradient icon in general menu-->
+    <script type="text/javascript">
+        $(function () {
+                        "use strict";
+            $(".gradientmenu").pxgradient({
+                step: 10,
+                colors: ["#fdfeff", "#cfeefa"],
+                dir: "y"
+            });
+        });
+    </script>
+    <script>
+    // Preloader 
+//-------------------------------------------------------------------------------
+
+$(window).load(function(){
+
+    $('#status').fadeOut(); 
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+
+    $('.event-info-bg-left').addClass('animated fadeInLeftBig delay1');
+    $('.event-info-bg-right').addClass('animated fadeInRightBig delay1');
+    $('.event-info').addClass('animated fadeIn delay2');
+
+    $('img.img-fade').hide();
+
+    function anim() {
+
+        var fadeSpeed   = 1500; // = 1.5 sec
+        var displayTime = 6000; // = 8 sec
+
+        $("#header-bg-fade img.img-fade").first().appendTo('#header-bg-fade').fadeOut(fadeSpeed);
+        $("#header-bg-fade img").first().fadeIn(fadeSpeed);
+        setTimeout(anim, displayTime);
+    }
+
+    anim();
+});
+</script>
+
+@stop
