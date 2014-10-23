@@ -1,10 +1,14 @@
 @extends('layouts.master')
-
 @section('title')
 Activities
 @stop
 
 @section('content')
+<body onload="initialize()">
+        <!--map-->
+    <div id="map_canvas" class="map"></div> 
+    <!--/map-->
+
 <!-- side profile menubar -->
 <div class="row site">
         <div class="col-md-1 general_menu inner">
@@ -117,9 +121,7 @@ Activities
                   </div>
             </div>
     <hr>
-    <!--map-->
-    <div id="map_canvas" class="map"></div>
-    <!--/map-->
+
 </div>
 @stop
 
