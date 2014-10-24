@@ -24,6 +24,12 @@
                 <li>
                     {{ link_to_action('HomeController@doLogout', 'Log Out'); }}
                 </li>
+                <li>
+                    <a href="/categories/manage">Manage Categories</a>
+                </li>
+                <li>
+                    <a href="/moods/manage">Manage Moods</a>
+                </li>
                 @else
                 <li>
                     {{ link_to_action('UsersController@create', 'Sign Up'); }}
