@@ -78,16 +78,7 @@ class UsersController extends \BaseController {
     {
         $user = User::findOrFail($id);
 
-        $validator = Validator::make($data = Input::all(), User::$rules);
-
-        if ($validator->fails())
-        {
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        $user->update($data);
-
-        return Redirect::route('users.index');
+        return $this->saveUser($user);
     }
 
     /**
