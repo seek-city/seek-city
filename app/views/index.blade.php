@@ -9,9 +9,12 @@
 
 <defs>
 <g id="loney">
+     <circle r="0%" fill-opacity="0" >
+        <animate id="zero" attributeName="fill-opacity" values="0; .1; .2; .25" begin="1s; repeat.click" dur=".5s" calcMode="discrete" fill="freeze"/>
+    </circle>
     <circle r="5%" fill-opacity="0" >
         <animate id="one" attributeName="fill-opacity" values="0; .1; .2; .25" begin="1s; repeat.click" dur=".5s" calcMode="discrete" fill="freeze"/>
-    </circle>
+    </circle> 
     <circle r="10%" fill-opacity="0" >
         <animate id="two" attributeName="fill-opacity" values="0; .1; .2; .25" begin="one.end+0.2s" dur=".5s" calcMode="discrete" fill="freeze"/>
         <animate id="radiussix" attributeName="r" values="10%; 0%" begin="radiusfive.end+0.1s" dur=".5s" calcMode="discrete" fill="freeze"/>
@@ -36,39 +39,42 @@
         <animate id="seven" attributeName="fill-opacity" values="0; .1; .2; .25" begin="six.end+0.2s" dur=".5s" calcMode="discrete" fill="freeze"/>
         <animate id="radiusone" attributeName="r" values="35%; 25%; 15%; 5%; 0%" begin="seven.end+0.1s; repeat.click+4.7s" dur=".5s" calcMode="discrete" fill="freeze"/>
     </circle>
+     <circle r="0%" fill-opacity="0" >
+        <animate id="eight" attributeName="fill-opacity" values="0;" begin="1s; repeat.click" dur=".5s" calcMode="discrete" fill="freeze"/>
+    </circle>
 </g>
 </defs>
 
 <g id="repeat" cursor="pointer">
     <use xlink:href="#loney" x="0%" y="0%" fill="crimson">
-     <animate attributeName="x" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate attributeName="y" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="0%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+    <animate attributeName="y" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
     <use xlink:href="#loney" x="50%" y="0%" fill="gold">
-     <animate attributeName="y" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="y" values="0%; 50%; -200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
     <use xlink:href="#loney" x="100%" y="0%" fill="salmon">
-     <animate attributeName="x" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate attributeName="y" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="100%; 50%; -300%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="y" values="0%; 50%; -300%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
-    <use xlink:href="#loney" x="50%" y="50%" fill="navajowhite"/>
     <use xlink:href="#loney" x="100%" y="100%" fill="teal">
-     <animate attributeName="x" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate attributeName="y" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
     <use xlink:href="#loney" x="50%" y="100%" fill="thistle">
-     <animate attributeName="y" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
     <use xlink:href="#loney" x="0%" y="50%" fill="tomato">
-     <animate attributeName="x" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
     <use xlink:href="#loney" x="100%" y="50%" fill="violet">
-     <animate attributeName="x" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
     <use xlink:href="#loney" x="0%" y="100%" fill="seagreen">
-     <animate attributeName="x" values="0%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate id="finish" attributeName="y" values="100%; 50%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-</g>
+     <animate attributeName="x" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate id="finish" attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+    </use>
+</g> 
 
 
 

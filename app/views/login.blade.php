@@ -1,9 +1,13 @@
 @extends('layouts.master')
+@section('top-script')
+<style>.well{ margin-top: 60px; }</style>
+@stop
 
 @section('content')
 
 <div class="row">
     <div class="col-md-4 col-md-offset-4 well">
+        <h1>Login</h1>
         {{ Form::open(array('action' => 'HomeController@doLogin')) }}
             <div class="form-group">
                 {{ Form::label('username', 'Username:') }}
