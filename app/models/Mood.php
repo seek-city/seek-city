@@ -11,4 +11,8 @@ class Mood extends BaseModel {
     // Don't forget to fill this array
     protected $fillable = ['name'];
 
+    public function activities()
+    {
+        return $this->hasMany('Activity');
+    }
 }
