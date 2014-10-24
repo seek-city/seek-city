@@ -89,7 +89,7 @@ class CategoriesController extends \BaseController {
             App::abort(404);
         }
 
-        $categories->delete(); 
+        $category->delete(); 
         Log::info('Category deleted successfully.');
         $message = "So long, $category->title!";
         
@@ -127,5 +127,11 @@ class CategoriesController extends \BaseController {
 
             return Redirect::action('CategoriesController@show', $id);
         }
+    }
+
+    public function manage()
+    {
+        $categories = DB::table('categories')->paginate(10);
+        return View::make('categories.manage')->with('categories', $categories);
     }
 }
