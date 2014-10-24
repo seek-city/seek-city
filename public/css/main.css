@@ -992,6 +992,17 @@ h5.cat {
         margin-top: 10px;
     }
 
+.form-wrap, #manageWrap {
+    margin-top: 60px;
+}
+
+.queryBubble {
+    position: fixed;
+    bottom: 5px;
+    background-color: red;
+    border-radius: 10px;
+    width: 50px;
+}
 
 /*Adaptive design*/
 @media (min-width: 480px) {
