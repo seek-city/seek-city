@@ -85,19 +85,3 @@
         <main id="main" class="main"></main>
 
 @stop
-
-@section('bottom-script')
-<script>
-    $(document).ready(function(){
-        $("button[data-title='Family Time']").on('click', function(){
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time <span class="alert alert-danger alert-dismissible">&times;</span></div>');
-        });
-        $("button[data-title='Date Night']").on('click', function(){
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night <span class="alert alert-danger alert-dismissible">&times;</span></div>');
-        });
-        $("button[data-title='Live Music']").on('click', function(){
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Live Music <span class="alert alert-danger alert-dismissible">&times;</span></div>');
-        });
-    });
-</script>
-@stop
