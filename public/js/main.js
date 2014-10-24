@@ -50,7 +50,7 @@
 
                 .append( new Btn('Family Time').addClass('skin-disaster_artist').on( 'click', linkEvent('#') ) )
 
-                .append( new Btn('Date Night').addClass('skin-nyan_cat').on( 'click', linkEvent('http://www.youtube.com/watch?v=QH2-TGUlwu4') ) )
+                .append( new Btn('Date Night').addClass('skin-nyan_cat').on( 'click', linkEvent('#') ) )
 
                 .append( new Btn('Live Music').addClass('skin-streets_of_rage').on( 'click', linkEvent('#') ) )
 
