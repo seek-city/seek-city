@@ -20,3 +20,12 @@ Create an activity
     {{ Form::close() }}
 </div>
 @stop
+
+@section('bottom-script')
+<script>
+$('#datetimepicker').datetimepicker({
+	formatTime:'g:i a',
+	theme: 'dark'
+});
+</script>
+@stop

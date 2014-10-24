@@ -15,7 +15,7 @@
 </div>
 <div class='form-group'>
     {{ Form::label('activity_date', 'When') }}
-    <input type="datetime" name="activity_date" class="form-control" id="activity_date">
+    <input id="datetimepicker" type="text" >
 </div>
 <div class='form-group'>
     {{ Form::label('categories', 'Categories:') }}
