@@ -5,7 +5,7 @@ Create a Venue
 @stop
 
 @section('content')
-<div class="col-md-8 col-md-offset-2 well">
+<div class="col-md-8 col-md-offset-2 well form-wrap">
     <h2>Create a Venue</h2>
     <hr>
     {{ Form::open(['action' => 'VenuesController@store', 'method' => 'POST', 'files' => true, 'class' => 'form']) }}
