@@ -5,7 +5,7 @@ Edit the Category
 @stop
 
 @section('content')
-<div class="col-md-8 col-md-offset-2 well">
+<div class="col-md-8 col-md-offset-2 well form-wrap">
     <h2>Edit the Category</h2>
     <hr>
     {{ Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'PUT']) }}

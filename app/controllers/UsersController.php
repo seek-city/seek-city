@@ -78,16 +78,7 @@ class UsersController extends \BaseController {
     {
         $user = User::findOrFail($id);
 
-        $validator = Validator::make($data = Input::all(), User::$rules);
-
-        if ($validator->fails())
-        {
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        $user->update($data);
-
-        return Redirect::route('users.index');
+        return $this->saveUser($user);
     }
 
     /**
@@ -127,7 +118,7 @@ class UsersController extends \BaseController {
             $message = 'User account created successfully. Welcome to Seek City.';
             Session::flash('successMessage', $message);
             
-            return Redirect::action('UsersController@index');
+            return Redirect::action('HomeController@index');
         }
     }
 

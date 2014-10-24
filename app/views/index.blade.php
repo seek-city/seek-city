@@ -77,5 +77,19 @@
 </svg>
 
         <main id="main" class="main"></main>
+@stop
 
+@section('bottom-script')
+<script>
+    $(document).ready(function(){
+        $("button[data-title='Family Time']").on('click', function(e){
+            e.preventDefault();
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time</div>');
+        });
+        $("button[data-title='Date Night']").on('click', function(e){
+            e.preventDefault();
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night</div>');
+        });
+    });
+</script>
 @stop
