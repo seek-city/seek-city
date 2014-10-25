@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('top-script')
-<style>body{ background-color: #70A8B1; }</style>
+<link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
 @stop
 
 @section('content')
@@ -9,9 +9,6 @@
 
 <defs>
 <g id="loney">
-     <circle r="0%" fill-opacity="0" >
-        <animate id="zero" attributeName="fill-opacity" values="0; .1; .2; .25" begin="1s; repeat.click" dur=".5s" calcMode="discrete" fill="freeze"/>
-    </circle>
     <circle r="5%" fill-opacity="0" >
         <animate id="one" attributeName="fill-opacity" values="0; .1; .2; .25" begin="1s; repeat.click" dur=".5s" calcMode="discrete" fill="freeze"/>
     </circle> 
@@ -46,21 +43,21 @@
 </defs>
 
 <g id="repeat" cursor="pointer">
-    <use xlink:href="#loney" x="0%" y="0%" fill="crimson">
+  <use xlink:href="#loney" x="0%" y="0%" fill="crimson">
      <animate attributeName="x" values="0%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     <animate attributeName="y" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
-    <use xlink:href="#loney" x="50%" y="0%" fill="gold">
+   <use xlink:href="#loney" x="50%" y="0%" fill="gold">
      <animate attributeName="y" values="0%; 50%; -200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
     <use xlink:href="#loney" x="100%" y="0%" fill="salmon">
-     <animate attributeName="x" values="100%; 50%; -300%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate attributeName="y" values="0%; 50%; -300%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
+     <animate attributeName="x" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="y" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
     <use xlink:href="#loney" x="100%" y="100%" fill="teal">
      <animate attributeName="x" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-    </use>
+     <animate attributeName="y" values="100%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+    </use> 
     <use xlink:href="#loney" x="50%" y="100%" fill="thistle">
      <animate attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/> 
     </use>
@@ -68,11 +65,11 @@
      <animate attributeName="x" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
     <use xlink:href="#loney" x="100%" y="50%" fill="violet">
-     <animate attributeName="x" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate attributeName="x" values="100%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
-    <use xlink:href="#loney" x="0%" y="100%" fill="seagreen">
-     <animate attributeName="x" values="0%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
-     <animate id="finish" attributeName="y" values="100%; 50%; 200%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+    <use xlink:href="#loney" x="0%" y="100%" fill="seagreen"> 
+     <animate attributeName="x" values="0%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
+     <animate id="finish" attributeName="y" values="100%; 50%; -100%" begin="radiussix.end+0.2s" dur="1.5s" fill="freeze"/>
     </use>
 </g> 
 
@@ -83,5 +80,23 @@
 </svg>
 
         <main id="main" class="main"></main>
-
 @stop
+
+<<<<<<< HEAD
+@stop
+=======
+@section('bottom-script')
+<script>
+    $(document).ready(function(){
+        $("button[data-title='Family Time']").on('click', function(e){
+            e.preventDefault();
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time</div>');
+        });
+        $("button[data-title='Date Night']").on('click', function(e){
+            e.preventDefault();
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night</div>');
+        });
+    });
+</script>
+@stop
+>>>>>>> d6b9353ba611c77226a5717269594660e37dbe72
