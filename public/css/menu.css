@@ -444,3 +444,9 @@ body{
 .no-touch-fix .button-menu-item:hover {
   z-index: 10;
 }
+
+#filterStackWrap {
+  background-color: #0055aa;
+  position: absolute;
+  bottom: 10px;
+}

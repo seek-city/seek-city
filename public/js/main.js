@@ -40,32 +40,38 @@
 
         // creates the menu
         new Btn( 'Menu' ).addClass('skin-main_menu')
-            .append( new Btn('mood').addClass('skin-www').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Artsy').addClass('queryButtonMood').addClass('skin-www').on( 'click', linkEvent('#') ) )
 
-            .append( new Btn('mood').addClass('skin-blog').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Classy').addClass('queryButtonMood').addClass('skin-blog').on( 'click', linkEvent('#') ) )
 
-            .append( new Btn('mood').addClass('skin-twitter').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Festive').addClass('queryButtonMood').addClass('skin-twitter').on( 'click', linkEvent('#') ) )
 
             .append( new Btn('Category Menu').addClass('skin-menu')
 
-                .append( new Btn('Family Time').addClass('skin-disaster_artist').on( 'click', linkEvent('#') ) )
+                .append( new Btn('Family Time').addClass('queryButtonCategory').addClass('skin-disaster_artist').on( 'click', linkEvent('#') ) )
 
-                .append( new Btn('Date Night').addClass('skin-nyan_cat').on( 'click', linkEvent('#') ) )
+                .append( new Btn('Date Night').addClass('queryButtonCategory').addClass('skin-nyan_cat').on( 'click', linkEvent('#') ) )
 
-                .append( new Btn('Live Music').addClass('skin-streets_of_rage').on( 'click', linkEvent('#') ) )
+                .append( new Btn('Live Music').addClass('queryButtonCategory').addClass('skin-streets_of_rage').on( 'click', linkEvent('#') ) )
 
                 .append( new Btn('Search by Price').addClass('skin-menu')
-                    .append( new Btn('$').addClass('skin-alert').on( 'click', alertEvent('Annoying alert 1!') ) )
-                    .append( new Btn('$$').addClass('skin-alert').on( 'click', alertEvent('Annoying alert 2!') ) )
-                ) )
+                    .append( new Btn('Free').addClass('queryButtonPrice').addClass('skin-alert'))
+                    .append( new Btn('$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
+                    .append( new Btn('$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
+                    .append( new Btn('$$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
+                    .append( new Btn('$$$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
+                    .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef'))
+                )
+                .append( new Btn('Another Cat').addClass('queryButtonCategory').addClass('skin-www'))
+                .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef') ) )
 
-            .append( new Btn('mood').addClass('skin-hacker_news').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Rainy Day').addClass('queryButtonMood').addClass('skin-hacker_news').on( 'click', linkEvent('#') ) )
 
-            .append( new Btn('mood').addClass('skin-fontef').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef').on( 'click', linkEvent('#') ) )
 
-            .append( new Btn('mood').addClass('skin-processing').on( 'click', linkEvent('#') ) )
+            .append( new Btn('Sporty').addClass('queryButtonMood').addClass('skin-processing').on( 'click', linkEvent('#') ) )
 
-            .append( new Btn('mood').addClass('skin-html5rocks').on( 'click', linkEvent('#') ) )
+            .append( new Btn('mood').addClass('queryButtonMood').addClass('skin-html5rocks').on( 'click', linkEvent('#') ) )
 
             // Appending the button menu to the DOM - `#main` element
             .appendTo( '#main' );
