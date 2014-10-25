@@ -1,8 +1,14 @@
 @extends('layouts.master')
 
-@section('content')
+@section('title')
+Edit Venue
+@stop
 
-{{ Form::model(['action' => 'VenuesController@store', 'method' => 'POST', 'files' => true]) }}
+@section('content')
+<div class='col-md-8 col-md-offset-2 well form-wrap'>
+    <h2>Edit Venue</h2>
+    <hr>
+{{ Form::model($venue, ['action' => 'VenuesController@update', 'method' => 'POST', 'files' => true]) }}
 
     @include('venues.form')
     

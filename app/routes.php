@@ -22,6 +22,12 @@ Route::post('/login', 'HomeController@doLogin');
 // LOG USER OUT
 Route::get('/logout', 'HomeController@doLogout');
 
+// MANAGE CATEGORIES
+Route::get('/categories/manage', 'CategoriesController@manage');
+
+// MANAGE MOODS
+Route::get('/moods/manage', 'MoodsController@manage');
+
 /*
 |--------------------------------------------------------------------------
 | Resource Controller Routes

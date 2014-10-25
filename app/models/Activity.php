@@ -8,7 +8,7 @@ class Activity extends BaseModel
     public static $rules = [
         'title' => 'required|max:255',
         'body' => 'required',
-        'activity_date' => 'required',
+        // 'activity_date' => 'required',
         'price' => 'required'
     ];
 
@@ -32,5 +32,14 @@ class Activity extends BaseModel
 
     protected $table = 'activities';
 
+    public function moods()
+    {
+        return $this->belongsToMany('Mood');
+    }
+    
+    public function categories()
+    {
+        return $this->belongsToMany('Category');
+    }
 }
 

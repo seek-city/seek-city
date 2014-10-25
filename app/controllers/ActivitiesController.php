@@ -29,7 +29,14 @@ class ActivitiesController extends \BaseController {
      */
     public function create()
     {
-        return View::make('activities.create');
+        if (Auth::check()) {
+            $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name', 'id');
+            $moods = DB::table('moods')->orderBy('name', 'asc')->lists('name', 'id');
+            $data = ['categories' => $categories, 'moods' => $moods];
+            return View::make('activities.create', $data);
+        } else {
+            return View::make('index');
+        }
     }
 
     /**
@@ -134,11 +141,22 @@ public function saveActivity(Activity $activity)
             
             $activity->title = Input::get('title');
             $activity->body = Input::get('body');
-            $activity->image_path = Input::get('image');
-            // $activity->user_id = Auth::id();
+            $activity->image_path = Input::get('image_path');
+            $activity->price = Input::get('price');
+            $categories[] = Input::get('categories');
+            $moods[] = Input::get('moods');
 
             $activity->save();
             $id = $activity->id;
+            
+            foreach ($categories as $categoryId) {
+                $activity->categories()->attach($categoryId);
+            }
+            
+            foreach ($moods as $moodId) {
+                $activity->moods()->attach($moodId);
+            }
+            
             Log::info('Activity was sucessfully saved', Input::all());
 
             $message = 'Activity created sucessfully';

@@ -5,7 +5,7 @@ Create an activity
 @stop
 
 @section('content')
-<div class='col-md-8 col-md-offset-2 well'>
+<div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Create a New Activity</h2>
     <hr>
     {{ Form::open(['action' => 'ActivitiesController@store', 'method' => 'POST', 'files' => true]) }}

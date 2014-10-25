@@ -24,9 +24,9 @@ Activities
             <div class="row">
                 <div class="col-md-12">
                     <div class="user">
-                        <img src="#" alt="..."/>
+                        <img src="{{  Auth::user()->image_path }}" alt="..."/>
                         <div>
-                            <h2>Jane Doe</h2>
+                            <h2>{{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}}</h2>
                             <ul>
                                 <li>Visited <a href="#">59 places</a></li>
                                 <li>Reviewed<a href="#">59 places</a></li>

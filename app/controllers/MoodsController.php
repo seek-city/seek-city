@@ -127,4 +127,10 @@ class MoodsController extends \BaseController {
         }
     }
 
+    public function manage()
+    {
+        $moods = DB::table('moods')->paginate(10);
+        return View::make('moods.manage')->with('moods', $moods);
+    }
+
 }

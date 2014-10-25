@@ -5,7 +5,7 @@ Create an Category
 @stop
 
 @section('content')
-<div class='col-md-8 col-md-offset-2 well'>
+<div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Create a New Category</h2>
     <hr>
     {{ Form::open(['action' => 'CategoriesController@store', 'method' => 'POST', 'files' => true]) }}

@@ -5,10 +5,10 @@ Edit Your Activity
 @stop
 
 @section('content')
-<div class='col-md-8 col-md-offset-2 well'>
+<div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Edit an Activity</h2>
     <hr>
-    {{ Form::model($activity, ['route' => ['activities.update', $activity->id], 'method' => 'PUT']) }}
+    {{ Form::model($activity, ['action' => ['ActivitiesController@update', $activity->id], 'method' => 'PUT']) }}
 
         @include('activities.form')
 
