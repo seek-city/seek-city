@@ -6,10 +6,11 @@
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="{{ asset('/css/normalize.css'); }}">
-    <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+    
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.css'); }}">
     <link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/ >
     <link rel="stylesheet" href="{{ asset('/css/main.css'); }}">
+   
     <script src="{{ asset('/js/modernizr.js'); }}"></script>
     <script src="{{ asset('/js/fastclick.js'); }}"></script>
     <script src="{{ asset('/js/btns.js'); }}"></script>
