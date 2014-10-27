@@ -446,7 +446,28 @@ body{
 }
 
 #filterStackWrap {
-  background-color: #0055aa;
   position: absolute;
   bottom: 10px;
+  width: 100%;
+}
+
+#filterStackWrap>button {
+  display:block;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  clear:both;
+}
+
+#filterStack {
+  display:block;
+  width: 50%;
+  margin-left: 25%;
+  margin-right:25%;
+}
+
+.filters {
+  max-width:150px;
+  margin-right: 10px;
+  float:left;
 }

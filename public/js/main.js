@@ -55,19 +55,13 @@
                 .append( new Btn('Live Music').addClass('queryButtonCategory').addClass('skin-streets_of_rage').on( 'click', linkEvent('#') ) )
 
                 .append( new Btn('Search by Price').addClass('skin-menu')
-                    .append( new Btn('Free').addClass('queryButtonPrice').addClass('skin-alert'))
                     .append( new Btn('$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
                     .append( new Btn('$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
                     .append( new Btn('$$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
                     .append( new Btn('$$$$$').addClass('queryButtonPrice').addClass('skin-alert').on( 'click', linkEvent('#') ) )
-                    .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef'))
-                )
-                .append( new Btn('Another Cat').addClass('queryButtonCategory').addClass('skin-www'))
-                .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef') ) )
+                ) )
 
             .append( new Btn('Rainy Day').addClass('queryButtonMood').addClass('skin-hacker_news').on( 'click', linkEvent('#') ) )
-
-            .append( new Btn('Go!').addClass('queryButtonAction').addClass('skin-fontef').on( 'click', linkEvent('#') ) )
 
             .append( new Btn('Sporty').addClass('queryButtonMood').addClass('skin-processing').on( 'click', linkEvent('#') ) )
 
