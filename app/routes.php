@@ -28,6 +28,7 @@ Route::get('/categories/manage', 'CategoriesController@manage');
 // MANAGE MOODS
 Route::get('/moods/manage', 'MoodsController@manage');
 
+
 /*
 |--------------------------------------------------------------------------
 | Resource Controller Routes
