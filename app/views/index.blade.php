@@ -79,44 +79,22 @@
 
 </svg>
 
-    <main id="main" class="main"></main>
-    @include('partials.filter-stack') 
+        <main id="main" class="main"></main>
+@stop
+
+
 @stop
 
 @section('bottom-script')
 <script>
     $(document).ready(function(){
-        var mood;
-        var category;
-        var price;
-        
-        $(".queryButtonMood").on('click', function(e) {
+        $("button[data-title='Family Time']").on('click', function(e){
             e.preventDefault();
-            mood = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-mood="' + mood + '">' + mood + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
-
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time</div>');
         });
-        
-        $(".queryButtonCategory").on('click', function(e) {
+        $("button[data-title='Date Night']").on('click', function(e){
             e.preventDefault();
-            category = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-category="' + category + '">' + category + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
-        });
-        
-        $(".queryButtonPrice").on('click', function(e) {
-            e.preventDefault();
-            price = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-price="' + price + '">' + price + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
-        });
-        
-        $("#activityFilter").click(function(e) {
-            e.preventDefault;
-            $("#filterStack").children("div").each(function() {
-                if (typeof($(this).data('filter-mood')) != 'undefined') {
-                        var filter = $(this).data('filter-mood');
-
-                }
-            });
+            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night</div>');
         });
     });
 </script>
