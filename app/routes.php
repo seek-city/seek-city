@@ -13,20 +13,17 @@
 
 Route::get('/', 'HomeController@index');
 
-// DISPLAY LOGIN FORM
-Route::get('/login', 'HomeController@showLogin');
-
-// LOG USER IN
-Route::post('/login', 'HomeController@doLogin');
-
-// LOG USER OUT
-Route::get('/logout', 'HomeController@doLogout');
-
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
 
 // MANAGE MOODS
 Route::get('/moods/manage', 'MoodsController@manage');
+
+// Confide RESTful route
+Route::get('users/confirm/{code}', 'UsersController@getConfirm');
+Route::get('users/reset_password/{token}', 'UsersController@getReset');
+Route::get('users/reset_password', 'UsersController@postReset');
+Route::controller( 'users', 'UsersController');
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +32,8 @@ Route::get('/moods/manage', 'MoodsController@manage');
 */
 Route::resource('activities', 'ActivitiesController');
 
-Route::resource('users', 'UsersController');
-
 Route::resource('venues', 'VenuesController');
 
 Route::resource('categories', 'CategoriesController');
 
 Route::resource('moods', 'MoodsController');
-
-
-
-
-
-
-
-
