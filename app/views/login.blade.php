@@ -3,7 +3,7 @@ login page:
 @extends('layouts.master')
 
 @section('top-script')
-<link href="css/loginstyle.css" rel='stylesheet' type='text/css' />
+<link href="/css/loginstyle.css" rel='stylesheet' type='text/css' />
 @stop
 @section('content')
 
@@ -28,8 +28,7 @@ login page:
         <div class="clear"> </div>
       </div>
       <h2>or Login through Seek City</h2>
-       {{ Form::open(array('action' => 'HomeController@doLogin')) }}
-        <form>
+       {{ Form::open(array('action' => 'UsersController@getLogin')) }}
           <div class="form-group">
            <div class="lable-2">
                 {{ Form::label('username', 'Username:') }}
@@ -54,9 +53,9 @@ login page:
              {{ Form::close() }}
            </div>
            <div class="clear"> </div>
-        </form>
         <!-----//end-main---->
         </div>
+
 @stop
 @section('bottom-script')
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
