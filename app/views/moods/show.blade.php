@@ -1,7 +1,7 @@
 @extends('layouts.master')
- @include('partials.navbar')
- @stop
-@section('topscript')
+@include('partials.navbar')
+
+@section('content')
 <div class="col-md-6"> 
 
     <article> <!-- Activity -->
@@ -15,12 +15,9 @@
 
         <!-- TO DELETE AN EVENT -->
         {{ Form::open(['method' => 'DELETE', 'action' => ['MoodsController@destroy', $mood->id], 'id' => 'delete-form']) }}
-        <a class='btn btn-default' href="{{ action('MoodsController@edit', $category->id) }}">Edit</a>
+        <a class='btn btn-default' href="{{ action('MoodsController@edit', $mood->id) }}">Edit</a>
         {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
         {{ Form::close() }}
-        <hr>
-
-        <img class="img-responsive" src="{{ $mood->img }}" alt="">
         <hr>
         <p class="lead">{{{ $mood->name }}}</p>
     </article>

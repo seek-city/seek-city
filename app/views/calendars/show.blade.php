@@ -1,1 +1,0 @@
-/vagrant/sites/seekcity.dev/app/views/calendars/show.blade.php

@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('title')
-Create an activity
+<title>Create an activity</title>
 @stop
 
 @section('content')

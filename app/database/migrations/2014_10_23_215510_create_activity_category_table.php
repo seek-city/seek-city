@@ -19,7 +19,6 @@ class CreateActivityCategoryTable extends Migration {
 			$table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade')->onUpdate('cascade');
 			$table->integer('category_id')->unsigned()->index();
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
-			$table->timestamps();
 		});
 	}
 

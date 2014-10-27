@@ -11,12 +11,20 @@ class ActivitiesController extends \BaseController {
     {
         $query = DB::table('activities')->select('*');
         
-            if(Input::has('search')) {
-            $search = Input::get('search');
-            $query->where('title', 'like', "%$search%");
-            $query->orWhere('body', 'like', "%$search%");
-        }
-
+            if (Input::has('search')) {
+                $search = Input::get('search');
+                $query->where('title', 'like', "%$search%");
+                $query->orWhere('body', 'like', "%$search%");
+            }
+            // if (Session::has('mood')) {
+            //     $mood = Session::get('mood');
+            // }
+            // if (Session::has('category')) {
+            //     $category = Session::get('category');
+            // }
+            // if (Session::has('price')) {
+            //     $price = Session::get('price');
+            // }
         $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
@@ -29,14 +37,19 @@ class ActivitiesController extends \BaseController {
      */
     public function create()
     {
+        // SHOW CREATE FORM FOR AUTHENTICATED USERS
         if (Auth::check()) {
-            $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name', 'id');
-            $moods = DB::table('moods')->orderBy('name', 'asc')->lists('name', 'id');
-            $data = ['categories' => $categories, 'moods' => $moods];
+
+            // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
+            $category_options = Category::lists('name', 'id');
+            $mood_options = Mood::lists('name', 'id');
+            $data = ['category_options' => $category_options, 'mood_options' => $mood_options];
+
             return View::make('activities.create', $data);
-        } else {
-            return View::make('index');
         }
+        // SEND NON-AUTHENTICATED USER TO ACTIVITIES INDEX
+        return View::make('activities.index');
+
     }
 
     /**
@@ -45,16 +58,19 @@ class ActivitiesController extends \BaseController {
      * @return Response
      */
 
-    public function store(){
+    public function store()
+    {
         $activity = new Activity();
-    if (Input::hasFile('image')) {
-                $file= Input::file('image');
-                $destination_path = public_path() . '/img-upload/';
-                $filename = uniqid('img') . '_' . $file->getClientOriginalName();
-                $uploadSuccess = $file->move($destination_path, $filename);
-                $activity->image = '/img-upload/' . $filename;
-            }
-            return $this->saveActivity($activity);
+
+        // CHECK IF AN IMAGE HAS BEEN SELECTED AND PREPARE FOR INSERT INTO DATABASE
+        if (Input::hasFile('image_path')) {
+            $file = Input::file('image_path');
+            $destination_path = public_path() . '/img-upload/';
+            $filename = uniqid('img') . '_' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($destination_path, $filename);
+            $activity->image_path = '/img-upload/' . $filename;
+        }
+        return $this->saveActivity($activity);
     }
 
     /**
@@ -78,9 +94,20 @@ class ActivitiesController extends \BaseController {
      */
     public function edit($id)
     {
+        // GRAB CURRENT ACTIVITY INFORMATION
         $activity = Activity::find($id);
 
-        return View::make('activities.edit', compact('activity'));
+        // SHOW EDIT FORM FOR AUTHENTICATED USERS
+        if (Auth::check() && (Auth::id() == $activity->user->id)) {
+
+            // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
+            $category_options = Category::lists('name', 'id');
+            $mood_options = Mood::lists('name', 'id');
+            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options];
+            return View::make('activities.edit', $data);
+        }
+        // SEND NON-AUTHENTICATED USERS TO ACTIVITIES INDEX
+        return Redirect::to('/');
     }
 
     /**
@@ -92,6 +119,20 @@ class ActivitiesController extends \BaseController {
     public function update($id)
     {
         $activity = Activity::findOrFail($id);
+
+        // CHECK IF NEW IMAGE HAS BEEN SELECTED AND PREPARE FOR DATABASE
+        if (Input::hasFile('image_path')) {
+            $old_image = public_path() . $activity->image_path;
+            if (File::exists($old_image)) {
+                File::delete($old_image);
+            }
+
+            $file = Input::file('image_path');
+            $destination_path = public_path() . '/img-upload/';
+            $filename = uniqid('img') . '_' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($destination_path, $filename);
+            $activity->image_path = '/img-upload/' . $filename;
+        }
     
         return $this->saveActivity($activity);
     }
@@ -109,6 +150,11 @@ class ActivitiesController extends \BaseController {
         }
         catch (ModelNotFoundException $e) {
             App::abort(404);
+        }
+        
+        $old_image = public_path() . $activity->image_path;
+        if (File::exists($old_image)) {
+            File::delete($old_image);
         }
 
         $activity->delete(); 
@@ -138,21 +184,22 @@ public function saveActivity(Activity $activity)
             return Redirect::back()->withInput();
 
         } else {
-            
             $activity->title = Input::get('title');
             $activity->body = Input::get('body');
-            $activity->image_path = Input::get('image_path');
             $activity->price = Input::get('price');
-            $categories[] = Input::get('categories');
-            $moods[] = Input::get('moods');
-
+            $activity->activity_date = new Carbon(Input::get('activity_date'));
+            $categories = Input::get('category_options');
+            $moods = Input::get('mood_options');
+            $activity->user_id = Auth::id();
             $activity->save();
             $id = $activity->id;
-            
+
+            // ASSOCIATE ACTIVITY TO ITS CATEGORIES IN THE ACTIVITY_CATEGORY TABLE
             foreach ($categories as $categoryId) {
                 $activity->categories()->attach($categoryId);
             }
-            
+
+            // ASSOCIATE ACTIVITY TO ITS MOODS IN THE ACTIVITY_MOOD TABLE
             foreach ($moods as $moodId) {
                 $activity->moods()->attach($moodId);
             }
