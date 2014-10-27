@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-Edit Your Activity
+<title>Edit Your Activity</title>
 @stop
 
 @section('content')
 <div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Edit an Activity</h2>
     <hr>
-    {{ Form::model($activity, ['action' => ['ActivitiesController@update', $activity->id], 'method' => 'PUT']) }}
+    {{ Form::model($activity, ['action' => ['ActivitiesController@update', $activity->id], 'method' => 'PUT', 'files' => true]) }}
 
         @include('activities.form')
 
@@ -18,4 +18,13 @@ Edit Your Activity
     </div>
     {{ Form::close() }}
 </div>
+@stop
+
+@section('bottom-script')
+<script>
+$('#datetimepicker').datetimepicker({
+    formatTime:'g:i a',
+    theme: 'dark'
+});
+</script>
 @stop

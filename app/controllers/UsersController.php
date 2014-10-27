@@ -51,8 +51,14 @@ class UsersController extends \BaseController {
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $userActivities = $user->activities()->paginate(5);
+        
+        $data = [
+            'user' => $user,
+            'userActivities' => $userActivities
+        ];
 
-        return View::make('users.show', compact('user'));
+        return View::make('users.show')->with($data);
     }
 
     /**
@@ -64,8 +70,10 @@ class UsersController extends \BaseController {
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
-        return View::make('users.edit', compact('user'));
+        if (Auth::id() == $user->id) {
+            return View::make('users.edit', compact('user'));
+        }
+        return Redirect::to('/');
     }
 
     /**

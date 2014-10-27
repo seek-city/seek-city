@@ -1004,6 +1004,10 @@ h5.cat {
     width: 50px;
 }
 
+.well {
+    margin-top: 60px;
+}
+
 /*Adaptive design*/
 @media (min-width: 480px) {
 .map_open {display: none;}

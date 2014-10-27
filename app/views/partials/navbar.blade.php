@@ -19,6 +19,9 @@
                 </li>
                 @if (Auth::check())
                 <li>
+                    {{ link_to_action('ActivitiesController@create', 'New Activity'); }}
+                </li>
+                <li>
                     {{ link_to_action('UsersController@show', Auth::user()->username, Auth::id()); }}
                 </li>
                 <li>

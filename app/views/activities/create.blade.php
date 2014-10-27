@@ -1,7 +1,7 @@
 @extends('layouts.master')
  
 @section('title')
-Create an activity
+<title>Create an activity</title>
 @stop
 
 @section('content')
@@ -19,4 +19,13 @@ Create an activity
 
     {{ Form::close() }}
 </div>
+@stop
+
+@section('bottom-script')
+<script>
+$('#datetimepicker').datetimepicker({
+	formatTime:'g:i a',
+	theme: 'dark'
+});
+</script>
 @stop

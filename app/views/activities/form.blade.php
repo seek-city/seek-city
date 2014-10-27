@@ -10,23 +10,22 @@
 </div>
 <div class='form-group'>
     {{ Form::label('price', 'Price:') }}
-    {{ Form::select('price', ['$','$$', '$$$', '$$$$']) }}
+    {{ Form::select('price', ['Free','$','$$', '$$$', '$$$$']) }}
     {{ $errors->first('price', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
     {{ Form::label('activity_date', 'When') }}
-    <input type="datetime" name="activity_date" class="form-control" id="activity_date">
+    {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
 </div>
 <div class='form-group'>
-    {{ Form::label('categories', 'Categories:') }}
-    {{ Form::select('categories[]', $categories, Input::old('categories'), ['class' => 'form-control', 'multiple']) }}
+    {{ Form::label('category_options', 'Categories:') }}
+    {{ Form::select('category_options[]', $category_options, isset($activity) ? Input::old('category_options', $activity->categories()->lists('category_id')) : '', ['class' => 'form-control', 'multiple']) }}
 </div>
 <div class='form-group'>
-    {{ Form::label('moods', 'Moods:') }}
-    {{ Form::select('moods[]', $moods, Input::old('moods'), ['class' => 'form-control', 'multiple']) }}
+    {{ Form::label('mood_options', 'Moods:') }}
+    {{ Form::select('mood_options[]', $mood_options, isset($activity) ? Input::old('mood_options', $activity->moods()->lists('mood_id')) : '', ['class' => 'form-control', 'multiple']) }}
 </div>
 <div class='form-group'>
     {{ Form::label('image_path', 'Image:') }}
     {{ Form::file('image_path', ['id' => 'image_path']) }}
 </div>
-
