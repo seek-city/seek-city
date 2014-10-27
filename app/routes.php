@@ -28,6 +28,9 @@ Route::get('/categories/manage', 'CategoriesController@manage');
 // MANAGE MOODS
 Route::get('/moods/manage', 'MoodsController@manage');
 
+//OAUTH 
+Route::get('/login/facebook', 'AuthController@login');
+
 
 /*
 |--------------------------------------------------------------------------

@@ -6,7 +6,6 @@
     "require": {
         "laravel/framework": "4.2.*",
          "makzumi/calendar": "dev-master",
-         "laravel/socialite": "~1.0"
     },
     "require-dev": {
         "way/generators": "~2.6",
