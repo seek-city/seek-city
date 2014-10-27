@@ -82,9 +82,9 @@
         <main id="main" class="main"></main>
 @stop
 
-<<<<<<< HEAD
+
 @stop
-=======
+
 @section('bottom-script')
 <script>
     $(document).ready(function(){
@@ -99,4 +99,4 @@
     });
 </script>
 @stop
->>>>>>> d6b9353ba611c77226a5717269594660e37dbe72
+
