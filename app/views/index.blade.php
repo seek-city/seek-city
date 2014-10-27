@@ -79,24 +79,46 @@
 
 </svg>
 
-        <main id="main" class="main"></main>
+    <main id="main" class="main"></main>
+    @include('partials.filter-stack') 
 @stop
 
-<<<<<<< HEAD
-@stop
-=======
 @section('bottom-script')
 <script>
     $(document).ready(function(){
-        $("button[data-title='Family Time']").on('click', function(e){
+        var mood;
+        var category;
+        var price;
+        
+        $(".queryButtonMood").on('click', function(e) {
             e.preventDefault();
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time</div>');
+            mood = $(this).data('title');
+            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-mood="' + mood + '">' + mood + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+
         });
-        $("button[data-title='Date Night']").on('click', function(e){
+        
+        $(".queryButtonCategory").on('click', function(e) {
             e.preventDefault();
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night</div>');
+            category = $(this).data('title');
+            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-category="' + category + '">' + category + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+        });
+        
+        $(".queryButtonPrice").on('click', function(e) {
+            e.preventDefault();
+            price = $(this).data('title');
+            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-price="' + price + '">' + price + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+        });
+        
+        $("#activityFilter").click(function(e) {
+            e.preventDefault;
+            $("#filterStack").children("div").each(function() {
+                if (typeof($(this).data('filter-mood')) != 'undefined') {
+                        var filter = $(this).data('filter-mood');
+
+                }
+            });
         });
     });
 </script>
 @stop
->>>>>>> d6b9353ba611c77226a5717269594660e37dbe72
+

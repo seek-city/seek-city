@@ -19,7 +19,6 @@ class CreateActivityMoodTable extends Migration {
 			$table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade')->onUpdate('cascade');
 			$table->integer('mood_id')->unsigned()->index();
 			$table->foreign('mood_id')->references('id')->on('moods')->onDelete('cascade')->onUpdate('cascade');
-			$table->timestamps();
 		});
 	}
 

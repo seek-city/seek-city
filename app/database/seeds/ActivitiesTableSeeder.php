@@ -23,7 +23,8 @@ class ActivitiesTableSeeder extends Seeder {
                 'created_at' => $createdAt,
                 'activity_date' => $activityDate,
                 'image_path' => "http://lorempixel.com/400/200/",
-                'price'      => 0
+                'price'      => 0,
+                'user_id'    => $user->id
             ]);
         }
     }

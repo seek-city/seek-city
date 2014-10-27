@@ -14,7 +14,7 @@ class AddPriceColumnToActivitiesTable extends Migration {
 	{
 		Schema::table('activities', function(Blueprint $table)
 		{
-			$table->decimal('price', 2);
+			$table->string('price');
 		});
 	}
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
  */
 class BaseModel extends Eloquent {
     use SoftDeletingTrait;
+    const DATE_FORMAT = 'l, jS \\of F Y g:i A';
 
     /*
      * Convert any model-aware date/times to local timezone.
