@@ -103,3 +103,15 @@ Route::filter('csrf', function()
 // {
 //     // return new CustomValidator($translator, $data, $rules, $messages);
 // });
+
+/*
+|--------------------------------------------------------------------------
+| Entrust Route Filters
+|--------------------------------------------------------------------------
+|
+| Only users with roles that have the 'manage_*' permission will
+| be able to access any route within admin/*. 
+|
+*/
+
+Entrust::routeNeedsPermission( 'admin/', array('owner', 'admin'), Redirect::to('/') );

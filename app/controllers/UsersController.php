@@ -1,133 +1,199 @@
 <?php
 
-class UsersController extends \BaseController {
+
+
+/**
+ * UsersController Class
+ *
+ * Implements actions regarding user management
+ */
+class UsersController extends Controller
+{
 
     /**
-     * Display a listing of users
+     * Displays the form for account creation
      *
-     * @return Response
+     * @return  Illuminate\Http\Response
      */
-    public function index()
+    public function getCreate()
     {
-        $users = User::all();
-
-        return View::make('users.index', compact('users'));
+        return View::make(Config::get('confide::signup_form'));
     }
 
     /**
-     * Show the form for creating a new user
+     * Stores new account
      *
-     * @return Response
+     * @return  Illuminate\Http\Response
      */
-    public function create()
+    public function postIndex()
     {
-        return View::make('users.create');
-    }
+        $repo = App::make('UserRepository');
+        $user = $repo->signup(Input::all());
 
-    /**
-     * Store a newly created user in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        $user = new User();
-        if (Input::hasFile('image_path')) {
-            $file = Input::file('image_path');
-            $destination_path = public_path() . '/img-upload/';
-            $filename = uniqid('user_img') . '_'. $file->getClientOriginalName();
-            $uploadSuccess = $file->move($destination_path, $filename);
-            $user->image_path = '/img-upload/' . $filename;
+        if ($user->id) {
+            if (Config::get('confide::signup_email')) {
+                Mail::queueOn(
+                    Config::get('confide::email_queue'),
+                    Config::get('confide::email_account_confirmation'),
+                    compact('user'),
+                    function ($message) use ($user) {
+                        $message
+                            ->to($user->email, $user->username)
+                            ->subject(Lang::get('confide::confide.email.account_confirmation.subject'));
+                    }
+                );
+            }
+
+            return Redirect::action('UsersController@getLogin')
+                ->with('notice', Lang::get('confide::confide.alerts.account_created'));
+        } else {
+            $error = $user->errors()->all(':message');
+
+            return Redirect::action('UsersController@getCreate')
+                ->withInput(Input::except('password'))
+                ->with('error', $error);
         }
-        return $this->saveUser($user);
     }
 
     /**
-     * Display the specified user.
+     * Displays the login form
      *
-     * @param  int  $id
-     * @return Response
+     * @return  Illuminate\Http\Response
      */
-    public function show($id)
+    public function getLogin()
     {
-        $user = User::findOrFail($id);
-        $userActivities = $user->activities()->paginate(5);
-        
-        $data = [
-            'user' => $user,
-            'userActivities' => $userActivities
-        ];
-
-        return View::make('users.show')->with($data);
-    }
-
-    /**
-     * Show the form for editing the specified user.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        if (Auth::id() == $user->id) {
-            return View::make('users.edit', compact('user'));
+        if (Confide::user()) {
+            return Redirect::to('/');
+        } else {
+            return View::make(Config::get('confide::login_form'));
         }
+    }
+
+    /**
+     * Attempt to do login
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function postLogin()
+    {
+        $repo = App::make('UserRepository');
+        $input = Input::all();
+
+        if ($repo->login($input)) {
+            return Redirect::intended('/');
+        } else {
+            if ($repo->isThrottled($input)) {
+                $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
+            } elseif ($repo->existsButNotConfirmed($input)) {
+                $err_msg = Lang::get('confide::confide.alerts.not_confirmed');
+            } else {
+                $err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
+            }
+
+            return Redirect::action('UsersController@getLogin')
+                ->withInput(Input::except('password'))
+                ->with('error', $err_msg);
+        }
+    }
+
+    /**
+     * Attempt to confirm account with code
+     *
+     * @param  string $code
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function getConfirm($code)
+    {
+        if (Confide::confirm($code)) {
+            $notice_msg = Lang::get('confide::confide.alerts.confirmation');
+            return Redirect::action('UsersController@getLogin')
+                ->with('notice', $notice_msg);
+        } else {
+            $error_msg = Lang::get('confide::confide.alerts.wrong_confirmation');
+            return Redirect::action('UsersController@getLogin')
+                ->with('error', $error_msg);
+        }
+    }
+
+    /**
+     * Displays the forgot password form
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function getForgot()
+    {
+        return View::make(Config::get('confide::forgot_password_form'));
+    }
+
+    /**
+     * Attempt to send change password link to the given email
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function postForgot()
+    {
+        if (Confide::forgotPassword(Input::get('email'))) {
+            $notice_msg = Lang::get('confide::confide.alerts.password_forgot');
+            return Redirect::action('UsersController@getLogin')
+                ->with('notice', $notice_msg);
+        } else {
+            $error_msg = Lang::get('confide::confide.alerts.wrong_password_forgot');
+            return Redirect::action('UsersController@postForgot')
+                ->withInput()
+                ->with('error', $error_msg);
+        }
+    }
+
+    /**
+     * Shows the change password form with the given token
+     *
+     * @param  string $token
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function getReset($token)
+    {
+        return View::make(Config::get('confide::reset_password_form'))
+                ->with('token', $token);
+    }
+
+    /**
+     * Attempt change password of the user
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function postReset()
+    {
+        $repo = App::make('UserRepository');
+        $input = array(
+            'token'                 =>Input::get('token'),
+            'password'              =>Input::get('password'),
+            'password_confirmation' =>Input::get('password_confirmation'),
+        );
+
+        // By passing an array with the token, password and confirmation
+        if ($repo->resetPassword($input)) {
+            $notice_msg = Lang::get('confide::confide.alerts.password_reset');
+            return Redirect::action('UsersController@getLogin')
+                ->with('notice', $notice_msg);
+        } else {
+            $error_msg = Lang::get('confide::confide.alerts.wrong_password_reset');
+            return Redirect::action('UsersController@getReset', array('token'=>$input['token']))
+                ->withInput()
+                ->with('error', $error_msg);
+        }
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function getLogout()
+    {
+        Confide::logout();
+
         return Redirect::to('/');
     }
-
-    /**
-     * Update the specified user in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        $user = User::findOrFail($id);
-
-        return $this->saveUser($user);
-    }
-
-    /**
-     * Remove the specified user from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        User::destroy($id);
-
-        return Redirect::route('users.index');
-    }
-
-    protected function saveUser(User $user)
-    {
-        $validator = Validator::make(Input::all(), User::$rules);
-        
-        if ($validator->fails()) {
-            Session::flash('errorMessage', 'Your account could not be created. Please try again.');
-            Log::error('User account validator failed', Input::all());
-            return Redirect::back()->withInput();
-        } else {
-            $user->username = Input::get('username');
-            $user->password = Input::get('password');
-            $user->email = Input::get('email');
-            $user->first_name = Input::get('first_name');
-            $user->last_name = Input::get('last_name');
-            
-            $user->save();
-            
-            $id = $user->id;
-            
-            Log::info('User account was created.', Input::all());
-            
-            $message = 'User account created successfully. Welcome to Seek City.';
-            Session::flash('successMessage', $message);
-            
-            return Redirect::action('HomeController@index');
-        }
-    }
-
 }
