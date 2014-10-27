@@ -22,7 +22,6 @@ Route::post('/login', 'HomeController@doLogin');
 // LOG USER OUT
 Route::get('/logout', 'HomeController@doLogout');
 
-
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
 
