@@ -56,5 +56,15 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     {
         return $this->hasMany('Activity');
     }
+    
+    public function getFirstName()
+    {
+        return ucfirst($this->first_name);
+    }
+    
+    public function getLastName()
+    {
+        return ucfirst($this->last_name);
+    }
 
 }
