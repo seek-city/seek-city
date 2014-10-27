@@ -34,7 +34,7 @@ Activities
                         </div>
                     </div>
                     <div class="buttons">
-                        <a href="#" class="btn btn-dark btn-sm"><i class="icon-emailalt"></i><span>1</span></a>{{ link_to_action('HomeController@doLogout', 'Log Out', null ,['class' => 'btn btn-danger btn-sm']); }}
+                        <a href="#" class="btn btn-dark btn-sm"><i class="icon-emailalt"></i><span>1</span></a>{{ link_to_action('UsersController@getLogout', 'Log Out', null ,['class' => 'btn btn-danger btn-sm']); }}
                     </div>
                 </div>
             </div>

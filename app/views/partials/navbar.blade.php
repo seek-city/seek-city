@@ -22,10 +22,7 @@
                     {{ link_to_action('ActivitiesController@create', 'New Activity'); }}
                 </li>
                 <li>
-                    {{ link_to_action('UsersController@show', Auth::user()->username, Auth::id()); }}
-                </li>
-                <li>
-                    {{ link_to_action('HomeController@doLogout', 'Log Out'); }}
+                    {{ link_to_action('UsersController@getLogout', 'Log Out'); }}
                 </li>
                 <li>
                     <a href="/categories/manage">Manage Categories</a>
@@ -35,10 +32,10 @@
                 </li>
                 @else
                 <li>
-                    {{ link_to_action('UsersController@create', 'Sign Up'); }}
+                    {{ link_to_action('UsersController@getCreate', 'Sign Up') }}
                 </li>
                 <li>
-                    {{ link_to_action('HomeController@showLogin', 'Log In'); }}
+                    {{ link_to_action('UsersController@getLogin', 'Log In'); }}
                 </li>
                 @endif
             </ul>
