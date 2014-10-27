@@ -15,7 +15,7 @@
 
         <!-- TO DELETE AN EVENT -->
         {{ Form::open(['method' => 'DELETE', 'action' => ['CategoriesController@destroy', $category->id], 'id' => 'delete-form']) }}
-        <a class='btn btn-default' href={{ action('CategoriesController@edit', $category->id) }}>Edit</a>
+        <a class='btn btn-default' href="{{ action('CategoriesController@edit', $category->id) }}">Edit</a>
         {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
         {{ Form::close() }}
         <hr>
