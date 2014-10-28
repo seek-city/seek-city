@@ -15,7 +15,7 @@
                     {{ link_to_action('HomeController@index', 'Home'); }}
                 </li>
                 <li>
-                    <a href="/">About Seek City</a>
+                    {{ link_to_action('HomeController@about', 'About'); }}
                 </li>
                 @if (Auth::check())
                 <li>
