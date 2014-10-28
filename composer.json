@@ -8,8 +8,7 @@
         "zizaco/confide": "~4.0@dev",
         "zizaco/entrust": "1.2.*@dev",
         "fbf/laravel-comments": "~0.3",
-        "frozennode/administrator": "4.12.1",
-        "makzumi/calendar": "dev-master"
+        "frozennode/administrator": "4.12.1"
     },
     "require-dev": {
         "way/generators": "~2.6",

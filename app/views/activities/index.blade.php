@@ -1,6 +1,10 @@
+@if(Session::has('mood'))
+{{ dd(Session::get('mood')) }}
+@endif
+
 @extends('layouts.master')
 @section('title')
-Activities
+<title>Activities</title>
 @stop
 
 @section('content')
@@ -11,14 +15,15 @@ Activities
 
 <!-- side profile menubar -->
 <div class="row site">
-        <div class="col-md-1 general_menu inner">
-            <a href="#" class="avatar">
-                <img src="" alt=""/>#</a>
-        </div>
+    <div class="col-md-1 general_menu inner">
+        <a href="#" class="avatar">
+            <img src="" alt=""/>#</a>
+    </div>
         <!-- end side profile menubar -->
 
-<!--Profile-->
-      <span class="close_span tab" id="open_span"><a href="#" class="close-profile-link clooses" id="link_open">+</a></span>
+    <!--Profile-->
+    @if (Auth::check())
+        <span class="close_span tab" id="open_span"><a href="#" class="close-profile-link closes" id="link_open">+</a></span>
         <div class="col-md-12 profile profile_closed" id="profile">
             <!--User info-->
             <div class="row">
@@ -80,48 +85,43 @@ Activities
             </div>
             <!--/my events-->
         </div>
-        <!--/Profile-->
-        <!-- list of events -->
+            <!--/Profile-->
+    @endif
+    <!-- list of events -->
     <div class="row">
-                        <div class="col-md-4  color">
-                    <!--title-->
-                    <div class="search_title">
-                        {{ Form::open(array('action' => 'ActivitiesController@index', 'class' => 'form-inline search_form', 'role' => 'form', 'method' => 'GET')) }}
-                            <div class="row">
-                                <div class="form-group col-lg-6 col-md-offset-1">
-                                    {{ Form::text('search', Input::get('search'), array('class' => 'form-control', 'id' => 'exampleInputEmail2', 'placeholder' => 'Search Events')) }}
-                                </div>
-                                {{ Form::submit('Search', array('class' => 'btn btn-danger')) }}
-                                <button type="submit" class="btn btn-danger">Sort</button>
-                            </div>
-                        {{ Form::close() }}
+        <div class="col-md-4  color">
+            <!--title-->
+            <div class="search_title">
+                {{ Form::open(array('action' => 'ActivitiesController@index', 'class' => 'form-inline search_form', 'role' => 'form', 'method' => 'GET')) }}
+                    <div class="row">
+                        <div class="form-group col-lg-6 col-md-offset-1">
+                            {{ Form::text('search', Input::get('search'), array('class' => 'form-control', 'id' => 'exampleInputEmail2', 'placeholder' => 'Search Events')) }}
+                        </div>
+                        {{ Form::submit('Search', array('class' => 'btn btn-danger')) }}
+                        <button type="submit" class="btn btn-danger">Sort</button>
                     </div>
-                    <article class="color"> 
-                        @forelse($activities as $activity)
-                        <h3>{{{ $activity->title }}}</h3>
-                            <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date }}} </p>
-
-                            <img class='img-responsive' src="{{{ $activity->image_path }}}" alt="">
-
-                            <p>{{{ str_limit($activity->body, $limit = 100, $end = '...') }}}</p>
-                            
-
-                            <a class="btn btn-sm btn-primary" href="activities/{{{  $activity->id }}}">More Info <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                        @empty
-                            <p>No Entries match your search</p>
-                        @endforelse
-                    </article>
-                    <br>
-                    <hr>
-                    {{ $activities->appends(Request::only(['category','mood','search']))->links() }}
-                    <hr>
+                {{ Form::close() }}
+            </div>
+            <article class="color"> 
+                @forelse($activities as $activity)
+                    <h3>{{{ $activity->title }}}</h3>
+                    <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date }}} </p>
+                    <img class='img-responsive' src="{{{ $activity->image_path }}}" alt="">
+                    <p>{{{ str_limit($activity->body, $limit = 100, $end = '...') }}}</p>
+                    <a class="btn btn-sm btn-primary" href="activities/{{{  $activity->id }}}">More Info <span class="glyphicon glyphicon-chevron-right"></span></a>
+                @empty
+                    <p>No Entries match your search</p>
+                @endforelse
+            </article>
+            <br>
+            <hr>
+                {{ $activities->appends(Request::only(['category','mood','search']))->links() }}
+            <hr>
                     <!--/result-->
                     <!-- end list of events -->
-                  </div>
-            </div>
+        </div>
+    </div>
     <hr>
-
 </div>
 @stop
 

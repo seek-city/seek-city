@@ -16,15 +16,16 @@ class ActivitiesController extends \BaseController {
                 $query->where('title', 'like', "%$search%");
                 $query->orWhere('body', 'like', "%$search%");
             }
-            // if (Session::has('mood')) {
-            //     $mood = Session::get('mood');
-            // }
-            // if (Session::has('category')) {
-            //     $category = Session::get('category');
-            // }
-            // if (Session::has('price')) {
-            //     $price = Session::get('price');
-            // }
+            if (Input::has('mood')) {
+                $mood = Input::get('mood');
+                $query->where('')
+            }
+            if (Input::has('category')) {
+                $category = Input::get('category');
+            }
+            if (Input::has('price')) {
+                $price = Input::get('price');
+            }
         $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));

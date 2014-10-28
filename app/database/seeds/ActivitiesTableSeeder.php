@@ -13,8 +13,8 @@ class ActivitiesTableSeeder extends Seeder {
 
         foreach(range(1, 30) as $index)
         {
-            $activityDate = $faker->dateTimeThisYear();
-            $updatedAt = $faker->dateTimeThisYear($activityDate);
+            $activityDate = $faker->dateTimeBetween('now','+30 days');
+            $updatedAt = $faker->dateTimeThisYear();
             $createdAt = $faker->dateTimeThisYear($updatedAt);
             Activity::create([
                 'title'      => $faker->catchPhrase,
