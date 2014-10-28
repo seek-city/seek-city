@@ -11,6 +11,18 @@ class ActivitiesTableSeeder extends Seeder {
             $activityDate = $faker->dateTimeThisYear();
             $updatedAt = $faker->dateTimeThisYear($activityDate);
             $createdAt = $faker->dateTimeThisYear($updatedAt);
+<<<<<<< HEAD
+            Activity::create([
+                'title'      => $faker->catchPhrase,
+                'body'       => $faker->paragraph(4),
+                'updated_at' => $updatedAt,
+                'created_at' => $createdAt,
+                'activity_date' => $activityDate,
+                'image_path' => "http://lorempixel.com/400/200/",
+                'price'      => 0,
+                'user_id'    => 1
+            ]);
+=======
 
         //delete users table records
         DB::table('activities')->truncate();
@@ -141,11 +153,15 @@ class ActivitiesTableSeeder extends Seeder {
 
                 
 
+>>>>>>> a8ded7effc5a43a595cd4001577646d488c23e71
         }
     }
 
 }
+<<<<<<< HEAD
+=======
                 'updated_at' => $faker->dateTimeThisYear($activityDate),
                 'created_at' => $faker->dateTimeThisYear($updatedAt),
                 'activity_date' => $faker->dateTimeThisYear(),
                 'user_id'    => 1
+>>>>>>> a8ded7effc5a43a595cd4001577646d488c23e71
