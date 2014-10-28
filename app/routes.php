@@ -14,6 +14,10 @@
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
+Route::post('/', function() {
+    return Redirect::to('/activities')->withInput();
+});
+
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
 

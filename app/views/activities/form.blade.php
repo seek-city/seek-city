@@ -17,6 +17,20 @@
     {{ Form::label('activity_date', 'When') }}
     {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
 </div>
+<div class='form-group'>
+    {{ Form::label('address', 'Address:') }}
+    {{ Form::text('address', Input::old('address'), ['class' => 'form-control', 'id' => 'address']) }}
+    {{ Form::label('city', 'City:') }}
+    {{ Form::text('city', Input::old('city'), ['class' => 'form-control', 'id' => 'city']) }}
+    {{ Form::label('state', 'State:') }}
+    {{ Form::text('state', Input::old('state'), ['class' => 'form-control', 'id' => 'state']) }}
+    {{ Form::label('zipcode', 'Zipcode:') }}
+    {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control', 'id' => 'zipcode']) }}
+    <!--map-->
+    <div id="map_canvas" class="map"></div> 
+    <!--/map-->
+    
+</div>
 
 <div class='form-group'>
     {{ Form::label('category_options', 'Categories:') }}
