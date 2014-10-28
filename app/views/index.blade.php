@@ -136,7 +136,6 @@
                     tag = 'uh oh';
                     break;
             }
-            console.log(tag);
             price = [];
             price.push(tag);
 
@@ -144,12 +143,15 @@
         
         $("#activityFilter").click(function(e) {
             e.preventDefault;
-            $("#mood").val(mood);
-            $("#category").val(category);
-            $("#price").val(price);
-            console.log($('#mood').val());
-            console.log($('#category').val());
-            console.log($('#price').val());
+            if (mood.length > 0) {
+                $("#mood").val(mood);
+            }
+            if (category.length > 0) {
+                $("#category").val(category);
+            }
+            if (price.length > 0) {
+                $("#price").val(price);
+            }
         });
     });
 </script>

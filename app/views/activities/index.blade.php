@@ -1,7 +1,3 @@
-@if(Session::has('mood'))
-{{ dd(Session::get('mood')) }}
-@endif
-
 @extends('layouts.master')
 @section('title')
 <title>Activities</title>
@@ -9,7 +5,7 @@
 
 @section('content')
 <body onload="initialize()">
-        <!--map-->
+    <!--map-->
     <div id="map_canvas" class="map"></div> 
     <!--/map-->
 
