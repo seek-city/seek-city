@@ -84,7 +84,7 @@ body{
   background-color: transparent;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-size: .8rem;
-  color: #555;
+  color: white;
 }
 
 .button-container {
@@ -172,12 +172,12 @@ body{
 
 .button-button.skin-main_menu {
   background-image: url(../img/icon-menu.png);
-  background-color: #449922;
-  box-shadow: 0 1px 0 0 #1f460f;
+  background-color: #ff6622;
+  box-shadow: 0 1px 0 0 #ff6622;
 }
 
 .button-button.skin-main_menu:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #449922;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-menu {
@@ -190,53 +190,53 @@ body{
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
-.button-button.skin-hacker_news {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #ff6622;
-  box-shadow: 0 1px 0 0 #bb3a00;
+.button-button.skin-rainy {
+  background-image: url(../img/rainy.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-hacker_news:focus {
+.button-button.skin-rainy:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
-.button-button.skin-www {
-  background-image: url(../img/icon-www.png);
-  background-color: #0097e0;
-  box-shadow: 0 1px 0 0 #00527a;
+.button-button.skin-artsy{
+  background-image: url(../img/artsy.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-www:focus {
+.button-button.skin-artsy:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0097e0;
 }
 
-.button-button.skin-blog {
-  background-image: url(../img/icon-blog.png);
-  background-color: #0097e0;
-  box-shadow: 0 1px 0 0 #00527a;
+.button-button.skin-classy {
+  background-image: url(../img/classy.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-blog:focus {
+.button-button.skin-classy:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0097e0;
 }
 
-.button-button.skin-twitter {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #2aa9e0;
-  box-shadow: 0 1px 0 0 #156a8f;
+.button-button.skin-festive {
+  background-image: url(../img/festive.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-twitter:focus {
+.button-button.skin-festive:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #2aa9e0;
 }
 
-.button-button.skin-html5rocks {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #0055aa;
-  box-shadow: 0 1px 0 0 #002244;
+.button-button.skin-sporty {
+  background-image: url(../img/sporty.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-html5rocks:focus {
+.button-button.skin-sporty:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0055aa;
 }
 
@@ -250,50 +250,70 @@ body{
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #111111;
 }
 
-.button-button.skin-processing {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #002244;
-  box-shadow: 0 1px 0 0 black;
+.button-button.skin-brainy {
+  background-image: url(../img/brainy.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-processing:focus {
+.button-button.skin-brainy:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #002244;
 }
 
-.button-button.skin-nyan_cat {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #1d4374;
+.button-button.skin-date-night {
+  background-image: url(../img/date.png);
+  background-color: #449922;
   box-shadow: 0 1px 0 0 #091422;
 }
 
-.button-button.skin-nyan_cat:focus {
+.button-button.skin-date-time:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #1d4374;
 }
 
-.button-button.skin-disaster_artist {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #eb4638;
-  box-shadow: 0 1px 0 0 #ac1d11;
+.button-button.skin-fam-time {
+  background-image: url(../img/fam.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-disaster_artist:focus {
+.button-button.skin-fam-time:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #eb4638;
 }
 
-.button-button.skin-streets_of_rage {
-  background-image: url(../img/icon-nyan.png);
-  background-color: #131131;
+.button-button.skin-live-music {
+  background-image: url(../img/music.png);
+  background-color: #449922;
   box-shadow: 0 1px 0 0 black;
 }
 
-.button-button.skin-streets_of_rage:focus {
+.button-button.skin-live-music:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #131131;
 }
 
-.button-button.skin-alert {
-  background-image: url(../img/icon-alert.png);
-  background-color: #ff6622;
-  box-shadow: 0 1px 0 0 #bb3a00;
+.button-button.skin-1dol {
+  background-image: url(../img/1dol.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-2dol {
+  background-image: url(../img/2dol.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-3dol {
+  background-image: url(../img/3dol.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-4dol {
+  background-image: url(../img/4dol.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-0dol {
+  background-image: url(../img/0dol.png);
+  background-color: #449922;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
 .button-button.skin-alert:focus {
