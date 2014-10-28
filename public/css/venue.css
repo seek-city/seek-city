@@ -1,11 +1,17 @@
+div {
+    border: 2px solid;
+    color: black;
+}
+
 #venueName
 {
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
+
 }
 
 #VenueAddress
@@ -13,7 +19,7 @@
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -22,7 +28,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -32,7 +38,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -42,7 +48,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -52,7 +58,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -62,7 +68,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -72,7 +78,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -82,7 +88,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -92,7 +98,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -101,7 +107,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -111,7 +117,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -121,7 +127,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -131,7 +137,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }
@@ -142,7 +148,7 @@ h1
 	text-align: center;
 	width: 180px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 2px solid black;
     margin: 10px; 
 	font-weight: 500;
 }

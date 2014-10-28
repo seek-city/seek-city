@@ -1,5 +1,3 @@
-login page:
-
 @extends('layouts.master')
 
 @section('top-script')
@@ -10,9 +8,10 @@ login page:
 <div class="main">
     <div class="social-icons">
          <div class="col_1_of_f span_1_of_f"><a href="#">
+          
             <ul class='facebook'>
-                <i class="fb"> </i>
-                <li>Connect with Facebook</li>
+                <i class="fb"></i>
+                {{ link_to_action('AuthController@loginWithFacebook', 'Connect with Facebook') }} 
                 <div class='clear'> </div>
             </ul>
             </a>
