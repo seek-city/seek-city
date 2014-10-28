@@ -9,7 +9,7 @@ class ActivitiesTableSeeder extends Seeder {
     {
         $faker = Faker::create();
         
-        $user = User::first();
+
 
         foreach(range(1, 30) as $index)
         {
@@ -24,7 +24,7 @@ class ActivitiesTableSeeder extends Seeder {
                 'activity_date' => $activityDate,
                 'image_path' => "http://lorempixel.com/400/200/",
                 'price'      => 0,
-                'user_id'    => $user->id
+                'user_id'    => 1
             ]);
         }
     }
