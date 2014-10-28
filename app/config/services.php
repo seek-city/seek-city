@@ -27,5 +27,11 @@ return array(
 		'model'  => 'User',
 		'secret' => '',
 	),
+	
+	'facebook' => [
+	'client_id' => getenv('FACEBOOK_APP_ID'),
+	'client_secret'=> getenv('FACEBOOK_APP_SECRET'),
+	'redirect' => 'http://seekcity.dev/login'
+	]
 
 );
