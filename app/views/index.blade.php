@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/jquery.tagsinput.css'); }}">
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
 @stop
 
@@ -79,22 +80,78 @@
 
 </svg>
 
-        <main id="main" class="main"></main>
-@stop
-
-
+    <main id="main" class="main"></main>
+    @include('partials.filter-stack') 
 @stop
 
 @section('bottom-script')
+<!-- XOXCO TagsInput JS -->
+<script src="{{ asset('/js/jquery.tagsinput.js'); }}"></script>
 <script>
     $(document).ready(function(){
-        $("button[data-title='Family Time']").on('click', function(e){
-            e.preventDefault();
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Family Time</div>');
+        var mood = [];
+        var category = [];
+        var price = [];
+        var csrfToken = "{{{ Session::get('_token') }}}";
+        
+        $('#filterStack').tagsInput({
+            'interactive': false
         });
-        $("button[data-title='Date Night']").on('click', function(e){
-            e.preventDefault();
-            $("main").append('<div class="col-md-1 col-md-offset-1 queryBubble">Date Night</div>');
+        
+        $(".queryButtonMood").on('click', function(e) {
+            tag = $(this).data('title');
+            $('#fiterStack').addTag(tag);
+            mood = [];
+            mood.push(tag);
+
+        });
+        
+        $(".queryButtonCategory").on('click', function(e) {
+            tag = $(this).data('title');
+            category = [];
+            category.push(tag);
+
+        });
+        
+        $(".queryButtonPrice").on('click', function(e) {
+            tag = $(this).data('title');
+            console.log(tag);
+            switch(tag) {
+                case 'Free':
+                    tag = 0;
+                    break;
+                case '$':
+                    tag = 1;
+                    break;
+                case '$$':
+                    tag = 2;
+                    break;
+                case '$$$':
+                    tag = 3;
+                    break;
+                case '$$$$':
+                    tag = 4;
+                    break;
+                default:
+                    tag = 'uh oh';
+                    break;
+            }
+            price = [];
+            price.push(tag);
+
+        });
+        
+        $("#activityFilter").click(function(e) {
+            e.preventDefault;
+            if (mood.length > 0) {
+                $("#mood").val(mood);
+            }
+            if (category.length > 0) {
+                $("#category").val(category);
+            }
+            if (price.length > 0) {
+                $("#price").val(price);
+            }
         });
     });
 </script>

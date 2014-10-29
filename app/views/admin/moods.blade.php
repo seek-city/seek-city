@@ -40,7 +40,6 @@ Manage Moods
 
 <script>
     var csrfToken = "{{{ Session::get('_token') }}}";
-    console.log(csrfToken);
     var fadeTimer = 500;
     
     $(".delete-btn").click(function()

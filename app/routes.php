@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
 
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
@@ -24,6 +25,10 @@ Route::get('users/confirm/{code}', 'UsersController@getConfirm');
 Route::get('users/reset_password/{token}', 'UsersController@getReset');
 Route::get('users/reset_password', 'UsersController@postReset');
 Route::controller( 'users', 'UsersController');
+
+//oauth routes
+Route::get('login-facebook', 'AuthController@loginWithFacebook');
+Route::post('login-facebook', 'AuthController@loginWithFacebook');
 
 /*
 |--------------------------------------------------------------------------

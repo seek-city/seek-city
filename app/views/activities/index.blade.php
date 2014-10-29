@@ -18,6 +18,7 @@ Activities
         <!-- end side profile menubar -->
 
 <!--Profile-->
+@if (Auth::check())
       <span class="close_span tab" id="open_span"><a href="#" class="close-profile-link clooses" id="link_open">+</a></span>
         <div class="col-md-12 profile profile_closed" id="profile">
             <!--User info-->
@@ -81,6 +82,7 @@ Activities
             <!--/my events-->
         </div>
         <!--/Profile-->
+        @endif
         <!-- list of events -->
     <div class="row">
                         <div class="col-md-4  color">
