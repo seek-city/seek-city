@@ -18,6 +18,7 @@ class CreateActivitiesTable extends Migration {
 			$table->timestamps();
 			$table->softDeletes();
 			$table->integer('user_id');
+			$table->integer('venue_id');
 		});
 	}
 

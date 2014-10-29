@@ -18,20 +18,10 @@
     {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
 </div>
 <div class='form-group'>
-    {{ Form::label('address', 'Address:') }}
-    {{ Form::text('address', Input::old('address'), ['class' => 'form-control', 'id' => 'address']) }}
-    {{ Form::label('city', 'City:') }}
-    {{ Form::text('city', Input::old('city'), ['class' => 'form-control', 'id' => 'city']) }}
-    {{ Form::label('state', 'State:') }}
-    {{ Form::text('state', Input::old('state'), ['class' => 'form-control', 'id' => 'state']) }}
-    {{ Form::label('zipcode', 'Zipcode:') }}
-    {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control', 'id' => 'zipcode']) }}
-    <!--map-->
-    <div id="map_canvas" class="map"></div> 
-    <!--/map-->
-    
+    {{ Form::label('venue') }}
+    {{ Form::select('venue', array_pluck($venues), ['class' => 'form-control', 'id' => 'venue']) }}
+    {{ Form::label('newVenue', 'Create a new venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
 </div>
-
 <div class='form-group'>
     {{ Form::label('category_options', 'Categories:') }}
     {{ Form::select('category_options[]', $category_options, isset($activity) ? Input::old('category_options', $activity->categories()->lists('category_id')) : '', ['class' => 'form-control', 'multiple']) }}
