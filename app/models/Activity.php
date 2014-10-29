@@ -67,9 +67,10 @@ class Activity extends BaseModel
                 return '$$$$';
         }
     }
-     public function posts()
+
+    public function venue()
     {
-        return $this->BelongsTo('Venue');
+        return $this->belongsTo('Venue');
     }
 }
 

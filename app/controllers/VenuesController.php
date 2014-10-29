@@ -21,6 +21,7 @@ class VenuesController extends \BaseController {
      */
     public function create()
     {
+        
         return View::make('venues.create');
     }
 
@@ -117,23 +118,33 @@ class VenuesController extends \BaseController {
         $validator = Validator::make(Input::all(), Venue::$rules);
 
         if($validator->fails()) {
-            Session::flash('errorMessage', 'You venue is missing some required fields.');
+            Session::flash('errorMessage', 'Your venue is missing some required fields.');
             Log::error('Venues validator failed', Input::all());
             return Redirect::back()->withInput();
         } else {
-            $venue->name = Input::get('venue_name');
+            
+            $venue->name = Input::get('name');
             $venue->address = Input::get('address');
             $venue->city = Input::get('city');
             $venue->state = Input::get('state');
-            $venue->zipcode = Input::get('zip');
-            $venue->zipcode = Input::get('phone');
-            $venue->parking_available = Input::get('parking');
-            $venue->open_hour = Input::get('opening_hour');
-            $venue->close_hour = Input::get('closing_hour');
+            $venue->zipcode = Input::get('zipcode');
+            $venue->zipcode = Input::get('phone_number');
+            $venue->parking_available = Input::get('parking_available') == 'Yes' ? true : false;
+            $venue->open_hour = Input::get('open_hour');
+            $venue->close_hour = Input::get('close_hour');
+            $venue->website_url = Input::get('website_url');
             $venue->facebook_url = Input::get('facebook_url');
-            $venue->google_url = Input::get('google_places_url');
+            $venue->google_url = Input::get('google_url');
             $venue->twitter_handle = Input::get('twitter_handle');
-            $venue->image_path = Input::get('image_path');
+            $venue->image_url = Input::get('image_url');
+            $venue->save();
+            $id = $venue->id;
+            if (Session::has('activityId')) {
+                $activity = Activity::findOrFail(Session::get('activityId'));
+                $activity->venue_id = $id;
+                $activity->save();
+                return View::make('activities.show', compact('activity'));
+            }
         }
 
     }

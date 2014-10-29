@@ -9,48 +9,11 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        // $query = DB::table('activities')->select('*');
-        $search = Input::get('search');
-        $mood = Input::get('mood');
-        $category = Input::get('category');
-        $price = Input::get('price');
-        
-        $activities = Activity::with(array(
-            'mood',
-            'category'
-            )
-        );
-        
-        $activities->whereHas('moods', function($q) use ($mood) {
-            $q->where('name', 'like', $mood);
-        });
-        
-        
-        // $query = self::whereHas('')
-            // if (Input::has('search')) {
-            //     $search = Input::get('search');
-            //     $query->where('title', 'like', "%$search%");
-            //     $query->orWhere('body', 'like', "%$search%");
-            // }
-            // $mood = Input::get('mood');
-            // if (!is_null($mood)) {
-            //     $activities = Activity::whereHas('moods', function($q) {
-                    
-            //         $q->where('name', 'like', "$mood");
-            //     })->get();
-            // }
-
-            // if (Input::has('category')) {
-            //     $category = Input::get('category');
-            // }
-            // if (Input::has('price')) {
-            //     $price = Input::get('price');
-            // }
-        // $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
+        $query = DB::table('activities')->select('*');
+        $activities = $query->orderBy('activity_date', 'ASC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }
-    
 
     /**
      * Show the form for creating a new activity
@@ -65,7 +28,9 @@ class ActivitiesController extends \BaseController {
             // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
             $category_options = Category::lists('name', 'id');
             $mood_options = Mood::lists('name', 'id');
-            $data = ['category_options' => $category_options, 'mood_options' => $mood_options];
+            $venues = Venue::lists('name', 'id');
+
+            $data = ['category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
 
             return View::make('activities.create', $data);
         }
@@ -125,7 +90,8 @@ class ActivitiesController extends \BaseController {
             // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
             $category_options = Category::lists('name', 'id');
             $mood_options = Mood::lists('name', 'id');
-            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options];
+            $venues = Venue::lists('name', 'id');
+            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
             return View::make('activities.edit', $data);
         }
         // SEND NON-AUTHENTICATED USERS TO ACTIVITIES INDEX
@@ -155,7 +121,7 @@ class ActivitiesController extends \BaseController {
             $uploadSuccess = $file->move($destination_path, $filename);
             $activity->image_path = '/img-upload/' . $filename;
         }
-    
+
         return $this->saveActivity($activity);
     }
 
@@ -173,7 +139,7 @@ class ActivitiesController extends \BaseController {
         catch (ModelNotFoundException $e) {
             App::abort(404);
         }
-        
+
         $old_image = public_path() . $activity->image_path;
         if (File::exists($old_image)) {
             File::delete($old_image);
@@ -182,7 +148,7 @@ class ActivitiesController extends \BaseController {
         $activity->delete(); 
         Log::info('Activity deleted successfully.');
         $message = "So long, $activity->title!";
-        
+
         if (Request::ajax()) {
             return Response::json(array(
                 'success' => true,
@@ -210,13 +176,12 @@ public function saveActivity(Activity $activity)
             $activity->body = Input::get('body');
             $activity->price = Input::get('price');
             $activity->activity_date = new Carbon(Input::get('activity_date'));
-            $activity->address = Input::get('address');
-            $activity->city = Input::get('city');
-            $activity->state = Input::get('state');
-            $activity->zipcode = Input::get('zipcode');
+
             $categories = Input::get('category_options');
             $moods = Input::get('mood_options');
+
             $activity->user_id = Auth::id();
+            // $activity->venue_id = 0;
             $activity->save();
             $id = $activity->id;
 
@@ -229,12 +194,20 @@ public function saveActivity(Activity $activity)
             foreach ($moods as $moodId) {
                 $activity->moods()->attach($moodId);
             }
+
+            if (Input::get('newVenue')) {
+                Session::put('venueName',Input::get('venue'));
+                Session::put('activityId', $id);
+                $activity->venue_id = 0;
+                
+                return Redirect::action('VenuesController@create');
+            }
             
+
             Log::info('Activity was sucessfully saved', Input::all());
 
             $message = 'Activity created sucessfully';
             Session::flash('successMessage', $message);
-
             return Redirect::action('ActivitiesController@show', $id);
         }
     }
