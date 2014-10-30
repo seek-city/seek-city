@@ -9,8 +9,29 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        $query = DB::table('activities')->select('*');
-        $activities = $query->orderBy('activity_date', 'ASC')->paginate(10);
+        $query = Activity::with(array('moods', 'categories'));
+        
+        if (Input::has('search')) {
+            $query->where('title', 'like', '%' . Input::get('search') . '%');
+        }
+        
+        if (Input::has('mood')) {
+            $query->whereHas('moods', function($q) {
+                $q->where('name', '=', Input::get('mood'));
+            });
+        }
+        
+        if (Input::has('category')) {
+            $query->whereHas('categories', function($q) {
+                $q->where('name', '=', Input::get('category'));
+            });
+        }
+        
+        if (Input::has('price')) {
+            $query->where('price', '=', Input::get('price'));
+        }
+
+        $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }
