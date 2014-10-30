@@ -23,9 +23,18 @@
 
 @section('bottom-script')
 <script>
-$('#datetimepicker').datetimepicker({
-	formatTime:'g:i a',
-	theme: 'dark'
+$(document).ready(function() {
+    $('#datetimepicker').datetimepicker({
+        formatTime:'g:i a',
+        theme: 'dark'
+    });
+    // $('#map_open').on('click', function () {
+    //     "use strict";
+    //     $("#cont").addClass("none");
+    //     $("#Show_cont").removeClass("none");
+    // });
+    
 });
 </script>
 @stop
+@include('partials.footer')

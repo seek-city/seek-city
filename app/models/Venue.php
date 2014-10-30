@@ -30,5 +30,9 @@ class Venue extends BaseModel {
         'twitter_handle',
         'image_path'
     ];
-
+    
+    public function activities()
+    {
+        return $this->hasMany('Activity');
+    }
 }

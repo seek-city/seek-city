@@ -10,12 +10,17 @@
 </div>
 <div class='form-group'>
     {{ Form::label('price', 'Price:') }}
-    {{ Form::select('price', ['Free','$','$$', '$$$', '$$$$']) }}
+    {{ Form::select('price', ['Free','$ = under $10','$$ = $11-$30', '$$$ = $31- $60', '$$$$ = above $61']) }}
     {{ $errors->first('price', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
     {{ Form::label('activity_date', 'When') }}
     {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
+</div>
+<div class='form-group'>
+    {{ Form::label('venue') }}
+    {{ Form::select('venue', array_pluck($venues), ['class' => 'form-control', 'id' => 'venue']) }}
+    {{ Form::label('newVenue', 'Create a new venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
 </div>
 <div class='form-group'>
     {{ Form::label('category_options', 'Categories:') }}

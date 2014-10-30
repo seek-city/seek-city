@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/jquery.tagsinput.css'); }}">
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
 @stop
 
@@ -84,39 +85,73 @@
 @stop
 
 @section('bottom-script')
+<!-- XOXCO TagsInput JS -->
+<script src="{{ asset('/js/jquery.tagsinput.js'); }}"></script>
 <script>
     $(document).ready(function(){
-        var mood;
-        var category;
-        var price;
+        var mood = [];
+        var category = [];
+        var price = [];
+        var csrfToken = "{{{ Session::get('_token') }}}";
+        
+        $('#filterStack').tagsInput({
+            'interactive': false
+        });
         
         $(".queryButtonMood").on('click', function(e) {
-            e.preventDefault();
-            mood = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-mood="' + mood + '">' + mood + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+            tag = $(this).data('title');
+            $('#fiterStack').addTag(tag);
+            mood = [];
+            mood.push(tag);
 
         });
         
         $(".queryButtonCategory").on('click', function(e) {
-            e.preventDefault();
-            category = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-category="' + category + '">' + category + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+            tag = $(this).data('title');
+            category = [];
+            category.push(tag);
+
         });
         
         $(".queryButtonPrice").on('click', function(e) {
-            e.preventDefault();
-            price = $(this).data('title');
-            $("#filterStack").append('<div class="filters alert alert-success alert-dismissable" data-filter-price="' + price + '">' + price + '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>');
+            tag = $(this).data('title');
+            console.log(tag);
+            switch(tag) {
+                case 'Free':
+                    tag = 0;
+                    break;
+                case '$':
+                    tag = 1;
+                    break;
+                case '$$':
+                    tag = 2;
+                    break;
+                case '$$$':
+                    tag = 3;
+                    break;
+                case '$$$$':
+                    tag = 4;
+                    break;
+                default:
+                    tag = 'uh oh';
+                    break;
+            }
+            price = [];
+            price.push(tag);
+
         });
         
         $("#activityFilter").click(function(e) {
             e.preventDefault;
-            $("#filterStack").children("div").each(function() {
-                if (typeof($(this).data('filter-mood')) != 'undefined') {
-                        var filter = $(this).data('filter-mood');
-
-                }
-            });
+            if (mood.length > 0) {
+                $("#mood").val(mood);
+            }
+            if (category.length > 0) {
+                $("#category").val(category);
+            }
+            if (price.length > 0) {
+                $("#price").val(price);
+            }
         });
     });
 </script>

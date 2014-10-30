@@ -12,21 +12,23 @@
 */
 
 Route::get('/', 'HomeController@index');
-
-// DISPLAY LOGIN FORM
-Route::get('/login', 'HomeController@showLogin');
-
-// LOG USER IN
-Route::post('/login', 'HomeController@doLogin');
-
-// LOG USER OUT
-Route::get('/logout', 'HomeController@doLogout');
+Route::get('/about', 'HomeController@about');
 
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
 
 // MANAGE MOODS
 Route::get('/moods/manage', 'MoodsController@manage');
+
+// Confide RESTful route
+Route::get('users/confirm/{code}', 'UsersController@getConfirm');
+Route::get('users/reset_password/{token}', 'UsersController@getReset');
+Route::get('users/reset_password', 'UsersController@postReset');
+Route::controller( 'users', 'UsersController');
+
+//oauth routes
+Route::get('login-facebook', 'AuthController@loginWithFacebook');
+Route::post('login-facebook', 'AuthController@loginWithFacebook');
 
 /*
 |--------------------------------------------------------------------------
@@ -35,18 +37,8 @@ Route::get('/moods/manage', 'MoodsController@manage');
 */
 Route::resource('activities', 'ActivitiesController');
 
-Route::resource('users', 'UsersController');
-
 Route::resource('venues', 'VenuesController');
 
 Route::resource('categories', 'CategoriesController');
 
 Route::resource('moods', 'MoodsController');
-
-
-
-
-
-
-
-

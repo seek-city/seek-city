@@ -134,7 +134,11 @@ return array(
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Makzumi\Calendar\CalendarServiceProvider',
+        'Fbf\LaravelComments\LaravelCommentsServiceProvider',
+        'Frozennode\Administrator\AdministratorServiceProvider',
+        'Zizaco\Confide\ServiceProvider',
+        'Zizaco\Entrust\EntrustServiceProvider',
+        'Artdarek\OAuth\OAuthServiceProvider',
     ),
 
     /*
@@ -202,7 +206,9 @@ return array(
         'URL'             => 'Illuminate\Support\Facades\URL',
         'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
-
+        'Entrust'         => 'Zizaco\Entrust\EntrustFacade',
+        'Confide'    => 'Zizaco\Confide\Facade',
+        'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
     ),
 
 );
