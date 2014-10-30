@@ -12,7 +12,6 @@ class ActivitiesTableSeeder extends Seeder {
         $updatedAt = $faker->dateTimeThisYear($activityDate);
         $createdAt = $faker->dateTimeThisYear($updatedAt);
 
-        //insert some dummy records
         DB::table('activities')->insert(
             array(
                 array(
@@ -42,7 +41,7 @@ class ActivitiesTableSeeder extends Seeder {
                      use of vibrant colors and her nod to folk art paintings. Members of the community are welcome to visit
                      the altar, remember a deceased friend, and partake in traditional bread. Exhibition on view through 
                      Nov. 9. Free and open to the public.',
-                    'image_path'=>'Url', 
+                    'image_path'=>'http://lorempixel.com/400/200/', 
                     'price'=>'0'
                 ),
                 array(
@@ -53,7 +52,7 @@ class ActivitiesTableSeeder extends Seeder {
                     'title'=>'Museum and Special Exhibition Highlights',
                     'body'=>'Free gallery talks by SAMA docents are based on the works of art found in the Museum’s collections
                      and special exhibitions.',
-                    'image_path'=>'Url',
+                    'image_path'=>'http://lorempixel.com/400/200/',
                     'price'=>'2'
                 ),
                 array(
@@ -66,7 +65,7 @@ class ActivitiesTableSeeder extends Seeder {
                     of all horror anthology films: “Creepshow”. This creep-fest is full of cockroaches, “dead” beat dads, and a 
                     zombie-ghost played by Ted Danson. It also includes a star studded cast including, Danson, Hal Holbrook, 
                     Adrienne Barbeau, Ed Harris and E.G. Marshal.',
-                    'image_path'=>'Url',
+                    'image_path'=>'http://lorempixel.com/400/200/',
                     'price'=>'2'
                 ),
                 array(
@@ -83,7 +82,7 @@ class ActivitiesTableSeeder extends Seeder {
                     beverages free of charge alongside complimentary food from a fleet of unique and local food trucks, as well as music 
                     by the Flying Balalaika Brothers. There will also be a variety of fun activities including a roving mentalist named 
                     Giani, exciting games like the Dunk Tank, Master Striker, and Super Football Toss, and so much more.',
-                    'image_path'=>'Url',
+                    'image_path'=>'http://lorempixel.com/400/200/',
                     'price'=>'2'
                 ),
 
@@ -112,7 +111,7 @@ class ActivitiesTableSeeder extends Seeder {
                     Hayes Carll, Thomas Rhett, The Dirty River Boys, Two Tons of Steel, and many more. They released their debut self-produced EP in May 
                     2011, and then recorded their debut album Heading South with producer/Blue October bassist Matt Noveskey, released in late 2012 to
                     glowing reviews.',
-                    'image_path'=>'Url',
+                    'image_path'=>'http://lorempixel.com/400/200/',
                     'price'=>'2'
                 ),
 
@@ -125,7 +124,7 @@ class ActivitiesTableSeeder extends Seeder {
                     'body'=>'The American produced, Spanish-language horror film, Dracula, was filmed at nights on the same sets that were being used 
                     during the day for the 1931 English-language film of the same name. Directed by George Melford, starring Carlos Villarias, Lupita 
                     Tovar, and Barry Norton.',
-                    'image_path'=>'Url', 
+                    'image_path'=>'http://lorempixel.com/400/200/', 
                     'price'=>'3'
                 ),
                 array(
@@ -137,7 +136,7 @@ class ActivitiesTableSeeder extends Seeder {
                     'body'=>'The American produced, Spanish-language horror film, Dracula, was filmed at nights on the same sets that were being used 
                     during the day for the 1931 English-language film of the same name. Directed by George Melford, starring Carlos Villarias, Lupita 
                     Tovar, and Barry Norton.',
-                    'image_path'=>'Url', 
+                    'image_path'=>'http://lorempixel.com/400/200/', 
                     'price'=>'3'
                 )
             )
