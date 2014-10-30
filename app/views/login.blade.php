@@ -9,24 +9,9 @@
     <div class="social-icons">
          <div class="col_1_of_f span_1_of_f"><a href="#">
           
-            <ul class='facebook'>
-                <i class="fb"></i>
-                {{ link_to_action('AuthController@loginWithFacebook', 'Connect with Facebook') }} 
-                <div class='clear'> </div>
-            </ul>
-            </a>
-         </div> 
-         <div class="col_1_of_f span_1_of_f"><a href="#">
-            <ul class='twitter'>
-              <i class="tw"> </i>
-              <li>Connect with Twitter</li>
-              <div class='clear'> </div>
-            </ul>
-            </a>
-        </div>
         <div class="clear"> </div>
       </div>
-      <h2>or Login through Seek City</h2>
+      
        {{ Form::open(array('action' => 'UsersController@getLogin')) }}
           <div class="form-group">
            <div class="lable-2">

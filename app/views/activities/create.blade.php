@@ -1,5 +1,9 @@
 @extends('layouts.master')
- 
+
+@section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+@stop
+
 @section('title')
 <title>Create an activity</title>
 @stop

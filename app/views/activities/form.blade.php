@@ -19,7 +19,7 @@
 </div>
 <div class='form-group'>
     {{ Form::label('venue') }}
-    {{ Form::select('venue', array_pluck($venues), ['class' => 'form-control', 'id' => 'venue']) }}
+    {{ Form::select('venue', $venues, ['class' => 'form-control', 'id' => 'venue']) }}
     {{ Form::label('newVenue', 'Create a new venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
 </div>
 <div class='form-group'>

@@ -190,22 +190,26 @@
             var geocoder = new google.maps.Geocoder();
             var address = '';
             var m = 0;
+            var obj;
             var x;
             
+            
             markers = {{ $activities->toJson() }};
-            for(x = 0; x < markers.data.length; x++){
-                address = markers.data[x].address + ", " + markers.data[x].city + ", " + markers.data[x].state + ", " + markers.data[x].zipcode;
-                geocoder.geocode( { 'address': address }, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        markers.data[m].pin = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            title: markers.data[m].title
-                        });
-                    }
-                    
-                    m++;
-                });
+            for(obj = 0; obj < markers.data.length; obj++) {
+                for(x = 0; x < this.data.length; x++){
+                    address = markers.data[x].address + ", " + markers.data[x].city + ", " + markers.data[x].state + ", " + markers.data[x].zipcode;
+                    geocoder.geocode( { 'address': address }, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            markers.data[m].pin = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map,
+                                title: markers.data[m].title
+                            });
+                        }
+                        
+                        m++;
+                    });
+                }
             }
         });
 
