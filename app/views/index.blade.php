@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+<title>Welcome To Seek City</title>
+@stop
+
 @section('top-script')
 <link rel="stylesheet" href="{{ asset('/css/jquery.tagsinput.css'); }}">
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
@@ -99,23 +103,26 @@
         });
         
         $(".queryButtonMood").on('click', function(e) {
+            $("#mood").remove();
+            $('<input type="hidden" id="mood" name="mood">').appendTo("#filterForm");
             tag = $(this).data('title');
             $('#fiterStack').addTag(tag);
             mood = [];
             mood.push(tag);
-
         });
         
         $(".queryButtonCategory").on('click', function(e) {
+            $("#category").remove();
+            $('<input type="hidden" id="category" name="category">').appendTo("#filterForm");
             tag = $(this).data('title');
             category = [];
             category.push(tag);
-
         });
         
         $(".queryButtonPrice").on('click', function(e) {
+            $("#price").remove();
+            $('<input type="hidden" id="price" name="price">').appendTo("#filterForm");
             tag = $(this).data('title');
-            console.log(tag);
             switch(tag) {
                 case 'Free':
                     tag = 0;
@@ -133,12 +140,10 @@
                     tag = 4;
                     break;
                 default:
-                    tag = 'uh oh';
                     break;
             }
             price = [];
             price.push(tag);
-
         });
         
         $("#activityFilter").click(function(e) {

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Activities
+<title>Activities</title>
 @stop
 
 @section('content')
