@@ -11,20 +11,24 @@ class ActivitiesController extends \BaseController {
     {
         $query = DB::table('activities')->select('*');
         
-            if (Input::has('search')) {
-                $search = Input::get('search');
-                $query->where('title', 'like', "%$search%");
-                $query->orWhere('body', 'like', "%$search%");
-            }
-            // if (Session::has('mood')) {
-            //     $mood = Session::get('mood');
-            // }
-            // if (Session::has('category')) {
-            //     $category = Session::get('category');
-            // }
-            // if (Session::has('price')) {
-            //     $price = Session::get('price');
-            // }
+        if (Input::has('mood')) {
+            $query->whereHas('mood', function($q) {
+                $q->where('mood', '=', "%" . Input::get('mood') . "%");
+            });
+        }
+        
+        if (Input::has('category')) {
+            $query->whereHas('category', function($q) {
+                $q->where('category', '=', "%" . Input::get('category') . "%");
+            });
+        }
+        
+        if (Input::has('search')) {
+            $search = Input::get('search');
+            $query->where('title', 'like', "%$search%");
+            $query->orWhere('body', 'like', "%$search%");
+        }
+
         $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
