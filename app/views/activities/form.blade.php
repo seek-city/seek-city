@@ -10,28 +10,22 @@
 </div>
 <div class='form-group'>
     {{ Form::label('price', 'Price:') }}
-    {{ Form::select('price', ['Free','$ = under $10','$$ = $11-$30', '$$$ = $31- $60', '$$$$ = above $61']) }}
+    {{ Form::select('price', ['Free','$ = under $10','$$ = $11-$30', '$$$ = $31- $60', '$$$$ = above $61'], 'Free', ['class' => 'form-control']) }}
     {{ $errors->first('price', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
     {{ Form::label('activity_date', 'When') }}
     {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
+    {{ $errors->first('activity_date', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
-    {{ Form::label('address', 'Address:') }}
-    {{ Form::text('address', Input::old('address'), ['class' => 'form-control', 'id' => 'address']) }}
-    {{ Form::label('city', 'City:') }}
-    {{ Form::text('city', Input::old('city'), ['class' => 'form-control', 'id' => 'city']) }}
-    {{ Form::label('state', 'State:') }}
-    {{ Form::text('state', Input::old('state'), ['class' => 'form-control', 'id' => 'state']) }}
-    {{ Form::label('zipcode', 'Zipcode:') }}
-    {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control', 'id' => 'zipcode']) }}
-    <!--map-->
-    <div id="map_canvas" class="map"></div> 
-    <!--/map-->
-    
+    <div id="venueSelect">
+        {{ Form::label('venue', 'Choose an Existing Venue') }}
+        {{ Form::select('venue', $venues, isset($activity) ? $activity->venue_id : '', ['class' => 'form-control', 'id' => 'venue']) }}
+    </div>
+    {{ Form::label('newVenue', 'Create a New Venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
+    {{ Form::text('venueName', Input::old('venueName'), ['class' => 'form-control', 'id' => 'venueName', 'placeholder' => 'Add a venue...']) }}
 </div>
-
 <div class='form-group'>
     {{ Form::label('category_options', 'Categories:') }}
     {{ Form::select('category_options[]', $category_options, isset($activity) ? Input::old('category_options', $activity->categories()->lists('category_id')) : '', ['class' => 'form-control', 'multiple']) }}

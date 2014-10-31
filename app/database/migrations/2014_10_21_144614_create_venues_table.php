@@ -22,8 +22,8 @@ class CreateVenuesTable extends Migration {
             $table->char('zipcode', 5);
             $table->string('phone_number')->nullable();
             $table->boolean('parking_available')->nullable();
-            $table->string('open_hour')->nullable();
-            $table->string('close_hour')->nullable();
+            $table->time('open_hour')->nullable();
+            $table->time('close_hour')->nullable();
             $table->string('website_url')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('google_url')->nullable();

@@ -2,6 +2,14 @@
 
 class ActivitiesController extends \BaseController {
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->beforeFilter('auth', array('except' => array('index','show')));
+        $this->beforeFilter('author', array('on' => 'edit'));
+    }
+
     /**
      * Display a listing of activities
      *
@@ -9,48 +17,32 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        $query = DB::table('activities')->select('*');
-        // $search = Input::get('search');
-        // $mood = Input::get('mood');
-        // $category = Input::get('category');
-        // $price = Input::get('price');
+        $query = Activity::with(array('moods', 'categories'))->where('activity_date', '>=', new DateTime('today'));
         
-        // $activities = Activity::with(array(
-        //     'mood',
-        //     'category'
-        //     )
-        // );
+        if (Input::has('search')) {
+            $query->where('title', 'like', '%' . Input::get('search') . '%');
+        }
         
-        // $activities->whereHas('moods', function($q) use ($mood) {
-        //     $q->where('name', 'like', $mood);
-        // });
+        if (Input::has('mood')) {
+            $query->whereHas('moods', function($q) {
+                $q->where('name', '=', Input::get('mood'));
+            });
+        }
         
+        if (Input::has('category')) {
+            $query->whereHas('categories', function($q) {
+                $q->where('name', '=', Input::get('category'));
+            });
+        }
         
-        // $query = self::whereHas('')
-            // if (Input::has('search')) {
-            //     $search = Input::get('search');
-            //     $query->where('title', 'like', "%$search%");
-            //     $query->orWhere('body', 'like', "%$search%");
-            // }
-            // $mood = Input::get('mood');
-            // if (!is_null($mood)) {
-            //     $activities = Activity::whereHas('moods', function($q) {
-                    
-            //         $q->where('name', 'like', "$mood");
-            //     })->get();
-            // }
+        if (Input::has('price')) {
+            $query->where('price', '=', Input::get('price'));
+        }
 
-            // if (Input::has('category')) {
-            //     $category = Input::get('category');
-            // }
-            // if (Input::has('price')) {
-            //     $price = Input::get('price');
-            // }
-        $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
+        $activities = $query->orderBy('activity_date', 'ASC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }
-    
 
     /**
      * Show the form for creating a new activity
@@ -59,18 +51,15 @@ class ActivitiesController extends \BaseController {
      */
     public function create()
     {
-        // SHOW CREATE FORM FOR AUTHENTICATED USERS
-        if (Auth::check()) {
 
-            // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
-            $category_options = Category::lists('name', 'id');
-            $mood_options = Mood::lists('name', 'id');
-            $data = ['category_options' => $category_options, 'mood_options' => $mood_options];
+        // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
+        $category_options = Category::lists('name', 'id');
+        $mood_options = Mood::lists('name', 'id');
+        $venues = Venue::lists('name', 'id');
 
-            return View::make('activities.create', $data);
-        }
-        // SEND NON-AUTHENTICATED USER TO ACTIVITIES INDEX
-        return View::make('activities.index');
+        $data = ['category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
+
+        return View::make('activities.create', $data);
 
     }
 
@@ -119,15 +108,16 @@ class ActivitiesController extends \BaseController {
         // GRAB CURRENT ACTIVITY INFORMATION
         $activity = Activity::find($id);
 
-        // SHOW EDIT FORM FOR AUTHENTICATED USERS
-        if (Auth::check() && (Auth::id() == $activity->user->id)) {
+        // // SHOW EDIT FORM FOR AUTHENTICATED USERS
+        // if (Auth::check() && (Auth::id() == $activity->user->id)) {
 
             // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
             $category_options = Category::lists('name', 'id');
             $mood_options = Mood::lists('name', 'id');
-            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options];
+            $venues = Venue::lists('name', 'id');
+            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
             return View::make('activities.edit', $data);
-        }
+        // }
         // SEND NON-AUTHENTICATED USERS TO ACTIVITIES INDEX
         return Redirect::to('/');
     }
@@ -155,7 +145,7 @@ class ActivitiesController extends \BaseController {
             $uploadSuccess = $file->move($destination_path, $filename);
             $activity->image_path = '/img-upload/' . $filename;
         }
-    
+
         return $this->saveActivity($activity);
     }
 
@@ -173,7 +163,7 @@ class ActivitiesController extends \BaseController {
         catch (ModelNotFoundException $e) {
             App::abort(404);
         }
-        
+
         $old_image = public_path() . $activity->image_path;
         if (File::exists($old_image)) {
             File::delete($old_image);
@@ -182,7 +172,7 @@ class ActivitiesController extends \BaseController {
         $activity->delete(); 
         Log::info('Activity deleted successfully.');
         $message = "So long, $activity->title!";
-        
+
         if (Request::ajax()) {
             return Response::json(array(
                 'success' => true,
@@ -196,46 +186,119 @@ class ActivitiesController extends \BaseController {
     }
 
 
-public function saveActivity(Activity $activity)
+    protected function saveActivity(Activity $activity)
     {
         $validator = Validator::make(Input::all(), Activity::$rules);
 
         if ($validator->fails()){
             Session::flash('errorMessage', 'Your activity needs a title and body');
             Log::error('Activities validator failed', Input::all());
-            return Redirect::back()->withInput();
+            return Redirect::back()->withInput()->withErrors($validator);
 
         } else {
+            
             $activity->title = Input::get('title');
             $activity->body = Input::get('body');
             $activity->price = Input::get('price');
             $activity->activity_date = new Carbon(Input::get('activity_date'));
-            $activity->address = Input::get('address');
-            $activity->city = Input::get('city');
-            $activity->state = Input::get('state');
-            $activity->zipcode = Input::get('zipcode');
+
             $categories = Input::get('category_options');
             $moods = Input::get('mood_options');
+
             $activity->user_id = Auth::id();
+            $activity->venue_id = 0;
             $activity->save();
             $id = $activity->id;
 
             // ASSOCIATE ACTIVITY TO ITS CATEGORIES IN THE ACTIVITY_CATEGORY TABLE
-            foreach ($categories as $categoryId) {
-                $activity->categories()->attach($categoryId);
+            if($categories) {
+                foreach ($categories as $categoryId) {
+                    $activity->categories()->attach($categoryId);
+                }
+            }
+            // ASSOCIATE ACTIVITY TO ITS MOODS IN THE ACTIVITY_MOOD TABLE
+            if($moods) {
+                foreach ($moods as $moodId) {
+                    $activity->moods()->attach($moodId);
+                }
+            }
+            // IF USER HAS SELECTED VENUE FROM LIST, SAVE THAT VENUE ID TO ACTIVITIES POST
+            if (Input::get('newVenue') == null) {
+                // dd(Input::get('venue'));
+                $venueId = Input::get('venue');
+
+                $activity->venue_id = $venueId;
+                $activity->save();
+            }
+            // IF USER HAS CHOSEN TO CREATE A NEW VENUE, SAVE ACTIVITY WITH NO VENUE
+            // LOAD CREATE VENUE FORM AND THEN WHEN COMPLETED SAVE NEW VENUE ID TO ACTIVITIY.
+            elseif (Input::get('newVenue') != null) {
+                Session::put('venueName',Input::get('venueName'));
+                Session::put('activityId', $id);
+                
+                return Redirect::action('VenuesController@create');
             }
 
-            // ASSOCIATE ACTIVITY TO ITS MOODS IN THE ACTIVITY_MOOD TABLE
-            foreach ($moods as $moodId) {
-                $activity->moods()->attach($moodId);
-            }
-            
             Log::info('Activity was sucessfully saved', Input::all());
 
             $message = 'Activity created sucessfully';
             Session::flash('successMessage', $message);
-
+            
             return Redirect::action('ActivitiesController@show', $id);
+        }
+    }
+
+    public function like()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+            if (!$article->liked()) {
+                $article->like();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK'
+                ));
+            }
+        }
+        return App::abort(403);
+    }
+
+    public function unlike()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+
+            if ($article->liked()) {
+                $article->unlike();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK'
+                ));
+            }
+        }
+        return App::abort(403);
+    }
+    
+    public function isLiked()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+            
+            if ($article->liked()) {
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'isLiked' => true
+                ));
+            }
+            return Response::json(array(
+                'success' => true,
+                'status' => 'OK',
+                'isLiked' => false
+            ));
         }
     }
 }

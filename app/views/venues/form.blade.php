@@ -1,7 +1,7 @@
 	<div class='form-group'>
-        {{ Form::label('venue_name', 'Name:') }}
-        {{ Form::text('venue_name', Input::old('venue_name'), ['class' => 'form-control', 'id' => 'venue_name']) }}
-        {{ $errors->first('venue_name', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('name', 'Name:') }}
+        {{ Form::text('name', Session::has('venueName') ? Session::get('venueName') : Input::old('name'), ['class' => 'form-control', 'id' => 'name']) }}
+        {{ $errors->first('name', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
         {{ Form::label('address', 'Address:') }}
@@ -19,35 +19,35 @@
         {{ $errors->first('state', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('zip', 'Zip:') }}
-        {{ Form::text('zip', Input::old('zip'), ['class' => 'form-control','id' => 'zip']) }}
-        {{ $errors->first('zip', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('zipcode', 'Zipcode:') }}
+        {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control','id' => 'zipcode']) }}
+        {{ $errors->first('zipcode', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('phone', 'Phone:') }}
-        {{ Form::text('phone', Input::old('phone'), ['class' => 'form-control','id' => 'phone']) }}
-        {{ $errors->first('phone', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('phone_number', 'Phone:') }}
+        {{ Form::text('phone_number', Input::old('phone_number'), ['class' => 'form-control','id' => 'phone_number']) }}
+        {{ $errors->first('phone_number', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('website', 'Website:') }}
-        {{ Form::text('website', Input::old('website'), ['class' => 'form-control','id' => 'website']) }}
-        {{ $errors->first('website', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('website_url', 'Website:') }}
+        {{ Form::text('website_url', Input::old('website_url'), ['class' => 'form-control','id' => 'website_url']) }}
+        {{ $errors->first('website_url', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('parking', 'Parking:') }} 
-        {{ Form::radio('parking', 'Yes') }} {{ Form::label('parking', 'Yes') }}
-        {{ Form::radio('parking', 'No') }} {{ Form::label('parking', 'No') }}
-        {{ $errors->first('parking', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('parking_available', 'Parking:') }} 
+        {{ Form::radio('parking_available', 'Yes') }} {{ Form::label('parking_available', 'Yes') }}
+        {{ Form::radio('parking_available', 'No') }} {{ Form::label('parking_available', 'No') }}
+        {{ $errors->first('parking_available', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
-        {{ Form::label('opening_hour', 'Open:') }}
-        {{ Form::text('opening_hour', '', ['class' => 'form-control', 'data-timepicker' => 'timepicker']) }}
-        {{ $errors->first('opening_hour', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('open_hour', 'Open:') }}
+        {{ Form::text('open_hour', '', ['class' => 'form-control', 'id' => "open_hour"]) }}
+        {{ $errors->first('open_hour', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('closing_hour', 'Close:') }}
-        {{ Form::text('closing_hour', '', ['class' => 'form-control', 'data-timepicker' => 'timepicker']) }}
-        {{ $errors->first('closing_hour', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('close_hour', 'Close:') }}
+        {{ Form::text('close_hour', '', ['class' => 'form-control', 'id' => 'close_hour']) }}
+        {{ $errors->first('close_hour', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
         {{ Form::label('facebook_url', 'Facebook:') }}
@@ -55,9 +55,9 @@
         {{ $errors->first('facebook_url', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
-        {{ Form::label('google_places_url', 'Google+:') }}
-        {{ Form::text('google_places_url', Input::old('google_places_url'), ['class' => 'form-control','id' => 'google_places_url']) }}
-        {{ $errors->first('google_places_url', '<br><div class="alert alert-info">:message</div>') }}
+        {{ Form::label('google_url', 'Google+:') }}
+        {{ Form::text('google_url', Input::old('google_url'), ['class' => 'form-control','id' => 'google_url']) }}
+        {{ $errors->first('google_url', '<br><div class="alert alert-info">:message</div>') }}
     </div>
       <div class='form-group'>
         {{ Form::label('twitter_handle', 'Twitter:') }}
@@ -65,6 +65,6 @@
         {{ $errors->first('twitter_handle', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
-        {{ Form::label('image_path', 'Image:') }}
-        {{ Form::file('image_path', ['id' => 'image_path']) }}
+        {{ Form::label('image_url', 'Image:') }}
+        {{ Form::file('image_url', ['id' => 'image_url']) }}
     </div>

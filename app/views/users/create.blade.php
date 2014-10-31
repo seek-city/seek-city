@@ -4,6 +4,10 @@
 Sign Up
 @stop
 
+@section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+@stop
+
 @section('content')
 <div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Sign Up</h2>

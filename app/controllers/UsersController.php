@@ -28,7 +28,7 @@ class UsersController extends Controller
     public function postIndex()
     {
         $repo = App::make('UserRepository');
-        $user = $repo->signup(Input::all());
+        $user = $repo->signup(Input::except('image_path'));
 
         if ($user->id) {
             if (Config::get('confide::signup_email')) {

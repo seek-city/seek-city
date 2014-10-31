@@ -22,14 +22,11 @@
                     {{ link_to_action('ActivitiesController@create', 'New Activity'); }}
                 </li>
                 <li>
-                    {{ link_to_action('UsersController@getLogout', 'Log Out'); }}
-                </li>
-<!--                 <li>
-                    <a href="/categories/manage">Manage Categories</a>
+                    {{ link_to_action('VenuesController@create', 'New Venue'); }}
                 </li>
                 <li>
-                    <a href="/moods/manage">Manage Moods</a>
-                </li> -->
+                    {{ link_to_action('UsersController@getLogout', 'Log Out'); }}
+                </li>
                 @else
                 <li>
                     {{ link_to_action('UsersController@getCreate', 'Sign Up') }}
