@@ -1,6 +1,7 @@
 <?php
 
 class Venue extends BaseModel {
+    use Conner\Likeable\LikeableTrait;
 
     protected $table = 'venues';
     
