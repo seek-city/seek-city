@@ -31,10 +31,16 @@ $(document).ready(function() {
         formatTime:'g:i a',
         theme: 'dark'
     });
-    $('#map_open').on('click', function () {
-        "use strict";
-        $("#cont").addClass("none");
-        $("#Show_cont").removeClass("none");
+    $('#venueName').hide();
+    $('#newVenue').change(function(){
+        if(this.checked) {
+            $('#venueName').fadeIn('slow');
+            $('#venueSelect').fadeOut('slow');
+        }
+        else {
+            $('#venueName').fadeOut('slow');
+            $('#venueSelect').fadeIn('slow');
+        }
     });
     
 });

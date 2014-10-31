@@ -2,6 +2,13 @@
 
 class ActivitiesController extends \BaseController {
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->beforeFilter('auth', array('except' => array('index','show')));
+    }
+
     /**
      * Display a listing of activities
      *
@@ -9,7 +16,7 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        $query = Activity::with(array('moods', 'categories'));
+        $query = Activity::with(array('moods', 'categories'))->where('activity_date', '>=', new DateTime('today'));
         
         if (Input::has('search')) {
             $query->where('title', 'like', '%' . Input::get('search') . '%');
@@ -31,7 +38,7 @@ class ActivitiesController extends \BaseController {
             $query->where('price', '=', Input::get('price'));
         }
 
-        $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
+        $activities = $query->orderBy('activity_date', 'ASC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }
@@ -43,20 +50,15 @@ class ActivitiesController extends \BaseController {
      */
     public function create()
     {
-        // SHOW CREATE FORM FOR AUTHENTICATED USERS
-        if (Auth::check()) {
 
-            // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
-            $category_options = Category::lists('name', 'id');
-            $mood_options = Mood::lists('name', 'id');
-            $venues = Venue::lists('name', 'id');
+        // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
+        $category_options = Category::lists('name', 'id');
+        $mood_options = Mood::lists('name', 'id');
+        $venues = Venue::lists('name', 'id');
 
-            $data = ['category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
+        $data = ['category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
 
-            return View::make('activities.create', $data);
-        }
-        // SEND NON-AUTHENTICATED USER TO ACTIVITIES INDEX
-        return View::make('activities.index');
+        return View::make('activities.create', $data);
 
     }
 
@@ -190,9 +192,10 @@ public function saveActivity(Activity $activity)
         if ($validator->fails()){
             Session::flash('errorMessage', 'Your activity needs a title and body');
             Log::error('Activities validator failed', Input::all());
-            return Redirect::back()->withInput();
+            return Redirect::back()->withInput()->withErrors($validator);
 
         } else {
+            
             $activity->title = Input::get('title');
             $activity->body = Input::get('body');
             $activity->price = Input::get('price');
@@ -202,28 +205,38 @@ public function saveActivity(Activity $activity)
             $moods = Input::get('mood_options');
 
             $activity->user_id = Auth::id();
-            // $activity->venue_id = 0;
+            $activity->venue_id = 0;
             $activity->save();
             $id = $activity->id;
 
             // ASSOCIATE ACTIVITY TO ITS CATEGORIES IN THE ACTIVITY_CATEGORY TABLE
-            foreach ($categories as $categoryId) {
-                $activity->categories()->attach($categoryId);
+            if($categories) {
+                foreach ($categories as $categoryId) {
+                    $activity->categories()->attach($categoryId);
+                }
             }
-
             // ASSOCIATE ACTIVITY TO ITS MOODS IN THE ACTIVITY_MOOD TABLE
-            foreach ($moods as $moodId) {
-                $activity->moods()->attach($moodId);
+            if($moods) {
+                foreach ($moods as $moodId) {
+                    $activity->moods()->attach($moodId);
+                }
             }
+            // IF USER HAS SELECTED VENUE FROM LIST, SAVE THAT VENUE ID TO ACTIVITIES POST
+            if (Input::get('newVenue') == null) {
+                // dd(Input::get('venue'));
+                $venueId = Input::get('venue');
 
-            if (Input::get('newVenue')) {
-                Session::put('venueName',Input::get('venue'));
+                $activity->venue_id = $venueId;
+                $activity->save();
+            }
+            // IF USER HAS CHOSEN TO CREATE A NEW VENUE, SAVE ACTIVITY WITH NO VENUE
+            // LOAD CREATE VENUE FORM AND THEN WHEN COMPLETED SAVE NEW VENUE ID TO ACTIVITIY.
+            elseif (Input::get('newVenue') != null) {
+                Session::put('venueName',Input::get('venueName'));
                 Session::put('activityId', $id);
-                $activity->venue_id = 0;
                 
                 return Redirect::action('VenuesController@create');
             }
-            
 
             Log::info('Activity was sucessfully saved', Input::all());
 

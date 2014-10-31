@@ -100,7 +100,7 @@
                     <article class="color">
                         @forelse($activities as $activity)
                         <h3>{{{ $activity->title }}}</h3>
-                            <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date }}} </p>
+                            <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date->format(Activity::DATE_FORMAT) }}} </p>
 
                             <img class='img-responsive' src="{{{ $activity->image_path }}}" alt="">
 

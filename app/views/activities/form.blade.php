@@ -16,11 +16,15 @@
 <div class='form-group'>
     {{ Form::label('activity_date', 'When') }}
     {{ Form::text('activity_date', Input::old('activity_date'), ['class' => 'form-control', 'id' => 'datetimepicker']) }}
+    {{ $errors->first('activity_date', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
-    {{ Form::label('venue') }}
-    {{ Form::select('venue', $venues, ['class' => 'form-control', 'id' => 'venue']) }}
-    {{ Form::label('newVenue', 'Create a new venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
+    <div id="venueSelect">
+        {{ Form::label('venue', 'Choose an Existing Venue') }}
+        {{ Form::select('venue', $venues, ['class' => 'form-control', 'id' => 'venue']) }}
+    </div>
+    {{ Form::label('newVenue', 'Create a New Venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
+    {{ Form::text('venueName', Input::old('venueName'), ['class' => 'form-control', 'id' => 'venueName', 'placeholder' => 'Add a venue...']) }}
 </div>
 <div class='form-group'>
     {{ Form::label('category_options', 'Categories:') }}
