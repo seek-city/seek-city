@@ -10,7 +10,7 @@
 </div>
 <div class='form-group'>
     {{ Form::label('price', 'Price:') }}
-    {{ Form::select('price', ['Free','$ = under $10','$$ = $11-$30', '$$$ = $31- $60', '$$$$ = above $61']) }}
+    {{ Form::select('price', ['Free','$ = under $10','$$ = $11-$30', '$$$ = $31- $60', '$$$$ = above $61'], 'Free', ['class' => 'form-control']) }}
     {{ $errors->first('price', '<br><div class="alert alert-info">:message</div>') }}
 </div>
 <div class='form-group'>
@@ -21,7 +21,7 @@
 <div class='form-group'>
     <div id="venueSelect">
         {{ Form::label('venue', 'Choose an Existing Venue') }}
-        {{ Form::select('venue', $venues, ['class' => 'form-control', 'id' => 'venue']) }}
+        {{ Form::select('venue', $venues, isset($activity) ? $activity->venue_id : '', ['class' => 'form-control', 'id' => 'venue']) }}
     </div>
     {{ Form::label('newVenue', 'Create a New Venue:') }} {{ Form::checkbox('newVenue', 1, false, ['id' => 'newVenue']) }}
     {{ Form::text('venueName', Input::old('venueName'), ['class' => 'form-control', 'id' => 'venueName', 'placeholder' => 'Add a venue...']) }}
