@@ -11,21 +11,9 @@ class ActivitiesTableSeeder extends Seeder {
             $activityDate = $faker->dateTimeThisYear();
             $updatedAt = $faker->dateTimeThisYear($activityDate);
             $createdAt = $faker->dateTimeThisYear($updatedAt);
-<<<<<<< HEAD
-            Activity::create([
-                'title'      => $faker->catchPhrase,
-                'body'       => $faker->paragraph(4),
-                'updated_at' => $updatedAt,
-                'created_at' => $createdAt,
-                'activity_date' => $activityDate,
-                'image_path' => "http://lorempixel.com/400/200/",
-                'price'      => 0,
-                'user_id'    => 1
-            ]);
-=======
 
         //delete users table records
-        DB::table('activities')->truncate();
+        // DB::table('activities')->truncate();
         //insert some dummy records
         DB::table('activities')->insert(array(
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
@@ -46,7 +34,7 @@ class ActivitiesTableSeeder extends Seeder {
             ),
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Dia de los Muertos: La Ofrenda',
             'body'=>'The Southwest School of Art celebrates Dia de los Muertos with an installation “La Ofrenda”
              by artist Kathy Sosa. The installation will re-interpret a traditional altar with Sosa’s trademark 
@@ -60,7 +48,7 @@ class ActivitiesTableSeeder extends Seeder {
 
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Museum and Special Exhibition Highlights',
             'body'=>'Free gallery talks by SAMA docents are based on the works of art found in the Museum’s collections
              and special exhibitions.',
@@ -69,7 +57,7 @@ class ActivitiesTableSeeder extends Seeder {
             ),
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Creepshow',
             'body'=>'Prepare to be thoroughly creeped out when Stephen King and George Romero come together for the pinnacle 
             of all horror anthology films: “Creepshow”. This creep-fest is full of cockroaches, “dead” beat dads, and a 
@@ -81,7 +69,7 @@ class ActivitiesTableSeeder extends Seeder {
             ),
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'The Do Seum Hosts Celebratory Bash',
             'body'=>'As the exterior building process comes to an end, The Do Seum is celebrating this significant occasion 
             with the Construction Completion Bash on Wednesday, October 29. Guests will be the first to experience The Do Seum 
@@ -98,7 +86,7 @@ class ActivitiesTableSeeder extends Seeder {
 
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Moonlight Social',
             'body'=>'To do big things, you have to make big noise. Up-and-coming Austin country band Moonlight Social is doing 
             just that. Since being founded in early 2011, the band played a SXSW showcase after being selected by 9-time 
@@ -126,7 +114,7 @@ class ActivitiesTableSeeder extends Seeder {
 
              array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Slab Cinema: Spanish Dracula',
             'body'=>'The American produced, Spanish-language horror film, Dracula, was filmed at nights on the same sets that were being used 
             during the day for the 1931 English-language film of the same name. Directed by George Melford, starring Carlos Villarias, Lupita 
@@ -138,7 +126,7 @@ class ActivitiesTableSeeder extends Seeder {
              
             array('updated_at' => $faker->dateTimeThisYear($activityDate),
             'created_at' => $faker->dateTimeThisYear($updatedAt),
-            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1
+            'activity_date' => $faker->dateTimeThisYear(),'user_id' => 1,
             'title'=>'Slab Cinema: Spanish Dracula',
             'body'=>'The American produced, Spanish-language horror film, Dracula, was filmed at nights on the same sets that were being used 
             during the day for the 1931 English-language film of the same name. Directed by George Melford, starring Carlos Villarias, Lupita 
@@ -146,22 +134,7 @@ class ActivitiesTableSeeder extends Seeder {
             'image_path'=>'Url', 
             'price'=>'3', 'address'=>'3100 Roosevelt ' , 
             'city'=>'San Antonio', 'state'=> 'TX', 'zipcode'=>'78215',
-            ),
-
-
-
-
-                
-
->>>>>>> a8ded7effc5a43a595cd4001577646d488c23e71
+            )
+        ));
         }
     }
-
-}
-<<<<<<< HEAD
-=======
-                'updated_at' => $faker->dateTimeThisYear($activityDate),
-                'created_at' => $faker->dateTimeThisYear($updatedAt),
-                'activity_date' => $faker->dateTimeThisYear(),
-                'user_id'    => 1
->>>>>>> a8ded7effc5a43a595cd4001577646d488c23e71

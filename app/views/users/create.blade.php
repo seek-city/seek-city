@@ -8,7 +8,7 @@ Sign Up
 <div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Sign Up</h2>
     <hr>
-    {{ Form::open(['action' => 'UsersController@store', 'method' => 'POST', 'files' => true]) }}
+    {{ Form::open(['action' => 'UsersController@postIndex', 'method' => 'POST', 'files' => true]) }}
 
         @include('users.form')
 

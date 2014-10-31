@@ -24,12 +24,12 @@
                 <li>
                     {{ link_to_action('UsersController@getLogout', 'Log Out'); }}
                 </li>
-                <li>
+<!--                 <li>
                     <a href="/categories/manage">Manage Categories</a>
                 </li>
                 <li>
                     <a href="/moods/manage">Manage Moods</a>
-                </li>
+                </li> -->
                 @else
                 <li>
                     {{ link_to_action('UsersController@getCreate', 'Sign Up') }}

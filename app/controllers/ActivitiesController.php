@@ -9,21 +9,21 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
-        // $query = DB::table('activities')->select('*');
-        $search = Input::get('search');
-        $mood = Input::get('mood');
-        $category = Input::get('category');
-        $price = Input::get('price');
+        $query = DB::table('activities')->select('*');
+        // $search = Input::get('search');
+        // $mood = Input::get('mood');
+        // $category = Input::get('category');
+        // $price = Input::get('price');
         
-        $activities = Activity::with(array(
-            'mood',
-            'category'
-            )
-        );
+        // $activities = Activity::with(array(
+        //     'mood',
+        //     'category'
+        //     )
+        // );
         
-        $activities->whereHas('moods', function($q) use ($mood) {
-            $q->where('name', 'like', $mood);
-        });
+        // $activities->whereHas('moods', function($q) use ($mood) {
+        //     $q->where('name', 'like', $mood);
+        // });
         
         
         // $query = self::whereHas('')
@@ -46,7 +46,7 @@ class ActivitiesController extends \BaseController {
             // if (Input::has('price')) {
             //     $price = Input::get('price');
             // }
-        // $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
+        $activities = $query->orderBy('activity_date', 'DESC')->paginate(10);
 
         return View::make('activities.index', compact('activities'));
     }
