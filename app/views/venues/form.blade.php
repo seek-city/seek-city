@@ -1,6 +1,6 @@
 	<div class='form-group'>
         {{ Form::label('name', 'Name:') }}
-        {{ Form::text('name', $old = Session::has('venueName') ? Session::get('venueName') : Input::old('name'), ['class' => 'form-control', 'id' => 'name']) }}
+        {{ Form::text('name', Session::has('venueName') ? Session::get('venueName') : Input::old('name'), ['class' => 'form-control', 'id' => 'name']) }}
         {{ $errors->first('name', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>

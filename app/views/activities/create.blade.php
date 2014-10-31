@@ -1,5 +1,9 @@
 @extends('layouts.master')
- 
+
+@section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+@stop
+
 @section('title')
 <title>Create an activity</title>
 @stop
@@ -16,7 +20,6 @@
         {{ Form::reset('Reset', ['class' => 'btn btn-default']) }}
         {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
     </div>
-
     {{ Form::close() }}
 </div>
 @stop
@@ -28,11 +31,17 @@ $(document).ready(function() {
         formatTime:'g:i a',
         theme: 'dark'
     });
-    // $('#map_open').on('click', function () {
-    //     "use strict";
-    //     $("#cont").addClass("none");
-    //     $("#Show_cont").removeClass("none");
-    // });
+    $('#venueName').hide();
+    $('#newVenue').change(function(){
+        if(this.checked) {
+            $('#venueName').fadeIn('slow');
+            $('#venueSelect').fadeOut('slow');
+        }
+        else {
+            $('#venueName').fadeOut('slow');
+            $('#venueSelect').fadeIn('slow');
+        }
+    });
     
 });
 </script>
