@@ -112,7 +112,7 @@ class CategoriesController extends \BaseController {
         if ($validator->fails()){
             Session::flash('errorMessage', 'Your category needs a name.');
             Log::error('Category validator failed', Input::all());
-            return Redirect::back()->withInput();
+            return Redirect::back()->withInput()->withErrors($validator);
 
         } else {
 

@@ -2,8 +2,8 @@
 
 class MoodsTableSeeder extends Seeder {
 
-	public function run()
-	{
+        public function run()
+        {
         $mood1 = new Mood();
         $mood1->name = 'Artsy';
         $mood1->save();
@@ -23,6 +23,6 @@ class MoodsTableSeeder extends Seeder {
         $mood5 = new Mood();
         $mood5->name = 'Festive';
         $mood5->save();
-	}
+        }
 
 }

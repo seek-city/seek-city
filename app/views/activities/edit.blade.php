@@ -4,6 +4,10 @@
 <title>Edit Your Activity</title>
 @stop
 
+@section('top-script')
+<link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+@stop
+
 @section('content')
 <div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Edit an Activity</h2>
@@ -27,10 +31,16 @@ $(document).ready(function() {
         formatTime:'g:i a',
         theme: 'dark'
     });
-    $('#map_open').on('click', function () {
-        "use strict";
-        $("#cont").addClass("none");
-        $("#Show_cont").removeClass("none");
+    $('#venueName').hide();
+    $('#newVenue').change(function(){
+        if(this.checked) {
+            $('#venueName').fadeIn('slow');
+            $('#venueSelect').fadeOut('slow');
+        }
+        else {
+            $('#venueName').fadeOut('slow');
+            $('#venueSelect').fadeIn('slow');
+        }
     });
     
 });

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Activities
+<title>Activities</title>
 @stop
 
 @section('content')
@@ -100,7 +100,7 @@ Activities
                     <article class="color">
                         @forelse($activities as $activity)
                         <h3>{{{ $activity->title }}}</h3>
-                            <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date }}} </p>
+                            <p><span class='glyphicon glyphicon-time'></span> {{{ $activity->activity_date->format(Activity::DATE_FORMAT) }}} </p>
 
                             <img class='img-responsive' src="{{{ $activity->image_path }}}" alt="">
 
@@ -190,22 +190,26 @@ Activities
             var geocoder = new google.maps.Geocoder();
             var address = '';
             var m = 0;
+            var obj;
             var x;
             
+            
             markers = {{ $activities->toJson() }};
-            for(x = 0; x < markers.data.length; x++){
-                address = markers.data[x].address + ", " + markers.data[x].city + ", " + markers.data[x].state + ", " + markers.data[x].zipcode;
-                geocoder.geocode( { 'address': address }, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        markers.data[m].pin = new google.maps.Marker({
-                            position: results[0].geometry.location,
-                            map: map,
-                            title: markers.data[m].title
-                        });
-                    }
-                    
-                    m++;
-                });
+            for(obj = 0; obj < markers.data.length; obj++) {
+                for(x = 0; x < this.data.length; x++){
+                    address = markers.data[x].address + ", " + markers.data[x].city + ", " + markers.data[x].state + ", " + markers.data[x].zipcode;
+                    geocoder.geocode( { 'address': address }, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            markers.data[m].pin = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map,
+                                title: markers.data[m].title
+                            });
+                        }
+                        
+                        m++;
+                    });
+                }
             }
         });
 

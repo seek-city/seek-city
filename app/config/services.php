@@ -32,6 +32,11 @@ return array(
 	'client_id' => getenv('FACEBOOK_APP_ID'),
 	'client_secret'=> getenv('FACEBOOK_APP_SECRET'),
 	'redirect' => 'http://seekcity.dev/login'
-	]
+	],
+	
+	'disqus' => array(
+	'secret key' => $_ENV['DISQUS_SECRET']
+	)
+	
 
 );

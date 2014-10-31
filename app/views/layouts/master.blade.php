@@ -19,7 +19,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <!--autorization modal-->
+    
       <a href="#" class="btn btn-danger btn-sm btm-zindex none" id="Show_cont">Show content</a>
     <div class="modal fade" id="autorization">
         <div class="modal-dialog">

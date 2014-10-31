@@ -7,9 +7,6 @@ class Activity extends BaseModel
         'title' => 'required|max:255',
         'body' => 'required',
         'activity_date' => 'required',
-        'price' => 'required',
-        'state' => 'max:2',
-        'zipcode' => 'max:5'
     ];
 
     protected $fillable = [
@@ -18,10 +15,6 @@ class Activity extends BaseModel
         'activity_date',
         'image_path',
         'price',
-        'address',
-        'city',
-        'state',
-        'zipcode'
     ];
     
     public function getDates()
