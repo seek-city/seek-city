@@ -14,6 +14,11 @@
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
+Route::get('/user/{username}', array(
+    'as' => 'profile-user',
+    'uses' => 'ProfileController@user'
+));
+
 // MANAGE CATEGORIES
 Route::get('/categories/manage', 'CategoriesController@manage');
 
@@ -29,6 +34,10 @@ Route::controller( 'users', 'UsersController');
 //oauth routes
 Route::get('login-facebook', 'AuthController@loginWithFacebook');
 Route::post('login-facebook', 'AuthController@loginWithFacebook');
+
+Route::get('isLiked', array('as' => 'isLiked', 'uses' => 'ActivitiesController@isLiked'));
+Route::post('like', array('as' => 'like', 'uses' => 'ActivitiesController@like'));
+Route::post('unlike', array('as' => 'unlike', 'uses' => 'ActivitiesController@unlike'));
 
 /*
 |--------------------------------------------------------------------------

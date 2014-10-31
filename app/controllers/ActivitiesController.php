@@ -7,6 +7,7 @@ class ActivitiesController extends \BaseController {
         parent::__construct();
         
         $this->beforeFilter('auth', array('except' => array('index','show')));
+        $this->beforeFilter('author', array('on' => 'edit'));
     }
 
     /**
@@ -107,8 +108,8 @@ class ActivitiesController extends \BaseController {
         // GRAB CURRENT ACTIVITY INFORMATION
         $activity = Activity::find($id);
 
-        // SHOW EDIT FORM FOR AUTHENTICATED USERS
-        if (Auth::check() && (Auth::id() == $activity->user->id)) {
+        // // SHOW EDIT FORM FOR AUTHENTICATED USERS
+        // if (Auth::check() && (Auth::id() == $activity->user->id)) {
 
             // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
             $category_options = Category::lists('name', 'id');
@@ -116,7 +117,7 @@ class ActivitiesController extends \BaseController {
             $venues = Venue::lists('name', 'id');
             $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
             return View::make('activities.edit', $data);
-        }
+        // }
         // SEND NON-AUTHENTICATED USERS TO ACTIVITIES INDEX
         return Redirect::to('/');
     }
@@ -185,7 +186,7 @@ class ActivitiesController extends \BaseController {
     }
 
 
-public function saveActivity(Activity $activity)
+    protected function saveActivity(Activity $activity)
     {
         $validator = Validator::make(Input::all(), Activity::$rules);
 
@@ -242,7 +243,62 @@ public function saveActivity(Activity $activity)
 
             $message = 'Activity created sucessfully';
             Session::flash('successMessage', $message);
+            
             return Redirect::action('ActivitiesController@show', $id);
+        }
+    }
+
+    public function like()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+            if (!$article->liked()) {
+                $article->like();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK'
+                ));
+            }
+        }
+        return App::abort(403);
+    }
+
+    public function unlike()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+
+            if ($article->liked()) {
+                $article->unlike();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK'
+                ));
+            }
+        }
+        return App::abort(403);
+    }
+    
+    public function isLiked()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $article = Activity::findOrFail($id);
+            
+            if ($article->liked()) {
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'isLiked' => true
+                ));
+            }
+            return Response::json(array(
+                'success' => true,
+                'status' => 'OK',
+                'isLiked' => false
+            ));
         }
     }
 }
