@@ -12,7 +12,7 @@
         <div class="clear"> </div>
       </div>
       
-       {{ Form::open(array('action' => 'UsersController@getLogin')) }}
+       {{ Form::open(array('action' => 'UsersController@postLogin')) }}
           <div class="form-group">
            <div class="lable-2">
                 {{ Form::label('username', 'Username:') }}
