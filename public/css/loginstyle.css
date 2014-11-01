@@ -103,6 +103,34 @@ ul.twitter li{
 ul.twitter:hover{
     background: #71B8ED;
 }
+
+ul.google{
+    list-style:none;
+    padding:0;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    background: #D94430;
+    padding: 12px;
+}
+i.ggl{
+    width:30px;
+    height:30px;
+    background:url(../img/fb.png);
+    float:left;
+    margin-right: 2em;
+}
+ul.google li{
+    color:#fff;
+    font-size:1em;
+    float: left;
+    margin-top: 5px;
+}
+ul.google:hover{
+    background: #40A46F;
+}
+
 span.term a{
     color: #1888A8;
     font-weight: bold;

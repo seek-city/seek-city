@@ -11,7 +11,8 @@
         "frozennode/administrator": "4.12.1",
         "artdarek/oauth-4-laravel": "dev-master",
         "roumen/disqus": "dev-master",
-        "rtconner/laravel-likeable": "dev-master"
+        "rtconner/laravel-likeable": "dev-master",
+        "google/apiclient": "dev-master"
     },
     "require-dev": {
         "way/generators": "~2.6",

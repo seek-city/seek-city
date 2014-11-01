@@ -2,6 +2,7 @@
 
 class Activity extends BaseModel
 {
+    use Conner\Likeable\LikeableTrait;
 
     public static $rules = [
         'title' => 'required|max:255',
