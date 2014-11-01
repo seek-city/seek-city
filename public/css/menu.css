@@ -466,9 +466,14 @@ body{
 }
 
 #filterStackWrap {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
+  position: relative;
+  bottom: 40px;
+  display: block;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 50px;
+  height: 50px;
 }
 
 #filterStackWrap>button {
@@ -479,15 +484,15 @@ body{
   clear:both;
 }
 
-#filterStack {
-  display:block;
-  width: 50%;
-  margin-left: 25%;
-  margin-right:25%;
-}
-
 .filters {
   max-width:150px;
   margin-right: 10px;
   float:left;
+}
+
+#activityFilter {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  width: 56px;
 }
