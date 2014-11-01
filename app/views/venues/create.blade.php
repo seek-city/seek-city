@@ -35,9 +35,17 @@ var address = '';
 var city = '';
 var state = '';
 var zipcode = '';
-var m = 0;
-var x;
+var pin;
 var markers = [];
+
+function toggleBounce() {
+
+  if (pin.getAnimation() != null) {
+    pin.setAnimation(null);
+  } else {
+    pin.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
@@ -86,9 +94,8 @@ $(".addressInputs").change(function() {
                 map: map
             });
             markers.push(pin);
+            google.maps.event.addListener(pin, 'click', toggleBounce);
         }
-            
-        m++;
     });
 });
 </script>
