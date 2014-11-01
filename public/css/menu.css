@@ -24,7 +24,7 @@ html {
   font: 100% / 1.5 Helvetica, "Open Sans", Arial, sans-serif;
 }
 body{
-    background-color: #3C4C55;
+    background-color: #323232;
 }
         svg, body {
         height: 100%;
@@ -207,7 +207,7 @@ body{
 }
 
 .button-button.skin-artsy:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0097e0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-classy {
@@ -217,7 +217,7 @@ body{
 }
 
 .button-button.skin-classy:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0097e0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-festive {
@@ -227,7 +227,7 @@ body{
 }
 
 .button-button.skin-festive:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #2aa9e0;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-sporty {
@@ -237,7 +237,7 @@ body{
 }
 
 .button-button.skin-sporty:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #0055aa;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-fontef {
@@ -247,7 +247,7 @@ body{
 }
 
 .button-button.skin-fontef:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #111111;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-brainy {
@@ -257,17 +257,17 @@ body{
 }
 
 .button-button.skin-brainy:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #002244;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-date-night {
   background-image: url(../img/date.png);
   background-color: #449922;
-  box-shadow: 0 1px 0 0 #091422;
+  box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-date-time:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #1d4374;
+.button-button.skin-date-night:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-fam-time {
@@ -277,7 +277,7 @@ body{
 }
 
 .button-button.skin-fam-time:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #eb4638;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-live-music {
@@ -287,7 +287,7 @@ body{
 }
 
 .button-button.skin-live-music:focus {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #131131;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 
 .button-button.skin-1dol {
@@ -295,20 +295,32 @@ body{
   background-color: #449922;
   box-shadow: 0 1px 0 0 #449922;
 }
+.button-button.skin-1dol:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
+}
 .button-button.skin-2dol {
   background-image: url(../img/2dol.png);
   background-color: #449922;
   box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-2dol:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 .button-button.skin-3dol {
   background-image: url(../img/3dol.png);
   background-color: #449922;
   box-shadow: 0 1px 0 0 #449922;
 }
+.button-button.skin-3dol:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
+}
 .button-button.skin-4dol {
   background-image: url(../img/4dol.png);
   background-color: #449922;
   box-shadow: 0 1px 0 0 #449922;
+}
+.button-button.skin-4dol:focus {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 .button-button.skin-0dol {
   background-image: url(../img/0dol.png);
@@ -316,7 +328,7 @@ body{
   box-shadow: 0 1px 0 0 #449922;
 }
 
-.button-button.skin-alert:focus {
+.button-button.skin-0dol:focus {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8), 0 0 0 4px #ff6622;
 }
 

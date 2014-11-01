@@ -12,8 +12,8 @@
     <script src="{{ asset('/js/jquery-2.1.1.min.js'); }}"></script>
     <script src="{{ asset('/js/modernizr.js'); }}"></script>
     <script src="{{ asset('/js/fastclick.js'); }}"></script>
-    <script src="{{ asset('/js/btns.js'); }}"></script>
-    <script src="{{ asset('/js/main.js'); }}"></script>
+    <script src="{{ asset('/js/btns.js'); }}"></script> 
+    <script src="{{ asset('/js/main.js'); }}"></script> 
     @yield('top-script')
 </head>
 <body>

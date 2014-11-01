@@ -42,7 +42,7 @@ $(document).ready(function() {
             $('#venueSelect').fadeIn('slow');
         }
     });
-    
+
 });
 </script>
 @stop
