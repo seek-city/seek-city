@@ -15,8 +15,8 @@ return array(
 	*/
 
 	'mailgun' => array(
-		'domain' => '',
-		'secret' => '',
+		'domain' => $_ENV['MAIL_HOST'],
+		'secret' => $_ENV['MAIL_SECRET'],
 	),
 
 	'mandrill' => array(
@@ -27,5 +27,16 @@ return array(
 		'model'  => 'User',
 		'secret' => '',
 	),
+	
+	'facebook' => [
+	'client_id' => getenv('FACEBOOK_APP_ID'),
+	'client_secret'=> getenv('FACEBOOK_APP_SECRET'),
+	'redirect' => 'http://seekcity.dev/login'
+	],
+	
+	'disqus' => array(
+	'secret key' => $_ENV['DISQUS_SECRET']
+	)
+	
 
 );

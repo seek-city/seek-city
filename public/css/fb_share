@@ -1,0 +1,41 @@
+//facebook sharing capability//
+
+//sdk to be entered after the body tag//
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1570407479849865',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="fb-root"></div>
+
+//open graph tags to identify what you want shared//
+
+<meta property="og:title" content="Seek City saves the day" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Seek City is an event discovery platform" />
+<meta property="og:url" content="http://seekcity.co" />
+<meta property="og:image" content="http://seekcity.co/photo_54334" />
+
+//share button//
+<div class="fb-share-button" data-href="http://seekcity.co/"></div>
+
+//like button//
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>

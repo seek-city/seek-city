@@ -13,13 +13,13 @@
 
 App::before(function($request)
 {
-	//
+    //
 });
 
 
 App::after(function($request, $response)
 {
-	//
+    //
 });
 
 /*
@@ -35,23 +35,23 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('login');
-		}
-	}
+    if (Auth::guest())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('/users/login');
+        }
+    }
 });
 
 
 Route::filter('auth.basic', function()
 {
-	return Auth::basic();
+    return Auth::basic();
 });
 
 /*
@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+    if (Auth::check()) return Redirect::intended('/');
 });
 
 /*
@@ -83,8 +83,35 @@ Route::filter('guest', function()
 
 Route::filter('csrf', function()
 {
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+    if (Session::token() != Input::get('_token'))
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
+
+/*
+|--------------------------------------------------------------------------
+| Register Custom Validation Class
+|--------------------------------------------------------------------------
+|
+| Easily add additional validation rules by adding methods to the
+| CustomValidator class in the app/custom directory. 
+|
+*/
+
+// Validator::resolver(function($translator, $data, $rules, $messages)
+// {
+//     // return new CustomValidator($translator, $data, $rules, $messages);
+// });
+
+/*
+|--------------------------------------------------------------------------
+| Entrust Route Filters
+|--------------------------------------------------------------------------
+|
+| Only users with roles that have the 'manage_*' permission will
+| be able to access any route within admin/*. 
+|
+*/
+
+Entrust::routeNeedsPermission( 'admin/', array('owner', 'admin'), Redirect::to('/') );
