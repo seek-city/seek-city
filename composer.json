@@ -12,11 +12,11 @@
         "artdarek/oauth-4-laravel": "dev-master",
         "roumen/disqus": "dev-master",
         "rtconner/laravel-likeable": "dev-master",
-        "google/apiclient": "dev-master",
-        "fzaninotto/faker": "~1.4"
+        "google/apiclient": "dev-master"
     },
     "require-dev": {
         "way/generators": "~2.6",
+        "fzaninotto/faker": "~1.4",
         "barryvdh/laravel-debugbar": "~1.7"
     },
     "autoload": {
