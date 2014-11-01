@@ -34,6 +34,9 @@ Route::controller( 'users', 'UsersController');
 Route::get('login-facebook', 'AuthController@loginWithFacebook');
 Route::post('login-facebook', 'AuthController@loginWithFacebook');
 
+Route::get('/login-google', 'AuthController@loginWithGoogle');
+Route::post('/login-google', 'AuthController@loginWithGoogle');
+
 Route::get('isLiked', array('as' => 'isLiked', 'uses' => 'ActivitiesController@isLiked'));
 Route::post('like', array('as' => 'like', 'uses' => 'ActivitiesController@like'));
 Route::post('unlike', array('as' => 'unlike', 'uses' => 'ActivitiesController@unlike'));

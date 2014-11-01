@@ -17,24 +17,29 @@ class ActivitiesController extends \BaseController {
      */
     public function index()
     {
+        // Grab non-expired activities.
         $query = Activity::with(array('moods', 'categories'))->where('activity_date', '>=', new DateTime('today'));
-        
+
+        // If user has submitted a search, chain where parameters to query.
         if (Input::has('search')) {
             $query->where('title', 'like', '%' . Input::get('search') . '%');
         }
-        
+
+        // If user has submitted a mood filter, chain where parameter to query.
         if (Input::has('mood')) {
             $query->whereHas('moods', function($q) {
                 $q->where('name', '=', Input::get('mood'));
             });
         }
-        
+
+        // If user has submitted a category filter, chain category parameter to query.
         if (Input::has('category')) {
             $query->whereHas('categories', function($q) {
                 $q->where('name', '=', Input::get('category'));
             });
         }
-        
+
+        // If user has submitted a price filter, chain price parameter to query.
         if (Input::has('price')) {
             $query->where('price', '=', Input::get('price'));
         }
@@ -108,18 +113,12 @@ class ActivitiesController extends \BaseController {
         // GRAB CURRENT ACTIVITY INFORMATION
         $activity = Activity::find($id);
 
-        // // SHOW EDIT FORM FOR AUTHENTICATED USERS
-        // if (Auth::check() && (Auth::id() == $activity->user->id)) {
-
-            // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
-            $category_options = Category::lists('name', 'id');
-            $mood_options = Mood::lists('name', 'id');
-            $venues = Venue::lists('name', 'id');
-            $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
-            return View::make('activities.edit', $data);
-        // }
-        // SEND NON-AUTHENTICATED USERS TO ACTIVITIES INDEX
-        return Redirect::to('/');
+        // PULL IN CATEGORIES AND MOODS FOR SELECT FIELDS
+        $category_options = Category::lists('name', 'id');
+        $mood_options = Mood::lists('name', 'id');
+        $venues = Venue::lists('name', 'id');
+        $data = ['activity' => $activity, 'category_options' => $category_options, 'mood_options' => $mood_options, 'venues' => $venues];
+        return View::make('activities.edit', $data);
     }
 
     /**
@@ -164,11 +163,11 @@ class ActivitiesController extends \BaseController {
             App::abort(404);
         }
 
+        // Delete associated image along with activity.
         $old_image = public_path() . $activity->image_path;
         if (File::exists($old_image)) {
             File::delete($old_image);
         }
-
         $activity->delete(); 
         Log::info('Activity deleted successfully.');
         $message = "So long, $activity->title!";
@@ -194,7 +193,6 @@ class ActivitiesController extends \BaseController {
             Session::flash('errorMessage', 'Your activity needs a title and body');
             Log::error('Activities validator failed', Input::all());
             return Redirect::back()->withInput()->withErrors($validator);
-
         } else {
             
             $activity->title = Input::get('title');
@@ -207,6 +205,7 @@ class ActivitiesController extends \BaseController {
 
             $activity->user_id = Auth::id();
             $activity->venue_id = 0;
+
             $activity->save();
             $id = $activity->id;
 
@@ -222,6 +221,7 @@ class ActivitiesController extends \BaseController {
                     $activity->moods()->attach($moodId);
                 }
             }
+
             // IF USER HAS SELECTED VENUE FROM LIST, SAVE THAT VENUE ID TO ACTIVITIES POST
             if (Input::get('newVenue') == null) {
                 // dd(Input::get('venue'));
@@ -243,7 +243,7 @@ class ActivitiesController extends \BaseController {
 
             $message = 'Activity created sucessfully';
             Session::flash('successMessage', $message);
-            
+
             return Redirect::action('ActivitiesController@show', $id);
         }
     }

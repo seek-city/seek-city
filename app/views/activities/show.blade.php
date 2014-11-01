@@ -55,15 +55,15 @@ transform-origin: top left;
         <p class="lead">located at {{ $activity->venue->address }},  {{ $activity->venue->city }}, {{ $activity->venue->state }}</p>
 
         @if (Auth::check())
-
-        <!-- TO EDIT AN EVENT -->
-
-        <!-- TO DELETE AN EVENT -->
-        {{ Form::open(['method' => 'DELETE', 'action' => ['ActivitiesController@destroy', $activity->id], 'id' => 'delete-form']) }}
-        <a class='btn btn-default' href="{{ action('ActivitiesController@edit', $activity->id) }}">Edit</a>
-        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-        {{ Form::close() }}
-        <hr>
+            <!-- TO DELETE AN EVENT -->
+            {{ Form::open(['method' => 'DELETE', 'action' => ['ActivitiesController@destroy', $activity->id], 'id' => 'delete-form']) }}
+            <a class='btn btn-default' href="{{ action('ActivitiesController@edit', $activity->id) }}">Edit</a>
+            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+            {{ Form::close() }}
+            <hr>
+            <!-- LIKE/UNLIKE -->
+            <button class="unlike-btn btn btn-primary btn-xs hidden" data-activity-id="{{{ $activity->id }}}">Unlike</button>
+            <button class="like-btn btn btn-primary btn-xs hidden" data-activity-id="{{{ $activity->id }}}">Like</button>
         @endif
         @if ($activity->offsetExists('image_path'))
         <img class="img-responsive" src="{{{ $activity->image_path }}}" alt="{{{ $activity->title }}}">
@@ -94,10 +94,70 @@ transform-origin: top left;
 
 @section('bottom-script')
 <script>
-$('#delete-form').submit(function(event) {
-    if (!confirm('Are you sure you want to delete this?')) {
-        event.preventDefault();
-    };
+$.ajax({
+    url: "{{{ URL::route('isLiked') }}}",
+    type: 'GET',
+    data: {
+        id: "{{{ $activity->id }}}"
+    },
+    success: function(data) {
+        if (data.success && data.isLiked) {
+            $(".unlike-btn").removeClass('hidden');
+        }
+        else if (!data.isLiked) {
+            $(".like-btn").removeClass('hidden');
+        }
+    }
+});
+
+$(document).ready(function() {
+    $('#delete-form').submit(function(event) {
+        if (!confirm('Are you sure you want to delete this?')) {
+            event.preventDefault();
+        };
+    });
+
+    var csrfToken = "{{{ Session::get('_token') }}}";
+
+    $(".like-btn").click(function()
+    {
+        var activityId = $(this).data('activity-id');
+        
+        $.ajax({
+            url: "{{{ URL::route('like') }}}",
+            type:'POST',
+            data: {
+                _token: csrfToken,
+                _method: 'POST',
+                id: $(this).data('activity-id')
+            },
+            success: function(data) {
+                if (data.success) {
+                    $(".like-btn").addClass('hidden');
+                    $(".unlike-btn").removeClass('hidden');
+                }
+            }
+        });
+    });
+
+    $(".unlike-btn").click(function()
+    {
+        $.ajax({
+            url: "{{{ URL::route('unlike') }}}",
+            type: 'POST',
+            data: {
+                _token: csrfToken,
+                _method: 'POST',
+                id: $(this).data('activity-id')
+            },
+            success: function(data) {
+                if (data.success) {
+                    $(".unlike-btn").addClass('hidden');
+                    $(".like-btn").removeClass('hidden');
+                }
+            }
+        });
+    });
 });
 </script>
 
