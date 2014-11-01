@@ -6,15 +6,53 @@
 
 @section('top-script')
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+<style>
+  .fb-share-button
+{
+transform: scale(1.5);
+-ms-transform: scale(1.5);
+-webkit-transform: scale(1.5);
+-o-transform: scale(1.5);
+-moz-transform: scale(1.5);
+transform-origin: top left;
+-ms-transform-origin: top left;
+-webkit-transform-origin: top left;
+-moz-transform-origin: top left;
+-webkit-transform-origin: top left;
+}
+.twitter-share-button{
+    margin-left:80px;
+   transform: scale(1.5);
+-ms-transform: scale(1.5);
+-webkit-transform: scale(1.5);
+-o-transform: scale(1.5);
+-moz-transform: scale(1.5);
+transform-origin: top left;
+-ms-transform-origin: top left;
+-webkit-transform-origin: top left;
+-moz-transform-origin: top left;
+-webkit-transform-origin: top left;
+} 
+}
+  </style>
 @stop
 
 @section('content')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1570407479849865&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="col-md-6 col-md-offset-3 well"> 
 
     <article> <!-- Activity -->
         <h1>{{{ $activity->title }}}</h1>
 
         <p class="lead">on {{ $activity->activity_date->format(Activity::DATE_FORMAT) }}</p>
+        <p class="lead">located at {{ $activity->venue->address }},  {{ $activity->venue->city }}, {{ $activity->venue->state }}</p>
 
         @if (Auth::check())
 
@@ -33,7 +71,8 @@
         <hr>
         <p class="lead">{{{ $activity->body }}}</p>
         <p>Price: {{{ $activity->getPrice() }}}</p>
-        
+        <div class="fb-share-button" data-href="http://seekcity.dev"></div>
+        <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a><br>
          <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -60,6 +99,10 @@ $('#delete-form').submit(function(event) {
         event.preventDefault();
     };
 });
+</script>
+
+<script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 </script>
 @stop
 @include('partials.footer')
