@@ -17,15 +17,15 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Majestic Theater','address'=>'224 East Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Majestic Theater','address'=>'224 E. Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Childrens Museum','address'=>'305 East Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Childrens Museum','address'=>'305 E. Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Geekdom','address'=>'110 East Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Geekdom','address'=>'110 E. Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -33,11 +33,11 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Henry B. Gonzalas Convention Center','address'=>'200 East Market Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Henry B. Gonzalas Convention Center','address'=>'200 E. Market Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Travis Park','address'=>'301 East Travis ','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Travis Park','address'=>'301 E. Travis St.','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -53,7 +53,7 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Buckhorn Museum','address'=>'318 East Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Buckhorn Museum','address'=>'318 E. Houston Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -65,7 +65,7 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Dinosaur Quest','address'=>'849 East Commerce Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78201','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Dinosaur Quest','address'=>'849 E. Commerce Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78201','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -73,7 +73,7 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'San Antonio Art League','address'=>'130 King Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78204','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'San Antonio Art League','address'=>'130 King Ave.','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78204','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -101,7 +101,7 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Alibis Sports','address'=>'1141 East Commerce Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Alibis Sports','address'=>'1141 E. Commerce Street','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78205','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
@@ -113,7 +113,7 @@ class VenuesTableSeeder extends Seeder {
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             ),
-            array('name'=>'Harlequin Dinner Theater','address'=>'Bldg. 2652 Harney Road','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78234','phone_number'=>'867-5309','parking_available'=> 1,
+            array('name'=>'Harlequin Dinner Theater','address'=>'2652 Harney Road','city'=>'San Antonio', 'state'=>'TX','zipcode'=>'78234','phone_number'=>'867-5309','parking_available'=> 1,
                 'open_hour'=>$faker->time('H', $close_hour), 'close_hour'=>$close_hour, 'website_url'=> $faker->url, 'facebook_url'=> $faker->url, 'google_url'=> $faker->url, 'twitter_handle'=> $faker->url,
                 'image_url'=> 'http://lorempixel.com/400/200/','created_at'=>$createdAt,'updated_at'=>$updatedAt
             )   
