@@ -25,6 +25,7 @@ html {
 }
 body{
     background-color: #323232;
+    overflow: hidden;
 }
         svg, body {
         height: 100%;
@@ -477,10 +478,14 @@ body{
   z-index: 10;
 }
 
-#filterStackWrap {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
+/*#filterStackWrap {
+  position: relative;
+  display: block;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 50px;
+  height: 50px;
 }
 
 #filterStackWrap>button {
@@ -491,15 +496,34 @@ body{
   clear:both;
 }
 
-#filterStack {
-  display:block;
-  width: 50%;
-  margin-left: 25%;
-  margin-right:25%;
-}
-
 .filters {
   max-width:150px;
   margin-right: 10px;
   float:left;
+}*/
+
+
+
+#activityFilter {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  position: fixed;
+  bottom: 10px;
 }
+
+@media only screen and (min-width: 768px) {
+  #activityFilter {
+    max-width: 6%;
+    left: 48%;
+  }
+}
+
+/*@media only screen and (min-width: 1028px) and (max-width: 1600px) {
+  #activityFilter {
+    max-width: 4%;
+    padding-left: 6px;
+    padding-right: 6px;
+    left: 48%;
+  }
+}*/
