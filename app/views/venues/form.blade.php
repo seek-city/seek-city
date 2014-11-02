@@ -5,24 +5,25 @@
     </div>
     <div class='form-group'>
         {{ Form::label('address', 'Address:') }}
-        {{ Form::text('address', Input::old('address'),['class' => 'form-control', 'id' => 'address']) }}
+        {{ Form::text('address', Input::old('address'),['class' => 'form-control addressInputs', 'id' => 'address']) }}
         {{ $errors->first('address', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
         {{ Form::label('city', 'City:') }}
-        {{ Form::text('city', Input::old('city'), ['class' => 'form-control','id' => 'city']) }}
+        {{ Form::text('city', Input::old('city'), ['class' => 'form-control addressInputs','id' => 'city']) }}
         {{ $errors->first('city', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
         {{ Form::label('state', 'State:') }}
-        {{ Form::text('state', Input::old('state'), ['class' => 'form-control','id' => 'state']) }}
+        {{ Form::text('state', Input::old('state'), ['class' => 'form-control addressInputs','id' => 'state']) }}
         {{ $errors->first('state', '<br><div class="alert alert-info">:message</div>') }}
     </div>
      <div class='form-group'>
         {{ Form::label('zipcode', 'Zipcode:') }}
-        {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control','id' => 'zipcode']) }}
+        {{ Form::text('zipcode', Input::old('zipcode'), ['class' => 'form-control addressInputs','id' => 'zipcode']) }}
         {{ $errors->first('zipcode', '<br><div class="alert alert-info">:message</div>') }}
     </div>
+    <div id="map_canvas" style="width: 100%; height: 250px;"></div>
      <div class='form-group'>
         {{ Form::label('phone_number', 'Phone:') }}
         {{ Form::text('phone_number', Input::old('phone_number'), ['class' => 'form-control','id' => 'phone_number']) }}
@@ -68,3 +69,56 @@
         {{ Form::label('image_url', 'Image:') }}
         {{ Form::file('image_url', ['id' => 'image_url']) }}
     </div>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs&amp;sensor=false"></script>
+    <script>
+    var mapOptions = {
+        zoom: 10,
+        center: new google.maps.LatLng(29.4814305, -98.5144044),
+        streetViewControl: true,
+        animation: google.maps.Animation.DROP
+    };
+    
+    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    google.maps.event.addListener(marker, 'click', toggleBounce);
+    var geocoder = new google.maps.Geocoder();
+    var address = '';
+    var city = '';
+    var state = '';
+    var zipcode = '';
+    var m = 0;
+    var x;
+    
+    $(".addressInputs").change(function() {
+        $("#address").focusout(function() {
+            address = $(this).val();
+            console.log(address);
+        });
+        
+        $("#city").on("focusout", function() {
+            city = $(this).val();
+            console.log(city);
+        });
+        
+        $("#state").on("focusout", function() {
+            state = $(this).val();
+            console.log(state);
+        });
+        
+        $("#zipcode").on("focusout", function() {
+            zipcode = $(this).val();
+            console.log(zipcode);
+        });
+        mapAddress = address + ", " + city + ", " + state + ", " + zipcode;
+
+        geocoder.geocode( { 'address': address }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                pin = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map
+                });
+            }
+                
+            m++;
+        });
+    });
+    </script>

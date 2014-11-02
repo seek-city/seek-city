@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
@@ -34,6 +33,9 @@ Route::controller( 'users', 'UsersController');
 //oauth routes
 Route::get('login-facebook', 'AuthController@loginWithFacebook');
 Route::post('login-facebook', 'AuthController@loginWithFacebook');
+
+Route::get('/login-google', 'AuthController@loginWithGoogle');
+Route::post('/login-google', 'AuthController@loginWithGoogle');
 
 Route::get('isLiked', array('as' => 'isLiked', 'uses' => 'ActivitiesController@isLiked'));
 Route::post('like', array('as' => 'like', 'uses' => 'ActivitiesController@like'));
