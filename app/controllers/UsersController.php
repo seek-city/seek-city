@@ -30,6 +30,7 @@ class UsersController extends Controller
 
         if ($user->id) {
             if (Config::get('confide::signup_email')) {
+                dd('broke');
                 Mail::queueOn(
                     Config::get('confide::email_queue'),
                     Config::get('confide::email_account_confirmation'),
