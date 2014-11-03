@@ -42,7 +42,7 @@ class UsersController extends Controller
                 );
             }
 
-            return Redirect::action('HomeController@index')
+            return Redirect::to('/')
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
             $error = $user->errors()->all(':message');
