@@ -46,7 +46,7 @@ class UsersController extends Controller
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
             $error = $user->errors()->all(':message');
-
+            dd('error');
             return Redirect::action('UsersController@getCreate')
                 ->withInput(Input::except('password'))
                 ->with('error', $error);
