@@ -36,7 +36,7 @@
                 @forelse($venues as $venue)
                     <h3>{{{ $venue->name }}}</h3>
                     <img class='img-responsive' src="{{{ $venue->image_url }}}" alt="{{{ $venue->name }}}"><br>
-                    <a class="btn btn-sm btn-primary" href="venues/{{{  $venue->id }}}">More Info <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-sm btn-primary" href="/venues/{{{  $venue->id }}}">More Info <span class="glyphicon glyphicon-chevron-right"></span></a>
                     @forelse($venue->activities as $activity)
                         <a href="/activities/{{ $activity->id }}"><h6>{{ $activity->activity_date->format(Activity::SHORT_DATE_FORMAT) . ' - ' . $activity->title }}</h6></a>
                     @empty
