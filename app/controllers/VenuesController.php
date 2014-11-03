@@ -18,7 +18,16 @@ class VenuesController extends \BaseController {
      */
     public function index()
     {
-        $venues = Venue::all();
+        $query = Venue::with(array('activities' => function($activity)
+        {
+            $activity->where('activity_date', '>=', new DateTime('today'))->orderBy('activity_date', 'ASC');
+        }));
+
+        if (Input::has('search')) {
+            $query->where('name', 'like', '%' . Input::get('search') . '%');
+        }
+
+        $venues = $query->orderBy('name', 'ASC')->paginate(10);
 
         return View::make('venues.index', compact('venues'));
     }
@@ -42,12 +51,12 @@ class VenuesController extends \BaseController {
     public function store()
     {
         $venue = new Venue();
-        if (Input::hasFile('image_path')) {
-            $file = Input::file('image_path');
+        if (Input::hasFile('image_url')) {
+            $file = Input::file('image_url');
             $destination_path = public_path() . '/img-upload/';
-            $filename = uniqid('img-venue') . '_' . $file->getClientOriginalName();
+            $filename = uniqid('img_venue') . '_' . $file->getClientOriginalName();
             $uploadSuccess = $file->move($destination_path, $filename);
-            $venue->image_path = '/img-upload/' . $filename;
+            $venue->image_url = '/img-upload/' . $filename;
         }
         return $this->saveVenue($venue);
     }
@@ -87,6 +96,20 @@ class VenuesController extends \BaseController {
     public function update($id)
     {
         $venue = Venue::findOrFail($id);
+
+        // CHECK IF NEW IMAGE HAS BEEN SELECTED AND PREPARE FOR DATABASE
+        if (Input::hasFile('image_url')) {
+            $old_image = public_path() . $venue->image_url;
+            if (File::exists($old_image)) {
+                File::delete($old_image);
+            }
+
+            $file = Input::file('image_url');
+            $destination_path = public_path() . '/img-upload/';
+            $filename = uniqid('img_venue') . '_' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($destination_path, $filename);
+            $venue->image_url = '/img-upload/' . $filename;
+        }
 
         return $this->saveVenue($venue);
     }
@@ -145,7 +168,6 @@ class VenuesController extends \BaseController {
             $venue->facebook_url = Input::get('facebook_url');
             $venue->google_url = Input::get('google_url');
             $venue->twitter_handle = Input::get('twitter_handle');
-            $venue->image_url = Input::get('image_url');
             $venue->save();
             $id = $venue->id;
             if (Session::has('activityId')) {
@@ -154,6 +176,7 @@ class VenuesController extends \BaseController {
                 $activity->save();
                 return View::make('activities.show', compact('activity'));
             }
+            return Redirect::action('VenuesController@index');
         }
 
     }

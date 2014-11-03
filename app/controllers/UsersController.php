@@ -194,4 +194,25 @@ class UsersController extends Controller
 
         return Redirect::to('/');
     }
+    
+    public function getActivitiesLiked()
+    {
+        if (Request::ajax()) {
+            $myUserId = Input::get('id');
+            $userLikedActivities = [];
+            $likedActivities = Activity::whereLiked($myUserId) // find only articles where user liked them
+            ->with('likeCounter')
+            ->get();
+            foreach($likedActivities as $activity) {
+                $userLikedActivities[] = [$activity->id, $activity->title, $activity->created_at->format(Activity::SHORT_DATE_FORMAT)];
+            }
+            
+            return Response::json(array(
+                'success' => true,
+                'status' => 'OK',
+                'likedActivities' => $userLikedActivities
+            ));
+        }
+        return App::abort(403);
+    }
 }

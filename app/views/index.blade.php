@@ -6,6 +6,9 @@
 
 @section('top-script')
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+<style>
+body{ overflow: hidden; }
+</style>
 <script src="{{ asset('/js/btns.js'); }}"></script>
 <script src="{{ asset('/js/main.js'); }}"></script>
 @stop
