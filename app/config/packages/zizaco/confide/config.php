@@ -47,7 +47,7 @@ return array(
     |
     */
     'login_form' =>             'login',
-    'signup_form' =>            'confide::signup',
+    'signup_form' =>            'users.create',
     'forgot_password_form' =>   'confide::forgot_password',
     'reset_password_form' =>    'confide::reset_password',
 
@@ -106,7 +106,7 @@ return array(
     |
     */
     'signup_email'   => true,
-    'signup_confirm' => true,
+    'signup_confirm' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +124,6 @@ return array(
     | You will have to run `php artisan queue:listen --queue=emails`
     |
     */
-    'email_queue' => 'default',
+    'email_queue' => 'emails',
 
 );
