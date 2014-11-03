@@ -30,16 +30,19 @@ Route::get('users/reset_password/{token}', 'UsersController@getReset');
 Route::get('users/reset_password', 'UsersController@postReset');
 Route::controller( 'users', 'UsersController');
 
-//oauth routes
+// OAuth Routes
 Route::get('login-facebook', 'AuthController@loginWithFacebook');
 Route::post('login-facebook', 'AuthController@loginWithFacebook');
 
 Route::get('/login-google', 'AuthController@loginWithGoogle');
 Route::post('/login-google', 'AuthController@loginWithGoogle');
 
+// Like/Unlike/Is Liked Routes
 Route::get('isLiked', array('as' => 'isLiked', 'uses' => 'ActivitiesController@isLiked'));
 Route::post('like', array('as' => 'like', 'uses' => 'ActivitiesController@like'));
 Route::post('unlike', array('as' => 'unlike', 'uses' => 'ActivitiesController@unlike'));
+
+Route::get('activitiesLiked', array('as' => 'activitiesLiked', 'uses' => 'UsersController@getActivitiesLiked'));
 
 /*
 |--------------------------------------------------------------------------

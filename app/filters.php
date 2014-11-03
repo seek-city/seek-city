@@ -48,15 +48,6 @@ Route::filter('auth', function()
     }
 });
 
-Route::filter('author', function($route) {
-
-    $authorId = $route->getParameter('user_id');
-    dd($authorId);
-    if (Auth::id() != $authorId) {
-        return Response::make('Unauthorized', 401);
-    }
-});
-
 
 Route::filter('auth.basic', function()
 {

@@ -98,6 +98,11 @@ $(".addressInputs").change(function() {
         }
     });
 });
+
+$('.timepicker').datetimepicker({
+  datepicker:false,
+  format:'H:i'
+});
 </script>
 
 @stop
