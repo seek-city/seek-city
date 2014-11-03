@@ -87,7 +87,7 @@
 
     <main id="main" class="main"></main>
     <div id="filterStackWrap">
-        <input name="filterStack" id="filterStack">
+        <input type="hidden" name="filterStack" id="filterStack">
         {{ Form::open(['action' => 'ActivitiesController@index', 'method' => 'GET']) }}
         <input type="hidden" id="mood" name="mood" value="">
         <input type="hidden" id="category" name="category" value="">
