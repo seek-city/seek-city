@@ -9,6 +9,11 @@
         {{ $errors->first('password', '<br><div class="alert alert-info">:message</div>') }}
     </div>
     <div class='form-group'>
+        {{ Form::label('password_confirmation', 'Confirm Password:') }}
+        {{ Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password_confirmation']) }}
+        {{ $errors->first('password_confirmation', '<br><div class="alert alert-info">:message</div>') }}
+    </div>
+    <div class='form-group'>
         {{ Form::label('email', 'Email:') }}
         {{ Form::email('email', Input::old('email'), ['class' => 'form-control','id' => 'email']) }}
         {{ $errors->first('email', '<br><div class="alert alert-info">:message</div>') }}
