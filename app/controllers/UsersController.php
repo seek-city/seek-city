@@ -42,7 +42,7 @@ class UsersController extends Controller
                 );
             }
 
-            return Redirect::action('UsersController@getLogin')
+            return Redirect::action('HomeController@index')
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
             $error = $user->errors()->all(':message');
@@ -63,7 +63,7 @@ class UsersController extends Controller
         if (Confide::user()) {
             return Redirect::to('/');
         } else {
-            return View::make('login');
+            return Redirect::to('/');
         }
     }
 
