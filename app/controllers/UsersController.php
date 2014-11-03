@@ -41,7 +41,7 @@ class UsersController extends Controller
                     }
                 );
             }
-
+            dd('about to return');
             return Redirect::to('/')
                 ->with('notice', Lang::get('confide::confide.alerts.account_created'));
         } else {
