@@ -139,8 +139,7 @@ return array(
         'Zizaco\Confide\ServiceProvider',
         'Zizaco\Entrust\EntrustServiceProvider',
         'Artdarek\OAuth\OAuthServiceProvider',
-        'Roumen\Disqus\DisqusServiceProvider',
-        'Way\Generators\GeneratorsServiceProvider'
+        'Roumen\Disqus\DisqusServiceProvider'
     ),
 
     /*
