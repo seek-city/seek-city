@@ -12,9 +12,9 @@
 <!-- side profile menubar -->
 <div class="row site">
     <div class="col-md-1 general_menu inner">
-        <a href="#" class="avatar">
+<!--         <a href="#" class="avatar">
             <img src="" alt=""/>
-        </a>
+        </a> -->
     </div>
 <!-- end side profile menubar -->
     @include('partials.sideprofile')

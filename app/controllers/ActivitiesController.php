@@ -140,7 +140,7 @@ class ActivitiesController extends \BaseController {
 
             $file = Input::file('image_path');
             $destination_path = public_path() . '/img-upload/';
-            $filename = uniqid('img') . '_' . $file->getClientOriginalName();
+            $filename = uniqid('img_activity') . '_' . $file->getClientOriginalName();
             $uploadSuccess = $file->move($destination_path, $filename);
             $activity->image_path = '/img-upload/' . $filename;
         }

@@ -8,7 +8,7 @@ Edit Venue
 <div class='col-md-8 col-md-offset-2 well form-wrap'>
     <h2>Edit Venue</h2>
     <hr>
-{{ Form::model($venue, ['action' => 'VenuesController@update', 'method' => 'POST', 'files' => true]) }}
+{{ Form::model($venue, ['action' => ['VenuesController@update', $venue->id], 'method' => 'PUT', 'files' => true]) }}
 
     @include('venues.form')
     
@@ -99,6 +99,11 @@ $(".addressInputs").change(function() {
             markers.push(pin);
         }
     });
+});
+
+$('.timepicker').datetimepicker({
+  datepicker:false,
+  format:'H:i'
 });
 </script>
 
