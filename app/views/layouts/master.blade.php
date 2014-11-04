@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="{{ asset('/css/jquery.datetimepicker.css');}}">
     <link rel="stylesheet" href="{{ asset('/css/main.css'); }}">
     <script src="{{ asset('/js/jquery-2.1.1.min.js'); }}"></script>
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/modernizr.js'); }}"></script>
-    <script src="{{ asset('/js/fastclick.js'); }}"></script>
-    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('/js/jquery.ui.touch-punch.min.js') }}"></script>
     @yield('top-script')
 </head>
 <body>
@@ -26,6 +21,10 @@
     
     </div>
 @include('partials.footer')
+<script src="{{ asset('/js/modernizr.js'); }}"></script>
+<script src="{{ asset('/js/fastclick.js'); }}"></script>
+<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.ui.touch-punch.min.js') }}"></script>
 @yield('bottom-script')
 </body>
 </html>

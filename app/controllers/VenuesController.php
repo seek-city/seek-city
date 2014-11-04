@@ -160,7 +160,7 @@ class VenuesController extends \BaseController {
             $venue->city = Input::get('city');
             $venue->state = Input::get('state');
             $venue->zipcode = Input::get('zipcode');
-            $venue->zipcode = Input::get('phone_number');
+            $venue->phone_number = Input::get('phone_number');
             $venue->parking_available = Input::get('parking_available') == 'Yes' ? true : false;
             $venue->open_hour = Input::get('open_hour');
             $venue->close_hour = Input::get('close_hour');
