@@ -13,11 +13,11 @@
         "roumen/disqus": "dev-master",
         "rtconner/laravel-likeable": "dev-master",
         "google/apiclient": "dev-master",
-        "fzaninotto/faker": "~1.4",
-        "barryvdh/laravel-debugbar": "~1.8"
+        "fzaninotto/faker": "~1.4"
     },
     "require-dev": {
-        "way/generators": "~2.6"
+        "way/generators": "~2.6",
+        "barryvdh/laravel-debugbar": "~1.8"
     },
     "autoload": {
         "classmap": [
