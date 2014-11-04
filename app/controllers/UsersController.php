@@ -61,7 +61,7 @@ class UsersController extends Controller
         if (Confide::user()) {
             return Redirect::to('/');
         } else {
-            return Redirect::to('/');
+            return View::make('login');
         }
     }
 
