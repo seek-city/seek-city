@@ -18,7 +18,7 @@
             .gradient { filter: none; }
         </style>
         <![endif]-->
-        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('/img/favicon.ico') }}">
     </head>
     <body>
       @include('partials.navbar')
@@ -98,7 +98,7 @@
                 </div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <div class="aboutLogo">
-                        <img src="img/logo_update5.png" alt="" />
+                        <img src="/img/logo_update5.png" alt="" />
                       </div>
                 </div>
                 <div class="row"></div> 
@@ -115,7 +115,7 @@
               </div>
                 <h2>About the Team</h2>
           <div class="aboutJosh">
-            <img class="el-img" src="img/josh.png" />
+            <img class="el-img" src="/img/josh.png" />
    
         <span class="maincaption">
                 <span class="char1"> </span>
@@ -147,7 +147,7 @@
             </div>
             
             <div class="aboutRuth">
-            <a href="http://www.linkedin.com/in/ruthspina/"><img class="el-img" src="img/ruth.png"/></a>
+            <a href="http://www.linkedin.com/in/ruthspina/"><img class="el-img" src="/img/ruth.png"/></a>
         <span class="maincaption">
                 <span class="char1"> </span>
                 <span class="char2">R</span>
@@ -177,7 +177,7 @@
               </span>
             </div>
             <div class="aboutPhil">
-              <img class="el-img" src="img/phil.png"/>
+              <img class="el-img" src="/img/phil.png"/>
         <span class="maincaption">
                 <span class="char1"> </span>
                 <span class="char2">P</span>
@@ -211,11 +211,11 @@
           
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script src="js/jquery.smooth-scroll.min.js"></script>
-        <script src="js/jquery.backstretch.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/aboutpg.js" type="text/javascript"></script>
+        <script src="/js/jquery.flexslider-min.js"></script>
+        <script src="/js/jquery.smooth-scroll.min.js"></script>
+        <script src="/js/jquery.backstretch.min.js" type="text/javascript"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/aboutpg.js" type="text/javascript"></script>
         <script>
         $(document).ready(function(){
     $("body").addClass("loaded");
