@@ -5,15 +5,22 @@
 <link rel="stylesheet" href="{{ asset('/css/venue.css') }}">
 @stop
 @section('content')
-<div class="col-md-6 well"> 
+<div class="col-md-6 col-md-offset-3 well"> 
 
     <article> <!-- Activity -->
         <h1>{{{ $venue->name }}}</h1>
-
-        <p class="lead"id='activitieDate'>by on {{ $venue->updated_at }}</p>
-
+        @if($venue->website_url)
+        <a href="http://{{{ $venue->website_url }}}" id='venueWebsiteUrl'><i class="icon-globe"></i></a>
+        @endif
+        @if($venue->facebook_url)
+        <a href="http://{{{ $venue->facebook_url }}}" id='venueFacebookUrl'><i class="icon-facebook"></i></a>
+        @endif
+        @if($venue->google_url)
+        <a href="http://{{{ $venue->google_url }}}" id='venueGoogleUrl'><i class="icon-googleplus"></i></a>
+        @endif
+        <a href="http://{{{ $venue->twitter_handle }}}" id='venueTwitterHandle'><i class="icon-twitter"></i></a>
         @if (Auth::check())
-        @endif 
+
         <!-- TO EDIT AN EVENT -->
 
         <!-- TO DELETE AN EVENT -->
@@ -21,23 +28,19 @@
         <a class='btn btn-default' href="{{ action('VenuesController@edit', $venue->id) }}">Edit</a>
         {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
         {{ Form::close() }}
+        @endif 
         <hr>
 
-        <img class="img-responsive" src="{{ $venue->image_path }}" alt="">
-        <hr>
-        <p class="lead" id='venueName'>{{{ $venue->name }}}</p>
-        <p class="lead" id='venueAddress'>{{{ $venue->address }}}</p>
-        <p class="lead" id='venueCity'>{{{ $venue->city }}}</p>
-        <p class="lead" id='venueState'>{{{ $venue->state }}}</p>
-        <p class="lead" id='venueZipCode'>{{{ $venue->zipcode }}}</p>
-        <p class="lead" id='venueCity'>{{{ $venue->phone_number }}}</p>
-        <p class="lead" id='venueParkingAvailable'>{{{ $venue->parking_available }}}</p>
-        <p class="lead" id='venueOpenHour'>{{{ $venue->open_hour }}}</p>
-        <p class="lead" id='venueCloseHour'>{{{ $venue->close_hour}}}</p>
-        <p class="lead" id='venueWebsiteUrl'>{{{$venue->website_url}}}</p>
-        <p class="lead" id='venueFacebookUrl'>{{{ $venue->facebook_url}}}</p>
-        <p class="lead" id='venueGoogleUrl'>{{{ $venue->google_url }}}</p>
-        <p class="lead" id='venueTwitterHandle'>{{{ $venue->twitter_handle }}}</p>
+        <img class="img-responsive" src="{{ $venue->image_url }}" alt="">
+        <address>
+            <p class="lead" id='venueAddress'>{{{ $venue->address }}}</p>
+            <p class="lead" id='venueCity'>{{{ $venue->city }}}, {{{ $venue->state }}} {{{ $venue->zipcode }}}</p>
+            <p class="lead" id='venueCity'>{{{ $venue->phone_number }}}</p>
+        </address>
+        <p class="lead" id='venueParkingAvailable'>Parking: {{{ $venue->getParking() }}}</p>
+        <p class="lead" id='venueOpenHour'>Open: {{{ $venue->open_hour->format(Venue::TIME_FORMAT) }}}</p>
+        <p class="lead" id='venueCloseHour'>Close: {{{ $venue->close_hour->format(Venue::TIME_FORMAT) }}}</p>
+
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     @yield('title')
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="{{ asset('/css/fonts/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/normalize.css'); }}">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.css'); }}">
     <link rel="stylesheet" href="{{ asset('/css/jquery.datetimepicker.css');}}">

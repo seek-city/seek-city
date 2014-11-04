@@ -41,4 +41,15 @@ class Venue extends BaseModel {
     {
         return $this->parking_available == 1 ? 'Yes' : 'No';
     }
+
+    public function getOpenHourAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+
+    public function getCloseHourAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+
 }

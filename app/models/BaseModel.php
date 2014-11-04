@@ -10,6 +10,7 @@ class BaseModel extends Eloquent {
     use SoftDeletingTrait;
     const DATE_FORMAT = 'l, F jS Y \\@ g:i A';
     const SHORT_DATE_FORMAT = 'm/d \\@ g:i A';
+    const TIME_FORMAT = 'g:i A';
 
     /*
      * Convert any model-aware date/times to local timezone.

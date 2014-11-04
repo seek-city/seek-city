@@ -33,7 +33,7 @@ transform-origin: top left;
 -moz-transform-origin: top left;
 -webkit-transform-origin: top left;
 } 
-}
+
   </style>
 @stop
 
@@ -52,7 +52,7 @@ transform-origin: top left;
         <h1>{{{ $activity->title }}}</h1>
 
         <p class="lead">on {{ $activity->activity_date->format(Activity::DATE_FORMAT) }}</p>
-        <p class="lead">located at {{ $activity->venue->address }},  {{ $activity->venue->city }}, {{ $activity->venue->state }}</p>
+        <p class="lead">&#64; {{ $activity->venue->address }},  {{ $activity->venue->city }}, {{ $activity->venue->state }}</p>
 
         @if (Auth::check())
             <!-- TO DELETE AN EVENT -->
