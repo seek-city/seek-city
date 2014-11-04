@@ -9,8 +9,6 @@
 <style>
 body{ overflow: hidden; }
 </style>
-<script src="{{ asset('/js/btns.js'); }}"></script>
-<script src="{{ asset('/js/main.js'); }}"></script>
 @stop
 
 @section('content')
@@ -101,6 +99,8 @@ body{ overflow: hidden; }
 @stop
 
 @section('bottom-script')
+<script src="{{ asset('/js/btns.js'); }}"></script>
+<script src="{{ asset('/js/main.js'); }}"></script>
 <script>
 $( window ).load(function() {
     var mood = [];
