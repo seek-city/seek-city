@@ -210,7 +210,8 @@ return array(
         'Entrust'           => 'Zizaco\Entrust\EntrustFacade',
         'Confide'           => 'Zizaco\Confide\Facade',
         'OAuth'             => 'Artdarek\OAuth\Facade\OAuth',
-        'Calendar'          => 'Google\Service\Calendar'
+        'Calendar'          => 'Google\Service\Calendar',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade'
     ),
 
 );

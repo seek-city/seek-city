@@ -30,7 +30,6 @@ class UsersController extends Controller
 
         if ($user->id) {
             if (Config::get('confide::signup_email')) {
-                dd('broke');
                 Mail::queueOn(
                     Config::get('confide::email_queue'),
                     Config::get('confide::email_account_confirmation'),
@@ -42,12 +41,10 @@ class UsersController extends Controller
                     }
                 );
             }
-            dd('about to return');
-            return Redirect::to('/')
-                ->with('notice', Lang::get('confide::confide.alerts.account_created'));
+            return Redirect::action('HomeController@index');
         } else {
             $error = $user->errors()->all(':message');
-            dd('error');
+            dd($error);
             return Redirect::action('UsersController@getCreate')
                 ->withInput(Input::except('password'))
                 ->with('error', $error);
