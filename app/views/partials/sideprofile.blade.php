@@ -10,8 +10,7 @@ Profile-->
                     <div>
                         <h2>{{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}}</h2>
                         <ul>
-                            <li>Visited <a href="#">59 places</a></li>
-                            <li>Reviewed <a href="#">59 places</a></li>
+                            <li>Liked: <a href="#" id="likedCount"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,6 +47,7 @@ Profile-->
             success: function(data) {
                 if (data.success) {
                     likedActivities = data.likedActivities;
+                    $("#likedCount").text(likedActivities.length);
                     for(var i = 0; i < likedActivities.length; i++) {
                         activity = likedActivities[i];
                         $('<div class="row news_container"><div class="col-md-8 news"><span class="data">' + activity[2] + '</span><a href="/activities/' + activity[0] + '">' + activity[1] + '</a></div>').appendTo($(".my_news"));
