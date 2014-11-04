@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <!-- Its not valid html but it works -->
         <!-- Le styles -->
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="css/flexslider.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/aboutpg.css" rel="stylesheet">
+        <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/css/flexslider.css" rel="stylesheet">
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/aboutpg.css" rel="stylesheet">
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="assets/js/html5shiv.js"></script>
