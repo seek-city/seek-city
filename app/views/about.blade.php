@@ -18,6 +18,7 @@
             .gradient { filter: none; }
         </style>
         <![endif]-->
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
     </head>
     <body>
       @include('partials.navbar')
@@ -93,44 +94,12 @@
  
           <div class="row">
               <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 hidden-xs">
-                    <div class="well fixed-height imagebg-1"> <!-- imagebg-1 is using css for the fullscreen background -->
-
-                    </div>
+            
                 </div>
               <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                    <div class="well-slider darksage">
-                        <div id="content" class="flexslider">
-                            <ul class="slides darksage">
-                                <li>
-                                    <div class="content-slider padding">
-                                        <h2>Plan</h2>
-                                        <p>With Seek City you can easily search by Mood, Category, or Price</p>
-                                    </div>
-                                    <div class="image-slider">
-                                        <img src="img/edit.png" alt="" />
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="content-slider padding">
-                                        <h2>Search</h2>
-                                        <p>Search for activities from where you are, or where you would like to be.</p>
-                                    </div>
-                                    <div class="image-slider">
-                                        <img src="img/cog.png" alt="" />
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="content-slider padding">
-                                        <h2>Share</h2>
-                                        <p>Share your findings with friends to spread the news or to make it a group outing.</p>
-                                    </div>
-                                    <div class="image-slider">
-                                        <img src="img/people.png" alt="" />
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="aboutLogo">
+                        <img src="img/logo_update5.png" alt="" />
+                      </div>
                 </div>
                 <div class="row"></div> 
           <div class="row">
@@ -145,41 +114,100 @@
                 </div> 
               </div>
                 <h2>About the Team</h2>
-          <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 click" id="portfolio"> <!-- using .click because its clickable #portfolio is a trigger all changable in the script.js file, no padding lets the portfolio-img be full div -->
-              <div class="well no-padding">
-                  <div class="portfolio-img one"> <!-- uses backstretch.js for full div effect, changable in script.js -->
-                      <div class="hover-effect effect-one">
-                          <p class="text-center">
-                              Josh Mays
-                          </p>
-                      </div>
-                  </div>
-              </div>
+          <div class="aboutJosh">
+            <img class="el-img" src="img/josh.png" />
+   
+        <span class="maincaption">
+                <span class="char1"> </span>
+                <span class="char2">J</span>
+                <span class="char3">o</span>
+                <span class="char4">s</span>
+                <span class="char5">h</span>
+                <span class="char6">.</span>
+                <span class="char7">M</span>
+                <span class="char8">a</span>
+                <span class="char9">y</span>
+                <span class="char10">s</span>
+                <span class="char11">.</span>
+                <span class="char12"> </span>
+                <span class="char13">W</span>
+                <span class="char14">e</span>
+                <span class="char15">b</span>
+                <span class="char16">.</span>
+                <span class="char17">D</span>
+                <span class="char18">e</span>
+                <span class="char19">v</span>
+                <span class="char20">e</span>
+                <span class="char21">l</span>
+                <span class="char22">o</span>
+                <span class="char23">p</span>
+                <span class="char24">e</span>
+                <span class="char25">r</span>
+              </span>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 click" id="portfolio2">
-              <div class="well no-padding">
-                  <div class="portfolio-img two">
-                      <div class="hover-effect effect-two">
-                          <p class="text-center">
-                              Ruth Spina
-                          </p>
-                      </div>
-                  </div>
-              </div>
+            
+            <div class="aboutRuth">
+            <a href="http://www.linkedin.com/in/ruthspina/"><img class="el-img" src="img/ruth.png"/></a>
+        <span class="maincaption">
+                <span class="char1"> </span>
+                <span class="char2">R</span>
+                <span class="char3">u</span>
+                <span class="char4">t</span>
+                <span class="char5">h</span>
+                <span class="char6">.</span>
+                <span class="char7">S</span>
+                <span class="char8">p</span>
+                <span class="char9">i</span>
+                <span class="char10">n</span>
+                <span class="char11">a</span>
+                <span class="char12">.</span>
+                <span class="char13">W</span>
+                <span class="char14">e</span>
+                <span class="char15">b</span>
+                <span class="char16">.</span>
+                <span class="char17">D</span>
+                <span class="char18">e</span>
+                <span class="char19">v</span>
+                <span class="char20">e</span>
+                <span class="char21">l</span>
+                <span class="char22">o</span>
+                <span class="char23">p</span>
+                <span class="char24">e</span>
+                <span class="char25">r</span>
+              </span>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 click" id="portfolio3">
-                <div class="well no-padding">
-                  <div class="portfolio-img three">
-                      <div class="hover-effect effect-three">
-                          <p class="text-center">
-                              Phil Winrock
-                          </p>
-                      </div>
-                  </div>
-                </div>
+            <div class="aboutPhil">
+              <img class="el-img" src="img/phil.png"/>
+        <span class="maincaption">
+                <span class="char1"> </span>
+                <span class="char2">P</span>
+                <span class="char3">h</span>
+                <span class="char4">i</span>
+                <span class="char5">l</span>
+                <span class="char6">.</span>
+                <span class="char7">W</span>
+                <span class="char8">i</span>
+                <span class="char9">n</span>
+                <span class="char10">r</span>
+                <span class="char11">o</span>
+                <span class="char12">c</span>
+                <span class="char13">k</span>
+                <span class="char14">.</span>
+                <span class="char15">W</span>
+                <span class="char16">e</span>
+                <span class="char17">b</span>
+                <span class="char18">.</span>
+                <span class="char19">D</span>
+                <span class="char20">e</span>
+                <span class="char21">v</span>
+                <span class="char22">e</span>
+                <span class="char23">l</span>
+                <span class="char24">o</span>
+                <span class="char25">p</span>
+                <span class="char26">e</span>
+                <span class="char27">r</span>
+              </span>
             </div>
-          </div>
           
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -188,6 +216,18 @@
         <script src="js/jquery.backstretch.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/aboutpg.js" type="text/javascript"></script>
+        <script>
+        $(document).ready(function(){
+    $("body").addClass("loaded");
+    $("li a .caption, .maincaption").lettering();
+    $("li a").hover(function(){
+        $(".cover").addClass("fadeout");
+        // $(this).parent().removeClass("fadeout");
+    }, function(){
+        $(".cover").removeClass("fadeout");
+    });
+});
+        </script>
 
 </body>
 </html>
