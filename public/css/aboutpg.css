@@ -1,6 +1,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:700,300,100);
-@import url('css/font-awesome.min.css');
+@import url('/css/font-awesome.min.css');
 html {
   -webkit-font-smoothing: antialiased;
 }
