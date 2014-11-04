@@ -28,7 +28,6 @@ Route::get('/moods/manage', 'MoodsController@manage');
 Route::get('users/confirm/{code}', 'UsersController@getConfirm');
 Route::get('users/reset_password/{token}', 'UsersController@getReset');
 Route::get('users/reset_password', 'UsersController@postReset');
-Route::get('/users/index', 'HomeController@index');
 Route::controller( 'users', 'UsersController');
 
 // OAuth Routes
