@@ -47,7 +47,7 @@ Profile-->
             success: function(data) {
                 if (data.success) {
                     likedActivities = data.likedActivities;
-                    $("#likedCount").text(likedActivities.length);
+                    $("#likedCount").text(likedActivities.length + ' Activities');
                     for(var i = 0; i < likedActivities.length; i++) {
                         activity = likedActivities[i];
                         $('<div class="row news_container"><div class="col-md-8 news"><span class="data">' + activity[2] + '</span><a href="/activities/' + activity[0] + '">' + activity[1] + '</a></div>').appendTo($(".my_news"));
