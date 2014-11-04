@@ -5,17 +5,17 @@
 @stop
 
 @section('top-script')
-<link rel="stylesheet" href="{{ asset('/css/jquery.tagsinput.css'); }}">
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
-<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+<style>
+body{ overflow: hidden; }
+</style>
+<script src="{{ asset('/js/btns.js'); }}"></script>
+<script src="{{ asset('/js/main.js'); }}"></script>
 @stop
 
 @section('content')
-<div class="logoMP">
-    <img src="img/logo_update5.png">
-</div>
-
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550">
+
 <defs>
 <g id="loney">
     <circle r="5%" fill-opacity="0" >
@@ -50,7 +50,6 @@
     </circle>
 </g>
 </defs>
-
 
 <g id="repeat" cursor="pointer">
   <use xlink:href="#loney" x="0%" y="0%" fill="crimson">
@@ -90,80 +89,83 @@
 </svg>
 
     <main id="main" class="main"></main>
-    @include('partials.filter-stack') 
+    <div id="filterStackWrap">
+        <input type="hidden" name="filterStack" id="filterStack">
+        {{ Form::open(['action' => 'ActivitiesController@index', 'method' => 'GET']) }}
+        <input type="hidden" id="mood" name="mood" value="">
+        <input type="hidden" id="category" name="category" value="">
+        <input type="hidden" id="price" name="price" value="">
+        {{ Form::submit('Go!', ['class' => 'btn btn-primary', 'id' => 'activityFilter']) }}
+        {{ Form::close() }}
+    </div>
 @stop
 
 @section('bottom-script')
-<!-- XOXCO TagsInput JS -->
-<script src="{{ asset('/js/jquery.tagsinput.js'); }}"></script>
 <script>
-    $(document).ready(function(){
-        var mood = [];
-        var category = [];
-        var price = [];
-        var csrfToken = "{{{ Session::get('_token') }}}";
+$( window ).load(function() {
+    var mood = [];
+    var category = [];
+    var price = [];
+
+    var tag = '';
         
-        $('#filterStack').tagsInput({
-            'interactive': false
-        });
-        
-        $(".queryButtonMood").on('click', function(e) {
-            $("#mood").remove();
-            $('<input type="hidden" id="mood" name="mood">').appendTo("#filterForm");
-            tag = $(this).data('title');
-            $('#fiterStack').addTag(tag);
-            mood = [];
-            mood.push(tag);
-        });
-        
-        $(".queryButtonCategory").on('click', function(e) {
-            $("#category").remove();
-            $('<input type="hidden" id="category" name="category">').appendTo("#filterForm");
-            tag = $(this).data('title');
-            category = [];
-            category.push(tag);
-        });
-        
-        $(".queryButtonPrice").on('click', function(e) {
-            $("#price").remove();
-            $('<input type="hidden" id="price" name="price">').appendTo("#filterForm");
-            tag = $(this).data('title');
-            switch(tag) {
-                case 'Free':
-                    tag = 0;
-                    break;
-                case '$':
-                    tag = 1;
-                    break;
-                case '$$':
-                    tag = 2;
-                    break;
-                case '$$$':
-                    tag = 3;
-                    break;
-                case '$$$$':
-                    tag = 4;
-                    break;
-                default:
-                    break;
-            }
-            price = [];
-            price.push(tag);
-        });
-        
-        $("#activityFilter").click(function(e) {
-            e.preventDefault;
-            if (mood.length > 0) {
-                $("#mood").val(mood);
-            }
-            if (category.length > 0) {
-                $("#category").val(category);
-            }
-            if (price.length > 0) {
-                $("#price").val(price);
-            }
-        });
+    $(".queryButtonMood").on('click', function() {
+        mood = [];
+        tag = $(this).data('title');
+        mood.push(tag);
     });
+
+    $(".queryButtonCategory").on('click', function() {
+        category = [];
+        tag = $(this).data('title');
+        category.push(tag);
+    });
+
+    $(".queryButtonPrice").on('click', function() {
+        price = [];
+        tag = $(this).data('title');
+        switch(tag) {
+            case 'Free':
+                tag = 0;
+                break;
+            case '$':
+                tag = 1;
+                break;
+            case '$$':
+                tag = 2;
+                break;
+            case '$$$':
+                tag = 3;
+                break;
+            case '$$$$':
+                tag = 4;
+                break;
+            default:
+                break;
+        }
+        price.push(tag);
+    });
+
+    $("#activityFilter").click(function(e) {
+        if (mood.length > 0) { 
+            $("#mood").val(mood);
+        } else {
+            $("#mood").remove();
+        }
+        if (category.length > 0) {
+            $("#category").val(category);
+        }
+        else {
+            $("#category").remove();
+        }
+        if (price.length > 0) {
+            $('#price').val(price);
+        }
+        else {
+            $("#price").remove();
+        }
+    });
+
+});
 </script>
 @stop
-

@@ -29,11 +29,16 @@ class Venue extends BaseModel {
         'facebook_url',
         'google_url',
         'twitter_handle',
-        'image_path'
+        'image_url'
     ];
-    
+
     public function activities()
     {
         return $this->hasMany('Activity');
+    }
+
+    public function getParking()
+    {
+        return $this->parking_available == 1 ? 'Yes' : 'No';
     }
 }

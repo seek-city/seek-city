@@ -12,9 +12,8 @@
     <script src="{{ asset('/js/jquery-2.1.1.min.js'); }}"></script>
     <script src="{{ asset('/js/modernizr.js'); }}"></script>
     <script src="{{ asset('/js/fastclick.js'); }}"></script>
-    <script src="{{ asset('/js/btns.js'); }}"></script> 
-    <script src="{{ asset('/js/main.js'); }}"></script> 
-    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.ui.touch-punch.min.js') }}"></script>
     @yield('top-script')
 </head>
 <body>
