@@ -1,5 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
+        <div class="container">
+            <!-- <a class="brand" href="index.html"><img src="img/seekcity logo.png"></a> -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -38,5 +39,6 @@
             </ul>
         </div>
     </div>
+    
 </nav>
 <!-- /.navbar -->

@@ -14,6 +14,7 @@
     <script src="{{ asset('/js/fastclick.js'); }}"></script>
     <script src="{{ asset('/js/btns.js'); }}"></script> 
     <script src="{{ asset('/js/main.js'); }}"></script> 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
     @yield('top-script')
 </head>
 <body>

@@ -7,11 +7,15 @@
 @section('top-script')
 <link rel="stylesheet" href="{{ asset('/css/jquery.tagsinput.css'); }}">
 <link rel="stylesheet" href="{{ asset('/css/menu.css'); }}">
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 @stop
 
 @section('content')
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550">
+<div class="logoMP">
+    <img src="img/logo_update5.png">
+</div>
 
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550">
 <defs>
 <g id="loney">
     <circle r="5%" fill-opacity="0" >
@@ -46,6 +50,7 @@
     </circle>
 </g>
 </defs>
+
 
 <g id="repeat" cursor="pointer">
   <use xlink:href="#loney" x="0%" y="0%" fill="crimson">

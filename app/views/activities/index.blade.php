@@ -195,7 +195,7 @@
             var m = 0;
             var obj;
             var x;
-            
+
 
             // Populate array of markers/venues for each activity
             markers = [
@@ -204,7 +204,7 @@
                 @endforeach
             ];
             
-            console.log(markers);
+           
 
             for(obj = 0; obj < markers.length; obj++) {
                 address = markers[obj].address + ", " + markers[obj].city + ", " + markers[obj].state + ", " + markers[obj].zipcode;
@@ -219,7 +219,6 @@
                     } // end if
                 }); // end geocode
             } // end for
-            
         });  // end document ready
 
 
