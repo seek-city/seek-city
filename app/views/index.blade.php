@@ -93,7 +93,7 @@ body{ overflow: hidden; }
         <input type="hidden" id="mood" name="mood" value="">
         <input type="hidden" id="category" name="category" value="">
         <input type="hidden" id="price" name="price" value="">
-        {{ Form::submit('Go!', ['class' => 'btn btn-primary', 'id' => 'activityFilter']) }}
+        {{ Form::submit('SEARCH!', ['class' => 'btn btn-primary btn-lg', 'id' => 'activityFilter']) }}
         {{ Form::close() }}
     </div>
 @stop
